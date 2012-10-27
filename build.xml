@@ -1,0 +1,23 @@
+<project name="freemind-spl" default="preprocess" basedir=".">
+
+  <!--taskdef resource="javapp-def.xml" /-->
+
+  <taskdef resource="javapp-def.xml">
+    <classpath>
+      <pathelement location="/home/ppires/TPs/ManutencaoEvolucaoSoftware/TP/freemind-spl/tools/javapp-0.4/javapp.jar"/>
+    </classpath>
+  </taskdef>
+
+
+
+  <property name="os_version" value="4.2" />
+
+  <target name="preprocess">
+     <javapp destdir="freemind/freemind-spl" prefix="//#">
+        <fileset dir="freemind/freemind" includes="**/*.java" />
+        <property name="poo" value="smelly" />
+     </javapp>
+  </target>
+
+</project>
+
