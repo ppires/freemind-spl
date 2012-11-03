@@ -42,7 +42,7 @@ import freemind.main.Tools;
  * 
  */
 public class HookDescriptorBase {
-	public static final String FREEMIND_BASE_DIR_STRING = "${freemind.base.dir}";
+	//public static final String FREEMIND_BASE_DIR_STRING = "${freemind.base.dir}";
 
 	// Logging:
 	private static java.util.logging.Logger logger = null;

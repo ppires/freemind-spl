@@ -10,7 +10,7 @@
       	<tokenfilter><replaceregex pattern=" " replace="_" flags="g"/></tokenfilter>
       </filterchain>
     </loadfile>
-	
+
 	<property name="freemind.buildnumber.file" value="version.properties"/>
 	<property name="freemind.installer_year" value="2009"/>
 	<property name="src" location="."/>
@@ -40,6 +40,28 @@
                classname="net.sourceforge.jarbundler.JarBundler" />
 
 
+
+	<!-- =================================
+          target: preprocess
+         ================================= -->
+	<taskdef resource="javapp-defs.xml" />
+	<target name="preprocess">
+		<copy todir="freemind-src">
+			<fileset dir="freemind" />
+		</copy>
+		<delete dir="freemind" />
+		<javapp destdir="freemind" prefix="//#">
+			<fileset dir="freemind-src" includes="**/*" />
+			<property name="poo" value="smelly" />
+		</javapp>
+		<!--move todir="freemind">
+		<fileset dir="tmp" />
+		</move-->
+	</target>
+
+
+
+
 	<!-- begin generator part -->
 	<property name="jibxhome" location="lib/jibx"/>
 	<property name="jibxjar" location="lib/bindings.jar"/>
@@ -57,8 +79,8 @@
 	              targetfile="${jibxjar}"/>
 	  </target>
 
-	<!-- - - - - - - - - - - - - - - - - - 
-          target: init                      
+	<!-- - - - - - - - - - - - - - - - - -
+          target: init
          - - - - - - - - - - - - - - - - - -->
     <target name="init">
 		<buildnumber file="${freemind.buildnumber.file}"/>
@@ -67,7 +89,7 @@
 		<echo>FreeMind Version = ${ver}, build ${build.number}.</echo>
     </target>
 
-	
+
 	<!-- =================================
           target: gen
          ================================= -->
@@ -81,7 +103,7 @@
 			<arg line="-d binding/src" />
 			<arg file="freemind_actions.xsd" />
 		</java> -->
-		<javac includeantruntime="false"  destdir="binding/run" 
+		<javac includeantruntime="false"  destdir="binding/run"
 			srcdir="${src}"
 			classpath="${classpath}"
 			debug="${debug}"
@@ -96,7 +118,7 @@
 		<javac includeantruntime="false"  srcdir="binding/src" destdir="binding/classes" source="${java_source_version}" target="${java_target_version}" debug="on" />
 <!--
  		<xslt style="binding.xslt" in="binding/src/freemind/controller/actions/generated/instance/binding.xml" out="binding_new.xml" />
-		<move file="binding_new.xml" tofile="binding/src/freemind/controller/actions/generated/instance/binding.xml" overwrite="true" /> 
+		<move file="binding_new.xml" tofile="binding/src/freemind/controller/actions/generated/instance/binding.xml" overwrite="true" />
 		-->
 		<echo message="Running binding compiler..." />
 		<bind verbose="false" load="true">
@@ -140,18 +162,20 @@
 		<!-- end mac changes. -->
 		<mkdir dir="${build}"/>
 		<javac includeantruntime="false" srcdir="${src}"
-			destdir="${build}"
-			classpath="${classpath}"
-			debug="${debug}"
-    	   source="${java_source_version}"
-	       target="${java_target_version}"
-			 >
+		        destdir="${build}"
+		        classpath="${classpath}"
+		        debug="${debug}"
+          	   source="${java_source_version}"
+               target="${java_target_version}"
+		         >
 			<exclude name="${gen.dir}/**" />
 			<exclude name="accessories/plugins/**" />
 		<!-- Currently, JUnit tests are only supported inside eclipse due to
 		     classpath problems of the plugins. -->
 			<exclude name="tests/**" />
 			<exclude name="plugins/**" />
+			<!-- Diretório com src original (diretivas pre-processamento) -->
+			<exclude name="freemind-src/**" />
 		</javac>
 		<!-- Starter should work with java 1.1, too as it checks the java version.-->
 		<delete failonerror="false" file="${build}/freemind/main/FreeMindStarter.class"></delete>
@@ -262,7 +286,7 @@
 		<copy todir="${dist_macos_contents}/Resources">
 			<fileset dir="${src}/images">
 				<include name="FreeMindWindowIconModern-MM.icns"/>
-			</fileset>		
+			</fileset>
 		</copy>
 		<copy todir="${dist_macos_contents}/Resources/Java">
 			<fileset dir="${dist}">
@@ -337,12 +361,12 @@
 
 		<!-- Delete the JavaApplicationStub and replace it with a symbolic link -->
 		  <!--   which should work on older and future versions of OS X
-		   Taken from http://informagen.com/JarBundler/StubFile.html   
+		   Taken from http://informagen.com/JarBundler/StubFile.html
 
 			fc, 22.10.2009,  as people reported problems with this, we make two versions.
 			http://sourceforge.net/forum/message.php?msg_id=5324833
          -->
-			
+
 		<delete file="${dist_macos_contents}/MacOS/JavaApplicationStub"/>
 		<exec executable="ln">
 		  <arg line="-s /System/Library/Frameworks/JavaVM.framework/Resources/MacOS/JavaApplicationStub"/>
@@ -359,7 +383,7 @@
 		</exec>
 
 
-		
+
 	</target>
 
 	<target name="jar" depends="build">
@@ -553,7 +577,7 @@
     		<arg value="clone"/>
     		<arg value="${gitRoot}"/>
     		<arg value="${inst.dir}/"/>
-    	</exec>            
+    	</exec>
     	<ant dir="${inst.dir}/freemind" target="clean" ></ant>
     	<ant dir="${inst.dir}/freemind" target="post" ></ant>
     	<copy todir="${inst.dest.dir}">
@@ -578,8 +602,8 @@
     	-->
     </target>
 
-	<!-- - - - - - - - - - - - - - - - - - 
-          target: create_windows_installer                      
+	<!-- - - - - - - - - - - - - - - - - -
+          target: create_windows_installer
          - - - - - - - - - - - - - - - - - -->
     <target name="create_windows_installer">
     	<ant dir="${inst.windows.installer}" target="${inst.windows.variant}"></ant>
@@ -592,9 +616,9 @@
 			<arg value="Freemind.iss"/>
     	</exec>
     </target>
-	
-	<!-- - - - - - - - - - - - - - - - - - 
-          target: installers_chris_mac                      
+
+	<!-- - - - - - - - - - - - - - - - - -
+          target: installers_chris_mac
          - - - - - - - - - - - - - - - - - -->
     <target name="installers_chris_mac">
     	<exec dir="." executable="ssh" os="Linux">
@@ -604,10 +628,10 @@
     	<exec dir="." executable="scp" os="Linux">
     		<arg value="foltin@${macName}:/tmp/fm_installers/post/*.dmg"/>
     		<arg value="${inst.dest.dir}/"/>
-    	</exec>            
+    	</exec>
     </target>
 
-	
+
 	<!-- =================================
           target: installers, for Chris' computers
          ================================= -->
@@ -625,7 +649,7 @@
     		<arg value="clone"/>
     		<arg value="${gitRoot}"/>
     		<arg value="${inst.dir}/"/>
-    	</exec>            
+    	</exec>
 
     	<ant dir="${inst.dir}/freemind" target="post" inheritall="false"></ant>
     	<copy todir="${inst.dest.dir}">
@@ -638,8 +662,8 @@
 			    <include name="jre_installer.exe"/>
 			    <include name="jre/**"/>
 			</fileset>
-		</copy> 
-    	<property name="freemind.version" value="${ver}"/>  
+		</copy>
+    	<property name="freemind.version" value="${ver}"/>
     	<antcall target="create_windows_installer">
     		<param name="inst.windows.variant" value="installer"/>
     	</antcall>
@@ -657,7 +681,7 @@
 			    <include name="*.exe"/>
 			</fileset>
 		</copy>
-     	<antcall target="installers_chris_mac"></antcall> 
+     	<antcall target="installers_chris_mac"></antcall>
     	<delete dir="${inst.dir}" failonerror="false"/>
     </target>
 
