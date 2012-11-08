@@ -52,20 +52,6 @@ public class MapModule {
      * must be notified.
      */
     public String toString() {
-    	
-        //#if defined(poo)
-        System.out.println("Poo is ${poo}");
-        //#else
-        System.out.println("Poo is not defined");
-        //#endif
-   
-        //#if ${os_version} == 4.1
-        System.out.println("OS 4.1");
-        //#elif defined(poo) and ${os_version} >= 4.2
-        System.out.println("OS 4.2 and above");
-        System.out.println("Ooooh; compound expressions");
-        //#endif
-    	
 		if (name == null) {
 		    rename();
 		}

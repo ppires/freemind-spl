@@ -702,6 +702,11 @@ public class FreeMind extends JFrame implements FreeMindMain {
 	}
 
 	public static void main(final String[] args, Properties pDefaultPreferences, Properties pUserPreferences, File pAutoPropertiesFile) {
+        //#if defined(poo)
+        System.out.println("Poo is ${poo}");
+        //#else
+        System.out.println("Poo is not defined");
+        //#endif
 		final FreeMind frame = new FreeMind(pDefaultPreferences, pUserPreferences, pAutoPropertiesFile);
 		IFreeMindSplash splash = null;
 		final FeedBack feedBack;

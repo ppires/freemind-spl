@@ -46,17 +46,17 @@
          ================================= -->
 	<taskdef resource="javapp-defs.xml" />
 	<target name="preprocess">
-		<copy todir="freemind-src">
+		<echo message="Copying source to freemind-src/" />
+		<move todir="freemind-src">
 			<fileset dir="freemind" />
-		</copy>
-		<delete dir="freemind" />
+		</move>
+		
+		<echo message="Executing javapp..." />
 		<javapp destdir="freemind" prefix="//#">
 			<fileset dir="freemind-src" includes="**/*" />
-			<property name="poo" value="smelly" />
+			<!--property name="poo" value="smelly" /-->
 		</javapp>
-		<!--move todir="freemind">
-		<fileset dir="tmp" />
-		</move-->
+		<echo message="Done!" />
 	</target>
 
 
@@ -147,7 +147,7 @@
 
 	<!-- end generator part -->
 
-	<target name="build" depends="init,gen">
+	<target name="build" depends="init,gen,preprocess">
 		<!-- Perform Mac Changes as a plugin. -->
 		<exec dir="${src}/accessories/plugins" executable="ln" os="Mac OS X">
 			<arg value="-s"/>
@@ -174,7 +174,7 @@
 		     classpath problems of the plugins. -->
 			<exclude name="tests/**" />
 			<exclude name="plugins/**" />
-			<!-- Diretório com src original (diretivas pre-processamento) -->
+			<!-- freemind-spl: exclude unprocessed source files -->
 			<exclude name="freemind-src/**" />
 		</javac>
 		<!-- Starter should work with java 1.1, too as it checks the java version.-->
@@ -188,6 +188,12 @@
 
 	<target name="dist" depends="jar, browser">
 
+		<!-- freemind-spl: moving source back to original place -->
+		<delete dir="freemind" />
+		<move todir="freemind">
+			<fileset dir="freemind-src" />
+		</move>
+		
 		<copy todir="${dist}">
 			<fileset dir="${src}"
 				includes="freemind.bat,freemind.sh,license,patterns.xml"
