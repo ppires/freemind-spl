@@ -46,15 +46,15 @@
          ================================= -->
 	<taskdef resource="javapp-defs.xml" />
 	<target name="preprocess">
-		<echo message="Copying source to freemind-src/" />
-		<move todir="freemind-src">
-			<fileset dir="freemind" />
-		</move>
+		<echo message="Copying source files to javapp-tmp/" />
+		<copy todir="javapp-tmp">
+			<fileset dir="${src}" includes="**/*.java" />
+		</copy>
 		
 		<echo message="Executing javapp..." />
-		<javapp destdir="freemind" prefix="//#">
-			<fileset dir="freemind-src" includes="**/*" />
-			<!--property name="poo" value="smelly" /-->
+		<javapp destdir="${src}" prefix="//#">
+			<fileset dir="javapp-tmp" includes="**/*.java" />
+			<property name="poo" value="smelly" />
 		</javapp>
 		<echo message="Done!" />
 	</target>
@@ -174,8 +174,10 @@
 		     classpath problems of the plugins. -->
 			<exclude name="tests/**" />
 			<exclude name="plugins/**" />
+
 			<!-- freemind-spl: exclude unprocessed source files -->
-			<exclude name="freemind-src/**" />
+			<exclude name="javapp-tmp/**" />
+
 		</javac>
 		<!-- Starter should work with java 1.1, too as it checks the java version.-->
 		<delete failonerror="false" file="${build}/freemind/main/FreeMindStarter.class"></delete>
@@ -189,10 +191,9 @@
 	<target name="dist" depends="jar, browser">
 
 		<!-- freemind-spl: moving source back to original place -->
-		<delete dir="freemind" />
-		<move todir="freemind">
-			<fileset dir="freemind-src" />
-		</move>
+		<copy todir="${src}" overwrite="true">
+			<fileset dir="javapp-tmp" includes="**/*.java" />
+		</copy>
 		
 		<copy todir="${dist}">
 			<fileset dir="${src}"
