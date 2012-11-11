@@ -1,7 +1,7 @@
 package metrics;
 
 /**
- * Representa uma métrica, contendo suas submétricas e valores
+ * Representa uma mÃ©trica, contendo suas submÃ©tricas e valores
  * @author Marcus
  */
 public class Metric {
@@ -12,7 +12,7 @@ public class Metric {
 	private final String feature;
 	
 	/**
-	 * Array contendo o tipo de métrica: Granularidade ou Localização.
+	 * Array contendo o tipo de mÃ©trica: Granularidade ou LocalizaÃ§Ã£o.
 	 */
 	private SubMetric[] subMetrics;	
 	
@@ -25,7 +25,7 @@ public class Metric {
 	}
 
 	/**
-	 * Construtor padrão.
+	 * Construtor padrÃ£o.
 	 * @param feature nome da Feature
 	 */
 	public Metric(String feature) {
@@ -37,19 +37,19 @@ public class Metric {
 	}
 	
 	/**
-	 * Retorna a submétrica.
-	 * @param typeEnum tipo da métrica a retornar.
-	 * @return submétroca encontada.
+	 * Retorna a submÃ©trica.
+	 * @param typeEnum tipo da mÃ©trica a retornar.
+	 * @return submÃ©troca encontada.
 	 */
 	public SubMetric getSubMetric(MetricType typeEnum) {
 		return this.subMetrics[typeEnum.ordinal()];
 	}	
 	
 	/**
-	 * Armazena uma submétrica para a métrica.
-	 * @param metricType Tipo da métrica.
-	 * @param subMetric Tipo da submétrica.
-	 * @param value Valor da submétrica.
+	 * Armazena uma submÃ©trica para a mÃ©trica.
+	 * @param metricType Tipo da mÃ©trica.
+	 * @param subMetric Tipo da submÃ©trica.
+	 * @param value Valor da submÃ©trica.
 	 */
 	public void storeMetric(MetricType metricType, String subMetric, Integer value) {
 		this.subMetrics[metricType.ordinal()].addValue(subMetric, value);

@@ -16,35 +16,35 @@ import util.Log;
 
 public class MetricsProcessor {	
 	/**
-	 * Identificador de anotaÁ„o de mÈtrica.
+	 * Identificador de anota√ß√£o de m√©trica.
 	 */
 	public static final String IDENTIFIER = "//@#$LPS-";
 	
 	/**
-	 * Informa se iniciou-se um coment·rio.
+	 * Informa se iniciou-se um coment√°rio.
 	 */
 	private boolean startComment;
 	
 	/**
-	 * Map para armazenar as mÈtricas de granularidade.
+	 * Map para armazenar as m√©tricas de granularidade.
 	 */
 	private Map<String, Integer> granMetrics;
 	/**
-	 * Map para armazenar as mÈtricas de localizaÁ„o.
+	 * Map para armazenar as m√©tricas de localiza√ß√£o.
 	 */
 	private Map<String, Integer> localMetrics;	
 	/**
-	 * Map para armazenar outras mÈtricas.
+	 * Map para armazenar outras m√©tricas.
 	 */
 	private Map<String, Integer> otherMetrics;
 	
 	/**
-	 * Vetor que armazena as mÈtricas processadas
+	 * Vetor que armazena as m√©tricas processadas
 	 */
 	private Vector<Metric> metrics;
 	
 	/** 
-	 * Armazena mÈtrica LOC.
+	 * Armazena m√©trica LOC.
 	 */
 	private Integer locMetric;
 	
@@ -54,12 +54,12 @@ public class MetricsProcessor {
 	private static Integer CLASS_COUNTER;
 	
 	/**
-	 * String para criaÁ„o de mÈtricas que n„o est„o mapeadas diretamente nas classes.
+	 * String para cria√ß√£o de m√©tricas que n√£o est√£o mapeadas diretamente nas classes.
 	 */
 	private static final String FAKEMETRICIDENTIFIER = "//@#$LPS-%s:%s:N/A";
 		
 	/**
-	 * Construtor padr„o.
+	 * Construtor padr√£o.
 	 */
 	public MetricsProcessor(){
 		granMetrics = new HashMap<String, Integer>();
@@ -72,9 +72,9 @@ public class MetricsProcessor {
 	}
 	
 	/**
-	 * Insere uma mÈtrica j· contabilizada
+	 * Insere uma m√©trica j√° contabilizada
 	 * @param line Indentificador da linha, para processamento posterior
-	 * @param metricType Tipo da mÈtrica
+	 * @param metricType Tipo da m√©trica
 	 * @param value Valor calculado
 	 */
 	private void insertMetric(String line, MetricType metricType, Integer value) {		
@@ -82,9 +82,9 @@ public class MetricsProcessor {
 	}
 	
 	/**
-	 * Contabilizar as mÈtricas por tipo.
+	 * Contabilizar as m√©tricas por tipo.
 	 * @param line linha lida da classe Java.
-	 * @param metricType Tipo de mÈtrica.
+	 * @param metricType Tipo de m√©trica.
 	 */
 	private void insertMetric(String line, MetricType metricType) {
 		if (MetricType.LOC.equals(metricType)) {
@@ -109,10 +109,10 @@ public class MetricsProcessor {
 	}	
 	
 	/**
-	 * Verifica se a linha È um coment·rio ou linha em branco
+	 * Verifica se a linha √© um coment√°rio ou linha em branco
 	 * @param line linha a ser verificada
-	 * @return <code>true</code> se a linha for coment·rio ou branco,
-	 * <code>false</code> caso contr·rio.
+	 * @return <code>true</code> se a linha for coment√°rio ou branco,
+	 * <code>false</code> caso contr√°rio.
 	 */
 	private boolean isCommentOrBlankLine(String line) {
 		if (line.startsWith("/*")) {
@@ -134,16 +134,16 @@ public class MetricsProcessor {
 	}
 	
 	/**
-	 * Insere uma mÈtrica que n„o depende do conte˙do do arquivo Java. 
-	 * @param metricType Tipo da mÈtrica.
-	 * @param line Valor da mÈtrica
+	 * Insere uma m√©trica que n√£o depende do conte√∫do do arquivo Java. 
+	 * @param metricType Tipo da m√©trica.
+	 * @param line Valor da m√©trica
 	 */
 	public void insertMetric(MetricType metricType, Integer value) {
 		insertMetric(String.format(FAKEMETRICIDENTIFIER, "TODAS", metricType.getIdentifier()), metricType, value);
 	}
 	
 	/**
-	 * Contabiliza a mÈtrica encontrada na linha do arquivo Java. 
+	 * Contabiliza a m√©trica encontrada na linha do arquivo Java. 
 	 * @param value linha lida da classe Java.
 	 */
 	public void insertMetric(String value) {
@@ -154,7 +154,7 @@ public class MetricsProcessor {
 			} else if (value.contains(MetricType.LOCALIZATION.getIdentifier())) {
 				insertMetric(value, MetricType.LOCALIZATION);
 			} else{
-				Log.info("Identificador inv·lido. Dados: "  + value);
+				Log.info("Identificador inv√°lido. Dados: "  + value);
 			}
 		}
 		// AND, OR e SD Metrics
@@ -169,13 +169,13 @@ public class MetricsProcessor {
 				} else {
 					type = MetricType.AND;
 				}
-				// Inserir mÈtricas AND e OR
+				// Inserir m√©tricas AND e OR
 				insertMetric(String.format(FAKEMETRICIDENTIFIER, feature1, type.getIdentifier()), type);
 				insertMetric(String.format(FAKEMETRICIDENTIFIER, feature2, type.getIdentifier()), type);		
-				// Inserir mÈtrica SD
+				// Inserir m√©trica SD
 				insertMetric(String.format(FAKEMETRICIDENTIFIER, feature2, MetricType.SD.getIdentifier()), MetricType.SD);
 			}
-			// Inserir mÈtrica SD
+			// Inserir m√©trica SD
 			insertMetric(String.format(FAKEMETRICIDENTIFIER, feature1, MetricType.SD.getIdentifier()), MetricType.SD);
 		}		
 		// LOC Metric
@@ -189,10 +189,10 @@ public class MetricsProcessor {
 	}
 	
 	/**
-	 * Retorna o Ìndice da feature no Vetor de metricas. 
-	 * Caso a feature n„o exista no vetor, ela ser· inserida. 
+	 * Retorna o √≠ndice da feature no Vetor de metricas. 
+	 * Caso a feature n√£o exista no vetor, ela ser√° inserida. 
 	 * @param feature Nome da feature
-	 * @return Ìndice da feature no vetor de metricas
+	 * @return √≠ndice da feature no vetor de metricas
 	 */
 	private Integer getFeatureMetricIndex(String feature) {
 		Integer index = -1;
@@ -210,14 +210,14 @@ public class MetricsProcessor {
 	}
 	
 	/**
-	 * Processa as mÈtricas colhidas.
-	 * @param onlyBasicMetrics Informa se È para processar apenas mÈtricas b·sicas.
-	 * @return <code>true</code> se processamento correto, <false> caso contr·rio.
+	 * Processa as m√©tricas colhidas.
+	 * @param onlyBasicMetrics Informa se √© para processar apenas m√©tricas b√°sicas.
+	 * @return <code>true</code> se processamento correto, <false> caso contr√°rio.
 	 */
 	public boolean processGatheredMetrics(Boolean onlyBasicMetrics) {
-		// Inserir mÈtrica que contabiliza o n˙mero de classes
+		// Inserir m√©trica que contabiliza o n√∫mero de classes
 		insertMetric(MetricType.CLASS_NUMBER, CLASS_COUNTER);
-		// Processar demais mÈtricas.
+		// Processar demais m√©tricas.
 		boolean result = this.processGatheredMetrics(otherMetrics);
 		if (!onlyBasicMetrics) {
 			result = result && this.processGatheredMetrics(granMetrics);
@@ -227,9 +227,9 @@ public class MetricsProcessor {
 	}
 	
 	/**
-	 * Processa as mÈtricas colhidas.
-	 * @param metricMap Map contendo as mÈtricas
-	 * @return <code>true</code> se processamento correto, <false> caso contr·rio.
+	 * Processa as m√©tricas colhidas.
+	 * @param metricMap Map contendo as m√©tricas
+	 * @return <code>true</code> se processamento correto, <false> caso contr√°rio.
 	 */
 	private boolean processGatheredMetrics(Map<String, Integer> metricMap) {
 		try {
@@ -255,7 +255,7 @@ public class MetricsProcessor {
 	}
 	
 	/**
-	 * Salva as mÈtricas em arquivo, no formado CSV.
+	 * Salva as m√©tricas em arquivo, no formado CSV.
 	 * @param filename nome do arquivo.
 	 */
 	public void saveGatheredMetrics(String filename) {

@@ -5,7 +5,7 @@ import java.util.Map;
 
 public class SubMetric {
 	/**
-	 * Tipo da medição efetuada para a métrica.
+	 * Tipo da mediÃ§Ã£o efetuada para a mÃ©trica.
 	 */
 	private Map<String, Integer> metricSubType;	
 	
@@ -14,8 +14,8 @@ public class SubMetric {
 	}
 	
 	/**
-	 * Insere submétrica com valor
-	 * @param subMetric submétrica da métrica.
+	 * Insere submÃ©trica com valor
+	 * @param subMetric submÃ©trica da mÃ©trica.
 	 */
 	public void addValue(String subMetric, Integer value) {
 		metricSubType.put(subMetric, value);		

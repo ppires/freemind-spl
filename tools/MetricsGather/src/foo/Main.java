@@ -8,10 +8,10 @@ public class Main {
 
 	/**
 	 * Inicializa o sistema.
-	 * @param args parâmetros de execução. 
-	 * 				1º parâmetro: diretório raiz 
-	 * 				2º parâmetro: arquivo de saída. 
-	 * 				3º parâmetro: Apenas métricas básicas
+	 * @param args parÃ¢metros de execuÃ§Ã£o. 
+	 * 				1Âº parÃ¢metro: diretÃ³rio raiz 
+	 * 				2Âº parÃ¢metro: arquivo de saÃ­da. 
+	 * 				3Âº parÃ¢metro: Apenas mÃ©tricas bÃ¡sicas
 	 */
 	public static void main(String[] args) {
 		Log.info("Starting gattering metrics");

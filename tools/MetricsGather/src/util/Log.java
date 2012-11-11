@@ -3,11 +3,11 @@ package util;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 /**
- * Simples geração da log da aplicação
+ * Simples geraÃ§Ã£o da log da aplicaÃ§Ã£o
  * @author Marcus
  */
 public class Log {
-	 /** Mascara com a formatação de data. */
+	 /** Mascara com a formataÃ§Ã£o de data. */
     private static final SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
 	
     /**

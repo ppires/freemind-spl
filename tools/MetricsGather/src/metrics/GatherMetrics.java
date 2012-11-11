@@ -12,12 +12,12 @@ import util.Log;
 public class GatherMetrics {
 
 	/**
-	 * Diretório raiz (onde se inicia a varredura).
+	 * DiretÃ³rio raiz (onde se inicia a varredura).
 	 * */
 	private String rootDir;
 		
 	/**
-	 * Processador de métricas.
+	 * Processador de mÃ©tricas.
 	 */
 	private MetricsProcessor metricsProcessor;
 	
@@ -27,17 +27,17 @@ public class GatherMetrics {
 	private static Integer PACKAGE_COUNTER;
 	
 	/** 
-	 * Informa se o diretório possui arquivos Java válidos, para ser usado na contabilização de pacotes. 
+	 * Informa se o diretÃ³rio possui arquivos Java vÃ¡lidos, para ser usado na contabilizaÃ§Ã£o de pacotes. 
 	 */
 	private static Boolean HasValidJavaFile;
 	
 	/**
-	 * Informa se é para processar apenas métricas básicas: LOC, AND, OR, SD.
+	 * Informa se Ã© para processar apenas mÃ©tricas bÃ¡sicas: LOC, AND, OR, SD.
 	 */
 	private static Boolean OnlyBasicMetrics;
 	
 	/**
-	 * Filtro de diretórios.
+	 * Filtro de diretÃ³rios.
 	 * */
 	FilenameFilter dirFilter = new FilenameFilter() { 
 		public boolean accept(File dir, String name) {
@@ -67,8 +67,8 @@ public class GatherMetrics {
 		};	 
 		
 	/**
-	 * Construtor padrão
-	 * @param rootDir Diretório raiz (onde se inicia a varredura).
+	 * Construtor padrÃ£o
+	 * @param rootDir DiretÃ³rio raiz (onde se inicia a varredura).
 	 */
 	public GatherMetrics(String rootDir) {
 		this.rootDir = rootDir.replace("\\", File.separator);
@@ -79,9 +79,9 @@ public class GatherMetrics {
 	}
 
 	/**
-	 * Construtor padrão
-	 * @param rootDir Diretório raiz (onde se inicia a varredura)
-	 * @param onlyBasicMetrics Informa se é para processar apenas métricas básicas.
+	 * Construtor padrÃ£o
+	 * @param rootDir DiretÃ³rio raiz (onde se inicia a varredura)
+	 * @param onlyBasicMetrics Informa se Ã© para processar apenas mÃ©tricas bÃ¡sicas.
 	 */
 	public GatherMetrics(String rootDir, Boolean onlyBasicMetrics) {
 		this(rootDir);
@@ -89,8 +89,8 @@ public class GatherMetrics {
 	}	
 	
 	/**
-	 * Colhe as métricas e as salva em arquivo.
-	 * @param filename Nome do arquivo que conterá as métricas
+	 * Colhe as mÃ©tricas e as salva em arquivo.
+	 * @param filename Nome do arquivo que conterÃ¡ as mÃ©tricas
 	 */
 	public void gatherMetrics(String filename) {
 		this.listDir(new File(rootDir));
@@ -100,7 +100,7 @@ public class GatherMetrics {
 	}
 	
 	/**
-	 * Lista os diretórios e subdiretórios. 
+	 * Lista os diretÃ³rios e subdiretÃ³rios. 
 	 * @param dir
 	 */
 	private void listDir(File dir) {
@@ -114,8 +114,8 @@ public class GatherMetrics {
 	}
 	
 	/**
-	 * Lista os arquivos .java de um diretório.
-	 * @param dir Diretório a ser lido.
+	 * Lista os arquivos .java de um diretÃ³rio.
+	 * @param dir DiretÃ³rio a ser lido.
 	 */
 	private void listDirFiles(File dir) {
 		Log.debug(dir.toString());
@@ -125,7 +125,7 @@ public class GatherMetrics {
 	    	Log.debug(children[i]);
 	    	processFile(new File(dir, children[i]));
 	    }
-	    // Se foi processado algum arquivo do diretório, considerar o pacote
+	    // Se foi processado algum arquivo do diretÃ³rio, considerar o pacote
 	    if (HasValidJavaFile && (i > 0)) {
 	    	PACKAGE_COUNTER++;
 	    }

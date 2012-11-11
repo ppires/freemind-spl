@@ -1,7 +1,7 @@
 package metrics;
 
 /**
- * Representa os tipos de métricas a serem contabilizadas.
+ * Representa os tipos de mÃ©tricas a serem contabilizadas.
  * @author Marcus
  *
  */
@@ -21,8 +21,8 @@ public enum MetricType {
     }
 
     /**
-     * Retorna o identificador da Métrica.
-     * @return Identificador da métrica.
+     * Retorna o identificador da MÃ©trica.
+     * @return Identificador da mÃ©trica.
      */
     public String getIdentifier() {
         return this.identifier;
