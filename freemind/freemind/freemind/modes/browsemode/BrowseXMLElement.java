@@ -27,7 +27,10 @@ import java.util.Vector;
 import freemind.main.FreeMindMain;
 import freemind.main.XMLElement;
 import freemind.modes.ArrowLinkAdapter;
+//#if defined(CLOUD)
+//@#$LPS-CLOUD:GranularityType:Import
 import freemind.modes.CloudAdapter;
+//#endif
 import freemind.modes.EdgeAdapter;
 import freemind.modes.MindMap;
 import freemind.modes.ModeController;
@@ -63,9 +66,12 @@ public class BrowseXMLElement extends XMLElementAdapter {
     protected EdgeAdapter createEdgeAdapter(NodeAdapter node, FreeMindMain frame){
         return new BrowseEdgeModel(node, frame);
     }
+    //#if defined(CLOUD)
+    //@#$LPS-CLOUD:GranularityType:Method
     protected CloudAdapter createCloudAdapter(NodeAdapter node, FreeMindMain frame){
         return new BrowseCloudModel(node, frame);
     }
+    //#endif
     protected ArrowLinkAdapter createArrowLinkAdapter(NodeAdapter source, NodeAdapter target, FreeMindMain frame) {
         return new BrowseArrowLinkModel(source,target,frame);
     }

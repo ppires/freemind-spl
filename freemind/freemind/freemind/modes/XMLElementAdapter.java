@@ -107,7 +107,10 @@ public abstract class XMLElementAdapter extends XMLElement {
     abstract protected XMLElement  createAnotherElement();
     abstract protected NodeAdapter createNodeAdapter(FreeMindMain     frame, String nodeClass);
     abstract protected EdgeAdapter createEdgeAdapter(NodeAdapter node, FreeMindMain frame);
+    //#if defined(CLOUD)
+    //@#$LPS-CLOUD:GranularityType:InterfaceMethod
     abstract protected CloudAdapter createCloudAdapter(NodeAdapter node, FreeMindMain frame);
+    //#endif
     abstract protected ArrowLinkAdapter createArrowLinkAdapter(NodeAdapter source, NodeAdapter target, FreeMindMain frame);
     abstract protected NodeAdapter createEncryptedNode(String additionalInfo);
 
@@ -137,8 +140,11 @@ public abstract class XMLElementAdapter extends XMLElement {
 			nodeAttributes.clear();
 		} else if (name.equals("edge")) {
 			userObject = createEdgeAdapter(null, frame);
+		//#if defined(CLOUD)
+		//@#$LPS-CLOUD:GranularityType:Statement
 		} else if (name.equals("cloud")) {
 			userObject = createCloudAdapter(null, frame);
+		//#endif
 		} else if (name.equals("arrowlink")) {
 			userObject = createArrowLinkAdapter(null, null, frame);
 		} else if (name.equals("font")) {
@@ -184,10 +190,13 @@ public abstract class XMLElementAdapter extends XMLElement {
             EdgeAdapter edge = (EdgeAdapter)child.getUserObject();
             edge.setTarget(node);
             node.setEdge(edge); }
+         //#if defined(CLOUD)
+         //@#$LPS-CLOUD:GranularityType:Statement
          else if (child.getUserObject() instanceof CloudAdapter) {
             CloudAdapter cloud = (CloudAdapter)child.getUserObject();
             cloud.setTarget(node);
             node.setCloud(cloud); }
+         //#endif
          else if (child.getUserObject() instanceof ArrowLinkAdapter) {
             ArrowLinkAdapter arrowLink = (ArrowLinkAdapter)child.getUserObject();
             arrowLink.setSource(node);
@@ -284,6 +293,8 @@ public abstract class XMLElementAdapter extends XMLElement {
                edge.setWidth(Integer.parseInt(sValue)); }}
          return; }
 
+      //#if defined(CLOUD)
+      //@#$LPS-CLOUD:GranularityType:Statement
       if (userObject instanceof CloudAdapter) {
          CloudAdapter cloud = (CloudAdapter)userObject;
          if (name.equals("STYLE")) {
@@ -294,6 +305,7 @@ public abstract class XMLElementAdapter extends XMLElement {
                cloud.setWidth(Integer.parseInt(sValue));
          }
          return; }
+      //#endif
 
       if (userObject instanceof ArrowLinkAdapter) {
          ArrowLinkAdapter arrowLink = (ArrowLinkAdapter)userObject;

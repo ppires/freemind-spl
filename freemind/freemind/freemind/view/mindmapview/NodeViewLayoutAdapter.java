@@ -144,9 +144,17 @@ abstract public class NodeViewLayoutAdapter implements NodeViewLayout{
         for(int i = 0; i < childCount; i++){
             final NodeView child = (NodeView)getView().getComponent(i);
             if(child.isLeft() == isLeft){
+            	//#if defined(CLOUD)
+            	//@#$LPS-CLOUD:GranularityType:Statement
                 final int additionalCloudHeigth = child.getAdditionalCloudHeigth();
+                //#endif
                 final int contentHeight = child.getContent().getHeight();
-                height += contentHeight + additionalCloudHeigth;
+                height += contentHeight
+        		//#if defined(CLOUD)
+        		//@#$LPS-CLOUD:GranularityType:Expression
+                		+ additionalCloudHeigth
+                //#endif
+                		;
                 count++;
             }
         }
@@ -178,7 +186,12 @@ abstract public class NodeViewLayoutAdapter implements NodeViewLayout{
             if(child.isLeft()){
                 shiftCandidate = - child.getContent().getX() - child.getContent().getWidth();
                 if(child.isContentVisible()){
-                    shiftCandidate -= child.getHGap()  + child.getAdditionalCloudHeigth() / 2; 
+                    shiftCandidate -= child.getHGap()
+            		//#if defined(CLOUD)
+            		//@#$LPS-CLOUD:GranularityType:Expression
+                    		+ child.getAdditionalCloudHeigth() / 2
+                    //#endif
+                    ; 
                 }
             }
             else{
@@ -203,8 +216,14 @@ abstract public class NodeViewLayoutAdapter implements NodeViewLayout{
                 continue;
             }
             child = component;
+    		//#if defined(CLOUD)
+    		//@#$LPS-CLOUD:GranularityType:Statement
             final int additionalCloudHeigth = child.getAdditionalCloudHeigth()/ 2;
+            //#endif
+    		//#if defined(CLOUD)
+    		//@#$LPS-CLOUD:GranularityType:Statement
             y += additionalCloudHeigth;  
+            //#endif
             int shiftY = child.getShift();
             final int childHGap = child.getContent().isVisible() ? child.getHGap() : 0;
             int x = baseX + childHGap - child.getContent().getX();
@@ -216,14 +235,29 @@ abstract public class NodeViewLayoutAdapter implements NodeViewLayout{
                 y += shiftY;
                 child.setLocation(x, y);
             }
-            y += child.getHeight() - 2 * getSpaceAround() + getVGap() + additionalCloudHeigth;  
-            right = Math.max(right, x + child.getWidth() + additionalCloudHeigth);
+            y += child.getHeight() - 2 * getSpaceAround() + getVGap()
+    		//#if defined(CLOUD)
+    		//@#$LPS-CLOUD:GranularityType:Expression
+            		+ additionalCloudHeigth
+            //#endif
+            ;  
+            right = Math.max(right, x + child.getWidth()
+    		//#if defined(CLOUD)
+    		//@#$LPS-CLOUD:GranularityType:Expression
+            		+ additionalCloudHeigth
+            //#endif
+            );
         }
         final int bottom = getContent().getY() + getContent().getHeight() + getSpaceAround();
         
         if(child != null){
             getView().setSize(right, 
-                    Math.max(bottom, child.getY() + child.getHeight() + child.getAdditionalCloudHeigth()/2));
+                    Math.max(bottom, child.getY() + child.getHeight()
+            		//#if defined(CLOUD)
+            		//@#$LPS-CLOUD:GranularityType:Expression
+                    		+ child.getAdditionalCloudHeigth()/2
+                    //#endif
+                    ));
         }
         else{
             getView().setSize(right, bottom);
@@ -241,8 +275,14 @@ abstract public class NodeViewLayoutAdapter implements NodeViewLayout{
                 continue;
             }
             child = component;
+    		//#if defined(CLOUD)
+    		//@#$LPS-CLOUD:GranularityType:Statement
             final int additionalCloudHeigth = child.getAdditionalCloudHeigth()/ 2;
+            //#endif
+    		//#if defined(CLOUD)
+    		//@#$LPS-CLOUD:GranularityType:Statement
             y += additionalCloudHeigth;  
+            //#endif
             int shiftY = child.getShift();
             final int childHGap = child.getContent().isVisible() ? child.getHGap() : 0;
             int x = baseX - childHGap - child.getContent().getX() - child.getContent().getWidth();
@@ -254,14 +294,24 @@ abstract public class NodeViewLayoutAdapter implements NodeViewLayout{
                 y += shiftY;
                 child.setLocation(x, y);
             }
-            y += child.getHeight() - 2 * getSpaceAround()+ getVGap() + additionalCloudHeigth;  
+            y += child.getHeight() - 2 * getSpaceAround()+ getVGap()
+    		//#if defined(CLOUD)
+    		//@#$LPS-CLOUD:GranularityType:Expression
+            		+ additionalCloudHeigth
+            //#endif
+            ;
             right = Math.max(right, x + child.getWidth());
         }
         final int bottom = getContent().getY() + getContent().getHeight() + getSpaceAround();
         
         if(child != null){
             getView().setSize(right, 
-                    Math.max(bottom, child.getY() + child.getHeight() + child.getAdditionalCloudHeigth()/2));
+                    Math.max(bottom, child.getY() + child.getHeight()
+            		//#if defined(CLOUD)
+            		//@#$LPS-CLOUD:GranularityType:Expression
+                    		+ child.getAdditionalCloudHeigth()/2
+                    //#endif
+                    ));
         }
         else{
             getView().setSize(right, bottom);

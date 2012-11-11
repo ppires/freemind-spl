@@ -95,8 +95,12 @@ public abstract class NodeAdapter implements MindMapNode {
     protected TreeMap /* of String to MindIcon s*/ stateIcons = null; // lazy, fc, 30.6.2005
 //     /**stores the label associated with this node:*/
 //     protected String mLabel;
+    
+    //#if defined(CLOUD)
+    //@#$LPS-CLOUD:GranularityType:Attribute
     /** parameters of an eventually associated cloud*/
     protected MindMapCloud cloud;
+    //#endif
 
     protected Color color;
     protected Color backgroundColor;
@@ -317,10 +321,15 @@ public abstract class NodeAdapter implements MindMapNode {
 	this.edge = edge;
     }
 
+    //#if defined(CLOUD)
+    //@#$LPS-CLOUD:GranularityType:Method
     public MindMapCloud getCloud() {
         return cloud;
     }
+    //#endif
 
+    //#if defined(CLOUD)
+    //@#$LPS-CLOUD:GranularityType:Method
     public void setCloud( MindMapCloud cloud ) {
     	// Take care to keep the calculated iterative levels consistent
 		if (cloud != null && this.cloud == null) {
@@ -331,7 +340,10 @@ public abstract class NodeAdapter implements MindMapNode {
 		}
         this.cloud = cloud;
     }
+    //#endif
 
+    //#if defined(CLOUD)
+    //@#$LPS-CLOUD:GranularityType:Method
 	/**
 	*  Correct iterative level values of children
 	*/
@@ -345,6 +357,7 @@ public abstract class NodeAdapter implements MindMapNode {
 			childNode.changeChildCloudIterativeLevels(deltaLevel);
 		}
 	}
+	//#endif
 
     /**A Node-Style like MindMapNode.STYLE_FORK or MindMapNode.STYLE_BUBBLE*/
 	public String getStyle() {
@@ -1000,10 +1013,13 @@ freemind.main.Resources.getInstance().logException(			e);
     	if (edge != null) {
                node.addChild(edge); }
 
+        //#if defined(CLOUD)
+        //@#$LPS-CLOUD:GranularityType:Statement
         if(getCloud() != null) {
             XMLElement cloud = (getCloud()).save();
             node.addChild(cloud);
         }
+        //#endif
 
         Vector linkVector = registry.getAllLinksFromMe(this); /* Puh... */
         for(int i = 0; i < linkVector.size(); ++i) {

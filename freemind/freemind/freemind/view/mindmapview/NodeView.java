@@ -60,7 +60,10 @@ import freemind.main.HtmlTools;
 import freemind.main.Resources;
 import freemind.main.Tools;
 import freemind.modes.MindIcon;
+//#if defined(CLOUD)
+//@#$LPS-CLOUD:GranularityType:Import
 import freemind.modes.MindMapCloud;
+//#endif
 import freemind.modes.MindMapNode;
 import freemind.modes.NodeAdapter;
 import freemind.preferences.FreemindPropertyListener;
@@ -215,12 +218,15 @@ public class NodeView extends JComponent implements TreeModelListener{
 
 	    if(isContentVisible())
 	    {
+	    	//#if defined(CLOUD)
+	    	//@#$LPS-CLOUD:GranularityType:Statement
 	        MindMapCloud cloud = getModel().getCloud();
 	        
 	        // consider existing clouds of children
 	        if (byChildren && cloud != null){
 	            additionalDistanceForConvexHull  += CloudView.getAdditionalHeigth(cloud, this) / 5;
 	        }
+	        //#endif
 	        final int x = transX + getContent().getX()- getDeltaX();
 	        final int y = transY + getContent().getY()- getDeltaY();
 	        final int width = getMainViewWidthWithFoldingMark();
@@ -289,21 +295,24 @@ public class NodeView extends JComponent implements TreeModelListener{
     // get/set methods
     //
 
-    /**
-     * Calculates the tree height increment because of the clouds.
-     */
-	public int getAdditionalCloudHeigth() {
-        if(! isContentVisible()){
-            return 0;
-        }
-            
-		MindMapCloud cloud = getModel().getCloud();
-		if( cloud!= null) {
-			return CloudView.getAdditionalHeigth(cloud, this);
-		} else {
-			return 0;
-		}
-	}
+   //#if defined(CLOUD)
+   //@#$LPS-CLOUD:GranularityType:Method
+   /**
+    * Calculates the tree height increment because of the clouds.
+    */
+   public int getAdditionalCloudHeigth() {
+	   if(! isContentVisible()){
+		   return 0;
+	   }
+
+	   MindMapCloud cloud = getModel().getCloud();
+	   if( cloud!= null) {
+		   return CloudView.getAdditionalHeigth(cloud, this);
+	   } else {
+		   return 0;
+	   }
+   }
+   //#endif
 
 
     public boolean isSelected() {
@@ -1333,7 +1342,10 @@ public class NodeView extends JComponent implements TreeModelListener{
             	Point p = new Point();
             	Tools.convertPointToAncestor(nodeView, p, this);
             	g.translate(p.x, p.y);
+            	//#if defined(CLOUD)
+            	//@#$LPS-CLOUD:GranularityType:Statement
             	nodeView.paintCloud(g);
+            	//#endif
             	g.translate(-p.x, -p.y);
                 EdgeView edge = NodeViewFactory.getInstance().getEdge(nodeView);
                 edge.paint(nodeView, g);
@@ -1351,33 +1363,39 @@ public class NodeView extends JComponent implements TreeModelListener{
      * @see javax.swing.JComponent#paint(java.awt.Graphics)
      */
     public void paint(Graphics g) {
-        final boolean isRoot = isRoot();
-		if(isRoot){
-			paintCloud(g);
-		}
-        if(isContentVisible()){
-            Graphics2D g2d = (Graphics2D) g;
-			paintCloudsAndEdges(g2d);
-	        super.paint(g);
-            // return to std stroke
-            g2d.setStroke(BubbleMainView.DEF_STROKE);
-            if(! isRoot){
-            	paintFoldingMark(g2d);
-            }
-        }
-        else{
-        	super.paint(g);
-        }
+    	final boolean isRoot = isRoot();
+    	//#if defined(CLOUD)
+    	//@#$LPS-CLOUD:GranularityType:Statement
+    	if(isRoot){
+    		paintCloud(g);
+    	}
+    	//#endif
+    	if(isContentVisible()){
+    		Graphics2D g2d = (Graphics2D) g;
+    		paintCloudsAndEdges(g2d);
+    		super.paint(g);
+    		// return to std stroke
+    		g2d.setStroke(BubbleMainView.DEF_STROKE);
+    		if(! isRoot){
+    			paintFoldingMark(g2d);
+    		}
+    	}
+    	else{
+    		super.paint(g);
+    	}
 //        g.setColor(Color.BLACK);
 //        g.drawRect(0, 0, getWidth()-1, getHeight()-1);
     }
 
+    //#if defined(CLOUD)
+    //@#$LPS-CLOUD:GranularityType:Method
 	private void paintCloud(Graphics g) {
         if(isContentVisible() && model.getCloud() != null) {
             CloudView cloud = new CloudView(model.getCloud(), this);
             cloud.paint(g);
         }
     }
+	//#endif
 
     /* (non-Javadoc)
      * @see java.awt.Component#toString()
@@ -1409,10 +1427,13 @@ public class NodeView extends JComponent implements TreeModelListener{
 
 
 	private Color getBackgroundColor() {
+		//#if defined(CLOUD)
+		//@#$LPS-CLOUD:GranularityType:Statement
 		final MindMapCloud cloud = getModel().getCloud();
 		if (cloud != null){
 			return cloud.getColor();
 		}
+		//#endif
 		if(isRoot()){
 			return getMap().getBackground();
 		}

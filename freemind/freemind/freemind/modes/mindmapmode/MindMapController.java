@@ -148,7 +148,10 @@ import freemind.modes.mindmapmode.actions.ApplyPatternAction;
 import freemind.modes.mindmapmode.actions.BoldAction;
 import freemind.modes.mindmapmode.actions.ChangeArrowLinkEndPoints;
 import freemind.modes.mindmapmode.actions.ChangeArrowsInArrowLinkAction;
+//#if defined(CLOUD)
+//@#$LPS-CLOUD:GranularityType:Import
 import freemind.modes.mindmapmode.actions.CloudAction;
+//#endif
 import freemind.modes.mindmapmode.actions.ColorArrowLinkAction;
 import freemind.modes.mindmapmode.actions.CompoundActionHandler;
 import freemind.modes.mindmapmode.actions.CopyAction;
@@ -333,8 +336,14 @@ public class MindMapController extends ControllerAdapter implements MindMapActio
     public NodeColorBlendAction nodeColorBlend = null;
     public NodeStyleAction fork = null;
     public NodeStyleAction bubble = null;
+    //#if defined(CLOUD)
+    //@#$LPS-CLOUD:GranularityType:Attribute
     public CloudAction cloud = null;
+    //#endif
+    //#if defined(CLOUD)
+    //@#$LPS-CLOUD:GranularityType:Attribute
     public freemind.modes.mindmapmode.actions.CloudColorAction cloudColor = null;
+    //#endif
     public AddArrowLinkAction addArrowLinkAction = null;
     public RemoveArrowLinkAction removeArrowLinkAction = null;
     public ColorArrowLinkAction colorArrowLinkAction = null;
@@ -483,8 +492,14 @@ public class MindMapController extends ControllerAdapter implements MindMapActio
             EdgeStyle_sharp_linear,
             EdgeStyle_sharp_bezier
         };
+        //#if defined(CLOUD)
+        //@#$LPS-CLOUD:GranularityType:Statement
         cloud = new CloudAction(this);
+        //#endif
+        //#if defined(CLOUD)
+        //@#$LPS-CLOUD:GranularityType:Statement
         cloudColor = new freemind.modes.mindmapmode.actions.CloudColorAction(this);
+        //#endif
         addArrowLinkAction = new AddArrowLinkAction(this);
         removeArrowLinkAction = new RemoveArrowLinkAction(this, null);
         addArrowLinkAction.setRemoveAction(removeArrowLinkAction);
@@ -1047,8 +1062,14 @@ freemind.main.Resources.getInstance().logException(					e1);
         importFolderStructure.setEnabled(enabled);
         joinNodes.setEnabled(enabled);
         deleteChild.setEnabled(enabled);
+        //#if defined(CLOUD)
+        //@#$LPS-CLOUD:GranularityType:Statement
         cloud.setEnabled(enabled);
+        //#endif
+        //#if defined(CLOUD)
+        //@#$LPS-CLOUD:GranularityType:Statement
         cloudColor.setEnabled(enabled);
+        //#endif
 //        normalFont.setEnabled(enabled);
         nodeColor.setEnabled(enabled);
         edgeColor.setEnabled(enabled);
@@ -1275,12 +1296,18 @@ freemind.main.Resources.getInstance().logException(					e1);
         italic.setItalic(node, isItalic);
     }
 
+    //#if defined(CLOUD)
+    //@#$LPS-CLOUD:GranularityType:Method
     public void setCloud(MindMapNode node, boolean enable) {
         cloud.setCloud(node, enable);
     }
+    //#endif
+    //#if defined(CLOUD)
+    //@#$LPS-CLOUD:GranularityType:Method
     public void setCloudColor(MindMapNode node, Color color) {
         cloudColor.setCloudColor(node, color);
     }
+    //#endif
     //Node editing
     public void setFontSize(MindMapNode node, String fontSizeValue) {
         fontSize.setFontSize(node, fontSizeValue);

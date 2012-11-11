@@ -576,9 +576,12 @@ public class OptionPanel implements TextTranslator {
 		controls.add(new BooleanProperty(FreeMind.RESOURCE_PRINT_ON_WHITE_BACKGROUND+".tooltip",
                 FreeMind.RESOURCE_PRINT_ON_WHITE_BACKGROUND)); // true
 
+		//#if defined(CLOUD)
+		//@#$LPS-CLOUD:GranularityType:Statement
 		controls.add(new ColorProperty("standardcloudcolor.tooltip",
 
 		FreeMind.RESOURCES_CLOUD_COLOR, fmMain.getDefaultProperty(FreeMind.RESOURCES_CLOUD_COLOR), this)); //  #f0f0f0
+		//#endif
 
 		controls.add(new NextLineProperty());
 		controls.add(new SeparatorProperty("default_fonts"));

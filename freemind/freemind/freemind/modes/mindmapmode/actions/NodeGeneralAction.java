@@ -58,8 +58,7 @@ public class NodeGeneralAction extends AbstractXmlAction {
      *           title after that.
      *           give a resource name for the icon.
      */
-    protected NodeGeneralAction(MindMapController modeController,
-            final String textID, String iconPath) {
+    protected NodeGeneralAction(MindMapController modeController, final String textID, String iconPath) {
         super(null, iconPath != null ? new ImageIcon(modeController
                 .getResource(iconPath)) : null, modeController);
         this.modeController = modeController;

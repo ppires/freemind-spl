@@ -204,10 +204,16 @@ public interface MindMapNode extends MutableTreeNode {
     int   removeIcon(int position);
     // end, fc, 24.9.2003
 
+    //#if defined(CLOUD)
+    //@#$LPS-CLOUD:GranularityType:InterfaceMethod
     // clouds, fc, 08.11.2003:
     MindMapCloud getCloud();
+    //#endif
+    //#if defined(CLOUD)
+    //@#$LPS-CLOUD:GranularityType:InterfaceMethod
     void setCloud( MindMapCloud cloud );
     // end clouds.
+    //#endif
 
     //fc, 24.2.2004: background color:
     Color getBackgroundColor(           );

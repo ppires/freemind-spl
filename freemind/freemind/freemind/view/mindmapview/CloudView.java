@@ -1,3 +1,5 @@
+//#if defined(CLOUD)
+//@#$LPS-CLOUD:GranularityType:Class
 /*FreeMind - A Program for creating and viewing Mindmaps
  *Copyright (C) 2000-2001  Joerg Mueller <joergmueller@bigfoot.com>
  *See COPYING for Details
@@ -205,3 +207,4 @@ public class CloudView {
        return getMap().getZoom(); }
 
 }
+//#endif

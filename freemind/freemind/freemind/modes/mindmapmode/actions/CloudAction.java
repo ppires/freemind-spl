@@ -1,3 +1,5 @@
+//#if defined(CLOUD)
+//@#$LPS-CLOUD:GranularityType:Class
 /*FreeMind - A Program for creating and viewing Mindmaps
  *Copyright (C) 2000-2004  Joerg Mueller, Daniel Polansky, Christian Foltin and others.
  *
@@ -69,8 +71,7 @@ public class CloudAction extends NodeGeneralAction implements NodeActorXml, Menu
 
 	}
 
-	private ActionPair getActionPair(MindMapNode selected, boolean enable)
-			 {
+	private ActionPair getActionPair(MindMapNode selected, boolean enable) {
 		AddCloudXmlAction cloudAction = createAddCloudXmlAction(selected,
 				enable, null);
 		AddCloudXmlAction undocloudAction = null;
@@ -122,3 +123,4 @@ public class CloudAction extends NodeGeneralAction implements NodeActorXml, Menu
 		return modeController.getSelected().getCloud() != null;
 	}
 }
+//#endif

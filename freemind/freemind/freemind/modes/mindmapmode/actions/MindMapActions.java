@@ -132,8 +132,14 @@ public interface MindMapActions {
 	/** The widths range from -1 (for equal to parent) to 0 (thin), 1, 2, 4, 8. */
 	public void setEdgeWidth(MindMapNode node, int width);
 	public void setEdgeStyle(MindMapNode node, String style);
+	//#if defined(CLOUD)
+	//@#$LPS-CLOUD:GranularityType:InterfaceMethod
 	public void setCloud(MindMapNode node, boolean enable);
+	//#endif
+	//#if defined(CLOUD)
+	//@#$LPS-CLOUD:GranularityType:InterfaceMethod
 	public void setCloudColor(MindMapNode node, Color color);
+	//#endif
 //	public void setCloudWidth(MindMapNode node, int width);
 //	public void setCloudStyle(MindMapNode node, String style);
 	/** Source holds the MindMapArrowLinkModel and points to the id placed in target.*/
