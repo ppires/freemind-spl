@@ -24,11 +24,18 @@
   </xs:complexType>
  </xs:element>
 
+ <!-- 
+ //#if defined(CLOUD)
+ //@#$LPS-CLOUD:GranularityType:XML
+  -->
  <xs:element name='cloud'>
   <xs:complexType>
    <xs:attribute name='COLOR' type='xs:string' use='optional'/>
   </xs:complexType>
  </xs:element>
+ <!-- 
+ //#endif
+  -->
 
  <xs:element name='edge'>
   <xs:complexType>
@@ -116,7 +123,14 @@
   <xs:complexType>
    <xs:choice minOccurs='0' maxOccurs='unbounded'>
     <xs:element ref='arrowlink'/>
+	<!-- 
+	//#if defined(CLOUD)
+	//@#$LPS-CLOUD:GranularityType:XML
+	 -->    
     <xs:element ref='cloud'/>
+    <!-- 
+    //#endif
+     -->
     <xs:element ref='edge'/>
     <xs:element ref='font'/>
     <xs:element ref='hook'/>

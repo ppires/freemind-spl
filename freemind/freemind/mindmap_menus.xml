@@ -76,9 +76,16 @@
 				<menu_action field="addLocalLinkAction" key_ref="keystroke_add_local_link_action"/>
 			</menu_category>
 			<menu_separator/>
+			<!-- 
+			//#if defined(CLOUD)
+			//@#$LPS-CLOUD:GranularityType:XML
+			 -->
 			<menu_category name="clouds">
 				<menu_action field="cloud" key_ref="keystroke_node_toggle_cloud"/>
 			</menu_category>
+			<!-- 
+			//#endif
+			 -->
 			<menu_category name="other">
 			</menu_category>
 		</menu_category>	
@@ -145,9 +152,16 @@
 			</menu_category>
 			<menu_category name="icons">
 			</menu_category>
+			<!-- 
+			//#if defined(CLOUD)
+			//@#$LPS-CLOUD:GranularityType:XML
+			 -->
 			<menu_category name="clouds">
 				<menu_action field="cloudColor"/>
 			</menu_category>
+			<!-- 
+			//#endif
+			 -->
 			<menu_separator/>
 			<menu_category name="edges">
 				<menu_action field="edgeColor" key_ref="keystroke_edge_color"/>
@@ -274,9 +288,16 @@
 			</menu_category>
 			<menu_category name="icons">
 			</menu_category>
+			<!-- 
+			//#if defined(CLOUD)
+			//@#$LPS-CLOUD:GranularityType:XML
+			 -->
 			<menu_category name="clouds">
 				<menu_action field="cloudColor"/>
 			</menu_category>
+			<!-- 
+			//#endif
+			 -->
 			<menu_separator/>
 			<menu_category name="edges">
 				<menu_action field="edgeColor" key_ref="keystroke_edge_color"/>
@@ -297,9 +318,16 @@
 			</menu_category>
 		</menu_submenu>	
 		<menu_submenu name="insert" name_ref="menu_insert">
+			<!-- 
+			//#if defined(CLOUD)
+			//@#$LPS-CLOUD:GranularityType:XML
+			 -->
 			<menu_category name="clouds">
 				<menu_action field="cloud" key_ref="keystroke_node_toggle_cloud"/>
 			</menu_category>
+			<!-- 
+			//#endif
+			 -->
 			<menu_category name="image">
 				<menu_action field="setImageByFileChooser" key_ref="keystroke_set_image_by_filechooser"/>			
 			</menu_category>
@@ -348,9 +376,16 @@
 			</menu_category>
 			<menu_category name="icons">
 			</menu_category>
+			<!-- 
+			//#if defined(CLOUD)
+			//@#$LPS-CLOUD:GranularityType:XML
+			 -->
 			<menu_category name="clouds">
 				<menu_action field="cloud" key_ref="keystroke_node_toggle_cloud"/>
 			</menu_category>
+			<!-- 
+			//#endif
+			 -->
 			<menu_separator/>
 			<menu_category name="attributes">
 				<menu_action field="showAttributeManagerAction" key_ref="keystroke_show_attribute_manager"/>

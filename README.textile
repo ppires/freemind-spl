@@ -1,0 +1,7 @@
+h1. FreeMind SPL
+
+This is a Software Product Line for FreeMind 0.9.0.
+FreeMind can be found at http://freemind.sourceforge.net
+
+SPL extraction by Pedro Pires
+

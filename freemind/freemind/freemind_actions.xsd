@@ -38,8 +38,22 @@
 					<xs:element ref="remove_icon_xml_action"/>
 					<xs:element ref="remove_all_icons_xml_action"/>
 					<xs:element ref="move_node_xml_action"/>
+					<!-- 
+					//#if defined(CLOUD)
+					//@#$LPS-CLOUD:GranularityType:XML
+					 -->
 					<xs:element ref="add_cloud_xml_action"/>
+					<!--
+					//#endif
+					 -->
+					<!--
+					//#if defined(CLOUD)
+					//@#$LPS-CLOUD:GranularityType:XML
+					 -->					 
 					<xs:element ref="cloud_color_xml_action"/>
+					<!--
+					//#endif
+					 -->
 					<xs:element ref="add_arrow_link_xml_action"/>
 					<xs:element ref="add_link_xml_action"/>
 					<xs:element ref="remove_arrow_link_xml_action"/>
@@ -194,6 +208,10 @@
 	  </xs:complexType>
 	</xs:element>
 
+	<!-- 
+	//#if defined(CLOUD)
+	//@#$LPS-CLOUD:GranularityType:XML
+	 -->
 	<!-- Add Cloud Action -->
 	<xs:element name="add_cloud_xml_action">
 	  <xs:complexType>
@@ -205,6 +223,9 @@
 		</xs:complexContent>
 	  </xs:complexType>
 	</xs:element>
+	<!--
+	//#endif 
+	 -->
 
 	<!-- Move Node Action -->
 	<xs:element name="move_node_xml_action">
@@ -219,6 +240,10 @@
 	  </xs:complexType>
 	</xs:element>
 
+	<!-- 
+	//#if defined(CLOUD)
+	//@#$LPS-CLOUD:GranularityType:XML
+	 -->
 	<!-- Cloud Color Action -->
 	<xs:element name="cloud_color_xml_action">
 	  <xs:complexType>
@@ -229,6 +254,9 @@
 		</xs:complexContent>
 	  </xs:complexType>
 	</xs:element>
+	<!-- 
+	//#endif
+	 -->
 
 
 	<!-- Add Link Action -->
