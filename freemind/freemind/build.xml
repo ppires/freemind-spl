@@ -210,12 +210,14 @@
 	<target name="dist" depends="jar, browser">
 
 		<!-- freemind-spl: moving source back to original place -->
-		<move todir="${src}">
-			<fileset dir="javapp-tmp" includes="**/*.java" />
-		</move>
-		<!--copy todir="${src}" overwrite="true">
-			<fileset dir="javapp-tmp" includes="**/*.java" />
-		</copy-->
+		<copy todir="${src}" overwrite="true">
+			<fileset dir="javapp-tmp">
+				<include name="**/*.java"/>
+				<include name="**/*.xsd" />
+				<include name="**/*.xml" />
+			</fileset>
+		</copy>
+		<delete dir="javapp-tmp" />
 		
 		<copy todir="${dist}">
 			<fileset dir="${src}"
