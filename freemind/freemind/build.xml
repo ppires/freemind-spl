@@ -44,19 +44,38 @@
 	<!-- =================================
           target: preprocess
          ================================= -->
+	<!-- Features Definitions -->
+	<property name="CLOUD" value="Nodes with clouds" />
+	
+	<!-- preprocess task -->
 	<taskdef resource="javapp-defs.xml" />
 	<target name="preprocess">
-		<echo message="Copying source files to javapp-tmp/" />
+		<echo message="Preparing files to be pre-processed.../" />
 		<copy todir="javapp-tmp">
-			<fileset dir="${src}" includes="**/*.java" />
+			<fileset dir="${src}">
+				<include name="**/*.java"/>
+				<include name="*.xsd" />
+				<include name="*.xml" />
+				<exclude name="build.xml" />
+			</fileset>
 		</copy>
 		
-		<echo message="Executing javapp..." />
+		<echo message="[javapp] processing .java files..." />
 		<javapp destdir="${src}" prefix="//#">
 			<fileset dir="javapp-tmp" includes="**/*.java" />
-			<property name="CLOUD" value="cloud feature" />
 		</javapp>
-		<echo message="Done!" />
+		
+		<echo message="[javapp] processing .xsd files..." />
+		<javapp destdir="${src}" prefix="//#">
+			<fileset dir="javapp-tmp" includes="**/*.xsd" />
+		</javapp>
+		
+		<echo message="[javapp] processing .xml files..." />
+		<javapp destdir="${src}" prefix="//#">
+			<fileset dir="javapp-tmp" includes="**/*.xml" />
+		</javapp>
+		
+		<echo message="[javapp] Done!" />
 	</target>
 
 
