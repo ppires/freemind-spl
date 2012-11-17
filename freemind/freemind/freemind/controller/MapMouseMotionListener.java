@@ -61,12 +61,18 @@ public class MapMouseMotionListener implements MouseMotionListener,
             JPopupMenu popup = null;
             // detect collision with an element placed on the root pane of the
             // window.
+            //#if defined(ARROW_LINK)
+            //@#$LPS-ARROW_LINK:GranularityType:Statement
             java.lang.Object obj = c.getView().detectCollision(e.getPoint());
+            //#endif
+            //#if defined(ARROW_LINK)
+            //@#$LPS-ARROW_LINK:GranularityType:Statement
             if (obj != null) {
                 // there is a collision with object obj.
                 // call the modecontroller to give a popup menu for this object
                 popup = c.getModeController().getPopupForModel(obj);
             }
+            //#endif
             if (popup == null) { // no context popup found:
                 // normal popup:
                 popup = c.getFrame().getFreeMindMenuBar().getMapsPopupMenu();

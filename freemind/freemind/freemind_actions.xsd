@@ -54,12 +54,47 @@
 					<!--
 					//#endif
 					 -->
+					<!-- 
+					//#if defined(ARROW_LINK)
+					//@#$LPS-ARROW_LINK:GranularityType:XML
+					 -->
 					<xs:element ref="add_arrow_link_xml_action"/>
+					<!-- 
+					//#endif
+					 -->
 					<xs:element ref="add_link_xml_action"/>
+					<!-- 
+					//#if defined(ARROW_LINK)
+					//@#$LPS-ARROW_LINK:GranularityType:XML
+					 -->
 					<xs:element ref="remove_arrow_link_xml_action"/>
+					<!-- 
+					//#endif
+					 -->
+					<!-- 
+					//#if defined(ARROW_LINK)
+					//@#$LPS-ARROW_LINK:GranularityType:XML
+					 -->
 					<xs:element ref="arrow_link_color_xml_action"/>
+					<!-- 
+					//#endif
+					 -->
+					<!-- 
+					//#if defined(ARROW_LINK)
+					//@#$LPS-ARROW_LINK:GranularityType:XML
+					 -->
 					<xs:element ref="arrow_link_arrow_xml_action"/>
+					<!-- 
+					//#endif
+					 -->
+					<!-- 
+					//#if defined(ARROW_LINK)
+					//@#$LPS-ARROW_LINK:GranularityType:XML
+					 -->
 					<xs:element ref="arrow_link_point_xml_action"/>
+					<!-- 
+					//#endif
+					 -->
 
 					<xs:element ref="set_attribute_name_elementary_action"/>
 					<xs:element ref="set_attribute_value_elementary_action"/>
@@ -270,6 +305,10 @@
 	  </xs:complexType>
 	</xs:element>
 
+	<!-- 
+	//#if defined(ARROW_LINK)
+	//@#$LPS-ARROW_LINK:GranularityType:XML
+	 -->
 	<!-- Add Arrow Link Action -->
 	<xs:element name="add_arrow_link_xml_action">
 	  <xs:complexType>
@@ -292,7 +331,14 @@
 		</xs:complexContent>
 	  </xs:complexType>
 	</xs:element>
+	<!-- 
+	//#endif
+	 -->
 
+	<!-- 
+	//#if defined(ARROW_LINK)
+	//@#$LPS-ARROW_LINK:GranularityType:XML
+	 -->
 	<!-- Remove Arrow Link Action -->
 	<xs:element name="remove_arrow_link_xml_action">
 	  <xs:complexType>
@@ -303,7 +349,14 @@
 		</xs:complexContent>
 	  </xs:complexType>
 	</xs:element>
+	<!-- 
+	//#endif
+	 -->
 
+	<!-- 
+	//#if defined(ARROW_LINK)
+	//@#$LPS-ARROW_LINK:GranularityType:XML
+	 -->
 	<!-- Color Arrow Link Action -->
 	<xs:element name="arrow_link_color_xml_action">
 	  <xs:complexType>
@@ -315,7 +368,14 @@
 		</xs:complexContent>
 	  </xs:complexType>
 	</xs:element>
+	<!-- 
+	//#endif
+	 -->
 
+	<!-- 
+	//#if defined(ARROW_LINK)
+	//@#$LPS-ARROW_LINK:GranularityType:XML
+	 -->
 	<!-- Arrow Link Arrow Action (denotes whether or not the link has start and end arrow) -->
 	<xs:element name="arrow_link_arrow_xml_action">
 	  <xs:complexType>
@@ -328,7 +388,14 @@
 		</xs:complexContent>
 	  </xs:complexType>
 	</xs:element>
+	<!-- 
+	//#endif
+	 -->
 
+	<!-- 
+	//#if defined(ARROW_LINK)
+	//@#$LPS-ARROW_LINK:GranularityType:XML
+	 -->
 	<!-- Arrow Link Point Action -->
 	<xs:element name="arrow_link_point_xml_action">
 	  <xs:complexType>
@@ -341,6 +408,9 @@
 		</xs:complexContent>
 	  </xs:complexType>
 	</xs:element>
+	<!-- 
+	//#endif
+	 -->
 
 
 	<!-- Format node actions. These actions describe format changes.-->

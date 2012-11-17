@@ -846,9 +846,12 @@ public class OptionPanel implements TextTranslator {
 
 		controls.add(new KeyProperty(frame, null, "keystroke_remove")); //  none
 
+	   	//#if defined(ARROW_LINK)
+	   	//@#$LPS-ARROW_LINK:GranularityType:Statement
 		controls.add(new KeyProperty(frame, null,
 				"keystroke_add_arrow_link_action")); // control
 		// L
+		//#endif
 
 		controls.add(new KeyProperty(frame, null,
 				"keystroke_add_local_link_action")); // alt

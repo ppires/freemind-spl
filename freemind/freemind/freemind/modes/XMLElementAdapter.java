@@ -120,7 +120,10 @@ public abstract class XMLElementAdapter extends XMLElement {
     //@#$LPS-CLOUD:GranularityType:InterfaceMethod
     abstract protected CloudAdapter createCloudAdapter(NodeAdapter node, FreeMindMain frame);
     //#endif
+   	//#if defined(ARROW_LINK)
+   	//@#$LPS-ARROW_LINK:GranularityType:InterfaceMethod
     abstract protected ArrowLinkAdapter createArrowLinkAdapter(NodeAdapter source, NodeAdapter target, FreeMindMain frame);
+    //#endif
     abstract protected NodeAdapter createEncryptedNode(String additionalInfo);
 
 
@@ -154,8 +157,11 @@ public abstract class XMLElementAdapter extends XMLElement {
 		} else if (name.equals("cloud")) {
 			userObject = createCloudAdapter(null, frame);
 		//#endif
+	   	//#if defined(ARROW_LINK)
+	   	//@#$LPS-ARROW_LINK:GranularityType:Statement
 		} else if (name.equals("arrowlink")) {
 			userObject = createArrowLinkAdapter(null, null, frame);
+		//#endif
 		} else if (name.equals("font")) {
 			userObject = null;
 		}  else if (name.equals(XML_NODE_ATTRIBUTE)) {
@@ -206,6 +212,8 @@ public abstract class XMLElementAdapter extends XMLElement {
             cloud.setTarget(node);
             node.setCloud(cloud); }
          //#endif
+ 	   	 //#if defined(ARROW_LINK)
+ 	   	 //@#$LPS-ARROW_LINK:GranularityType:Method
          else if (child.getUserObject() instanceof ArrowLinkAdapter) {
             ArrowLinkAdapter arrowLink = (ArrowLinkAdapter)child.getUserObject();
             arrowLink.setSource(node);
@@ -213,6 +221,7 @@ public abstract class XMLElementAdapter extends XMLElement {
             //System.out.println("arrowLink="+arrowLink);
             mArrowLinkAdapters.add(arrowLink);
          }
+         //#endif
          else if (child.getName().equals("font")) {
              node.setFont((Font)child.getUserObject()); }
          else if (child.getName().equals(XML_NODE_ATTRIBUTE)) {
@@ -319,6 +328,8 @@ public abstract class XMLElementAdapter extends XMLElement {
          return; }
       //#endif
 
+      //#if defined(ARROW_LINK)
+      //@#$LPS-ARROW_LINK:GranularityType:Statement
       if (userObject instanceof ArrowLinkAdapter) {
          ArrowLinkAdapter arrowLink = (ArrowLinkAdapter)userObject;
          if (name.equals("STYLE")) {
@@ -343,6 +354,7 @@ public abstract class XMLElementAdapter extends XMLElement {
              arrowLink.setWidth(Integer.parseInt(sValue));
          }
          return; }
+      //#endif
 
       if (getName().equals("font")) {
          if (name.equals("SIZE")) {
@@ -441,11 +453,14 @@ public abstract class XMLElementAdapter extends XMLElement {
 	    node.setLink(sValue); }
 	 else if (name.equals("STYLE")) {
 	    node.setStyle(sValue); }
+	//#if defined(ARROW_LINK)
+	//@#$LPS-ARROW_LINK:GranularityType:Statement
 	 else if (name.equals("ID")) {
 	     // do not set label but annotate in list:
 	     //System.out.println("(sValue, node) = " + sValue + ", "+  node);
 	     mIDToTarget.put(sValue, node);
 	 }
+     //#endif
 	 else if (name.equals("VSHIFT")) {
 	 	node.setShiftY(Integer.parseInt(sValue));
 	 }
@@ -506,6 +521,8 @@ public abstract class XMLElementAdapter extends XMLElement {
         }
     }
 
+   	//#if defined(ARROW_LINK)
+   	//@#$LPS-ARROW_LINK:GranularityType:Method
     /** Completes the links within the getMap(). They are registered in the registry.*/
     public void processUnfinishedLinks(MindMapLinkRegistry registry) {
         // add labels to the nodes:
@@ -554,8 +571,11 @@ public abstract class XMLElementAdapter extends XMLElement {
 
         }
     }
+    //#endif
 
 
+   	//#if defined(ARROW_LINK)
+   	//@#$LPS-ARROW_LINK:GranularityType:Method
     /**Recursive method to set the ids of the nodes.*/
     private void setIDs(HashMap IDToTarget, MindMapLinkRegistry registry) {
         for(Iterator i = IDToTarget.keySet().iterator(); i.hasNext();) {
@@ -575,17 +595,24 @@ public abstract class XMLElementAdapter extends XMLElement {
             }
         }
     }
+    //#endif
 
 
     protected MindMap getMap() {
         return mModeController.getMap();
     }
 
+   	//#if defined(ARROW_LINK)
+   	//@#$LPS-ARROW_LINK:GranularityType:Method
 	public HashMap getIDToTarget() {
 		return mIDToTarget;
 	}
+	//#endif
 
+   	//#if defined(ARROW_LINK)
+   	//@#$LPS-ARROW_LINK:GranularityType:Method
 	public void setIDToTarget(HashMap pToTarget) {
 		mIDToTarget = pToTarget;
 	}
+	//#endif
 }

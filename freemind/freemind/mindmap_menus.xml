@@ -72,7 +72,14 @@
 			<menu_category name="links">
 				<menu_action field="setLinkByFileChooser" key_ref="keystroke_set_link_by_filechooser"/>
 				<menu_action field="setLinkByTextField" key_ref="keystroke_set_link_by_textfield"/>
+				<!-- 
+				//#if defined(ARROW_LINK)
+				//@#$LPS-ARROW_LINK:GranularityType:XML
+				 -->
 				<menu_action field="addArrowLinkAction" key_ref="keystroke_add_arrow_link_action"/>
+				<!-- 
+				//#endif
+				 -->
 				<menu_action field="addLocalLinkAction" key_ref="keystroke_add_local_link_action"/>
 			</menu_category>
 			<menu_separator/>
@@ -335,7 +342,14 @@
 			<menu_category name="links">
 				<menu_action field="setLinkByFileChooser" key_ref="keystroke_set_link_by_filechooser"/>
 				<menu_action field="setLinkByTextField" key_ref="keystroke_set_link_by_textfield"/>
+				<!-- 
+				//#if defined(ARROW_LINK)
+				//@#$LPS-ARROW_LINK:GranularityType:XML
+				 -->
 				<menu_action field="addArrowLinkAction" key_ref="keystroke_add_arrow_link_action"/>
+				<!-- 
+				//#endif
+				 -->
 				<menu_action field="addLocalLinkAction" key_ref="keystroke_add_local_link_action"/>
 			</menu_category>
 		</menu_submenu>	

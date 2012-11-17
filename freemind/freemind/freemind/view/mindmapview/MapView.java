@@ -67,7 +67,10 @@ import freemind.main.Resources;
 import freemind.main.Tools;
 import freemind.main.Tools.Pair;
 import freemind.modes.MindMap;
+//#if defined(ARROW_LINK)
+//@#$LPS-ARROW_LINK:GranularityType:Import
 import freemind.modes.MindMapArrowLink;
+//#endif
 import freemind.modes.MindMapLink;
 import freemind.modes.MindMapNode;
 import freemind.preferences.FreemindPropertyListener;
@@ -202,8 +205,11 @@ public class MapView extends JPanel implements Printable, Autoscroll{
 	private Rectangle boundingRectangle = null;
 	private boolean fitToPage = true;
 
+	//#if defined(ARROW_LINK)
+	//@#$LPS-ARROW_LINK:GranularityType:Attribute
     /** Used to identify a right click onto a link curve.*/
     private Vector/* of ArrowLinkViews*/ ArrowLinkViews;
+    //#endif
 
     private Point rootContentLocation;
 
@@ -1073,7 +1079,10 @@ public class MapView extends JPanel implements Printable, Autoscroll{
 //        }
 //        graphics.drawImage(image, 0, 0, getHeight(), getWidth(), null);
         HashMap labels = new HashMap();
+		//#if defined(ARROW_LINK)
+		//@#$LPS-ARROW_LINK:GranularityType:Statement
         ArrowLinkViews = new Vector();
+        //#endif
         collectLabels(rootView, labels);
         super.paintChildren(graphics);
     	Graphics2D graphics2d = (Graphics2D)graphics;
@@ -1144,7 +1153,9 @@ public class MapView extends JPanel implements Printable, Autoscroll{
         for(int i = 0; i< vec.size(); ++i) {
             MindMapLink ref = (MindMapLink) vec.get(i);
             if(LinkAlreadyVisited.add(ref)) {
-                // determine type of link
+            	//#if defined(ARROW_LINK)
+            	//@#$LPS-ARROW_LINK:GranularityType:Statement
+            	// determine type of link
                 if(ref  instanceof MindMapArrowLink) {
                     ArrowLinkView arrowLink = new ArrowLinkView((MindMapArrowLink) ref, getNodeView(ref.getSource()), getNodeView(ref.getTarget()));
                     arrowLink.paint(graphics);
@@ -1160,6 +1171,7 @@ public class MapView extends JPanel implements Printable, Autoscroll{
 //                     }
 
                 }
+                //#endif
             }
         }
         for(ListIterator e = source.getChildrenViews().listIterator(); e.hasNext(); ) {
@@ -1168,6 +1180,8 @@ public class MapView extends JPanel implements Printable, Autoscroll{
         }
     }
 
+    //#if defined(ARROW_LINK)
+    //@#$LPS-ARROW_LINK:GranularityType:Method
     public MindMapArrowLink detectCollision(Point p) {
         if(ArrowLinkViews == null)
             return null;
@@ -1178,6 +1192,7 @@ public class MapView extends JPanel implements Printable, Autoscroll{
         }
         return null;
     }
+    //#endif
 
 	/**
 	  * Call preparePrinting() before printing
@@ -1323,7 +1338,9 @@ public class MapView extends JPanel implements Printable, Autoscroll{
         final Rectangle innerBounds = getRoot().getInnerBounds();
         innerBounds.x += getRoot().getX();
         innerBounds.y += getRoot().getY();
-        final Rectangle maxBounds = new Rectangle(0, 0, getWidth(), getHeight());        
+        final Rectangle maxBounds = new Rectangle(0, 0, getWidth(), getHeight());
+        //#if defined(ARROW_LINK)
+        //@#$LPS-ARROW_LINK:GranularityType:Statement
         for(int i = 0; i < ArrowLinkViews.size(); ++i) {
             ArrowLinkView arrowView = (ArrowLinkView) ArrowLinkViews.get(i);
             final CubicCurve2D arrowLinkCurve = arrowView.arrowLinkCurve;
@@ -1336,6 +1353,7 @@ public class MapView extends JPanel implements Printable, Autoscroll{
                 innerBounds.add(arrowViewBounds);
             }
         }
+        //#endif
         return innerBounds.intersection(maxBounds);
     }
 

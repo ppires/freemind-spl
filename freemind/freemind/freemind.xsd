@@ -12,6 +12,10 @@
   <xs:complexType/>
  </xs:element>
 
+ <!-- 
+ //#if defined(ARROW_LINK)
+ //@#$LPS-ARROW_LINK:GranularityType:XML
+  -->
  <xs:element name='arrowlink'>
   <xs:complexType>
    <xs:attribute name='COLOR' type='xs:string' use='optional'/>
@@ -23,6 +27,9 @@
    <xs:attribute name='STARTINCLINATION' type='xs:string' use='optional'/>
   </xs:complexType>
  </xs:element>
+ <!-- 
+ //#endif
+  -->
 
  <!-- 
  //#if defined(CLOUD)
@@ -122,7 +129,14 @@
  <xs:element name='node'>
   <xs:complexType>
    <xs:choice minOccurs='0' maxOccurs='unbounded'>
+	<!-- 
+	//#if defined(ARROW_LINK)
+	//@#$LPS-ARROW_LINK:GranularityType:XML
+	 -->
     <xs:element ref='arrowlink'/>
+    <!-- 
+    //#endif
+     -->
 	<!-- 
 	//#if defined(CLOUD)
 	//@#$LPS-CLOUD:GranularityType:XML
