@@ -241,8 +241,8 @@
 	</xs:element>
 
 	<!-- 
-	//#if defined(CLOUD)
-	//@#$LPS-CLOUD:GranularityType:XML
+	//#if defined(CLOUD) and defined(CLOUD_COLOR)
+	//@#$LPS-CLOUD_COLOR:GranularityType:XML
 	 -->
 	<!-- Cloud Color Action -->
 	<xs:element name="cloud_color_xml_action">
