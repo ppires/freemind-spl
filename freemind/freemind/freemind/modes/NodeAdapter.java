@@ -1021,13 +1021,19 @@ freemind.main.Resources.getInstance().logException(			e);
         }
         //#endif
 
+        //#if defined(ARROW_LINK)
+        //@#$LPS-ARROW_LINK:GranularityType:Statement
         Vector linkVector = registry.getAllLinksFromMe(this); /* Puh... */
+        //#endif
+        //#if defined(ARROW_LINK)
+        //@#$LPS-ARROW_LINK:GranularityType:Statement
         for(int i = 0; i < linkVector.size(); ++i) {
             if(linkVector.get(i) instanceof ArrowLinkAdapter) {
                 XMLElement arrowLinkElement = ((ArrowLinkAdapter) linkVector.get(i)).save();
                 node.addChild(arrowLinkElement);
             }
         }
+        //#endif
 
     	if (isFolded()) {
                node.setAttribute("FOLDED","true"); }

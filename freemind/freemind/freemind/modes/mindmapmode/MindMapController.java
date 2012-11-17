@@ -123,7 +123,10 @@ import freemind.modes.EdgeAdapter;
 import freemind.modes.MapAdapter;
 import freemind.modes.MindIcon;
 import freemind.modes.MindMap;
+//#if defined(ARROW_LINK)
+//@#$LPS-ARROW_LINK:GranularityType:Import
 import freemind.modes.MindMapArrowLink;
+//#endif
 import freemind.modes.MindMapLink;
 import freemind.modes.MindMapNode;
 import freemind.modes.Mode;
@@ -142,17 +145,29 @@ import freemind.modes.common.actions.NewMapAction;
 import freemind.modes.common.actions.FindAction.FindNextAction;
 import freemind.modes.common.listeners.CommonNodeMouseMotionListener;
 import freemind.modes.common.listeners.MindMapMouseWheelEventHandler;
+//#if defined(ARROW_LINK)
+//@#$LPS-ARROW_LINK:GranularityType:Import
 import freemind.modes.mindmapmode.actions.AddArrowLinkAction;
+//#endif
 import freemind.modes.mindmapmode.actions.AddLocalLinkAction;
 import freemind.modes.mindmapmode.actions.ApplyPatternAction;
 import freemind.modes.mindmapmode.actions.BoldAction;
+//#if defined(ARROW_LINK)
+//@#$LPS-ARROW_LINK:GranularityType:Import
 import freemind.modes.mindmapmode.actions.ChangeArrowLinkEndPoints;
+//#endif
+//#if defined(ARROW_LINK)
+//@#$LPS-ARROW_LINK:GranularityType:Import
 import freemind.modes.mindmapmode.actions.ChangeArrowsInArrowLinkAction;
+//#endif
 //#if defined(CLOUD)
 //@#$LPS-CLOUD:GranularityType:Import
 import freemind.modes.mindmapmode.actions.CloudAction;
 //#endif
+//#if defined(ARROW_LINK)
+//@#$LPS-ARROW_LINK:GranularityType:Import
 import freemind.modes.mindmapmode.actions.ColorArrowLinkAction;
+//#endif
 import freemind.modes.mindmapmode.actions.CompoundActionHandler;
 import freemind.modes.mindmapmode.actions.CopyAction;
 import freemind.modes.mindmapmode.actions.CopySingleAction;
@@ -188,7 +203,10 @@ import freemind.modes.mindmapmode.actions.NodeUpAction;
 import freemind.modes.mindmapmode.actions.PasteAction;
 import freemind.modes.mindmapmode.actions.RedoAction;
 import freemind.modes.mindmapmode.actions.RemoveAllIconsAction;
+//#if defined(ARROW_LINK)
+//@#$LPS-ARROW_LINK:GranularityType:Import
 import freemind.modes.mindmapmode.actions.RemoveArrowLinkAction;
+//#endif
 import freemind.modes.mindmapmode.actions.RemoveIconAction;
 import freemind.modes.mindmapmode.actions.RevertAction;
 import freemind.modes.mindmapmode.actions.SelectAllAction;
@@ -344,10 +362,22 @@ public class MindMapController extends ControllerAdapter implements MindMapActio
     //@#$LPS-CLOUD_COLOR:GranularityType:Attribute
     public freemind.modes.mindmapmode.actions.CloudColorAction cloudColor = null;
     //#endif
+    //#if defined(ARROW_LINK)
+    //@#$LPS-ARROW_LINK:GranularityType:Attribute
     public AddArrowLinkAction addArrowLinkAction = null;
+    //#endif
+    //#if defined(ARROW_LINK)
+    //@#$LPS-ARROW_LINK:GranularityType:Attribute
     public RemoveArrowLinkAction removeArrowLinkAction = null;
+    //#endif
+    //#if defined(ARROW_LINK)
+    //@#$LPS-ARROW_LINK:GranularityType:Attribute
     public ColorArrowLinkAction colorArrowLinkAction = null;
+    //#endif
+    //#if defined(ARROW_LINK)
+    //@#$LPS-ARROW_LINK:GranularityType:Attribute
     public ChangeArrowsInArrowLinkAction changeArrowsInArrowLinkAction = null;
+    //#endif
     public NodeBackgroundColorAction nodeBackgroundColor = null;
     public RemoveNodeBackgroundColorAction removeNodeBackgroundColor = null;
 
@@ -361,7 +391,10 @@ public class MindMapController extends ControllerAdapter implements MindMapActio
     public MoveNodeAction moveNodeAction = null;
     public ImportExplorerFavoritesAction importExplorerFavorites = null;
     public ImportFolderStructureAction importFolderStructure = null;
+    //#if defined(ARROW_LINK)
+    //@#$LPS-ARROW_LINK:GranularityType:Attribute
     public ChangeArrowLinkEndPoints changeArrowLinkEndPoints = null;
+    //#endif
 
     public FindAction find=null;
     public FindNextAction findNext=null;
@@ -500,11 +533,26 @@ public class MindMapController extends ControllerAdapter implements MindMapActio
         //@#$LPS-CLOUD_COLOR:GranularityType:Statement
         cloudColor = new freemind.modes.mindmapmode.actions.CloudColorAction(this);
         //#endif
+        //#if defined(ARROW_LINK)
+        //@#$LPS-ARROW_LINK:GranularityType:Statement
         addArrowLinkAction = new AddArrowLinkAction(this);
+        //#endif
+        //#if defined(ARROW_LINK)
+        //@#$LPS-ARROW_LINK:GranularityType:Statement
         removeArrowLinkAction = new RemoveArrowLinkAction(this, null);
+        //#endif
+        //#if defined(ARROW_LINK)
+        //@#$LPS-ARROW_LINK:GranularityType:Statement
         addArrowLinkAction.setRemoveAction(removeArrowLinkAction);
+        //#endif
+        //#if defined(ARROW_LINK)
+        //@#$LPS-ARROW_LINK:GranularityType:Statement
         colorArrowLinkAction = new ColorArrowLinkAction(this, null);
+        //#endif
+        //#if defined(ARROW_LINK)
+        //@#$LPS-ARROW_LINK:GranularityType:Statement
         changeArrowsInArrowLinkAction = new ChangeArrowsInArrowLinkAction(this, "none", null, null, true, true);
+        //#endif
         nodeBackgroundColor = new NodeBackgroundColorAction(this);
         removeNodeBackgroundColor = new RemoveNodeBackgroundColorAction(this);
         setLinkByTextField = new SetLinkByTextFieldAction(this);
@@ -514,7 +562,10 @@ public class MindMapController extends ControllerAdapter implements MindMapActio
         joinNodes = new JoinNodesAction(this);
         importExplorerFavorites = new ImportExplorerFavoritesAction(this);
         importFolderStructure = new ImportFolderStructureAction(this);
+        //#if defined(ARROW_LINK)
+        //@#$LPS-ARROW_LINK:GranularityType:Statement
         changeArrowLinkEndPoints = new ChangeArrowLinkEndPoints(this);
+        //#endif
         find = new FindAction(this);
         findNext = new FindNextAction(this,find);
         nodeHookAction = new NodeHookAction("no_title", this);
@@ -927,6 +978,8 @@ freemind.main.Resources.getInstance().logException(					e1);
         return popupmenu;
     }
 
+    //#if defined(ARROW_LINK)
+    //@#$LPS-ARROW_LINK:GranularityType:Method
     /** Link implementation: If this is a link, we want to make a popup with at least removelink available.*/
     public JPopupMenu getPopupForModel(java.lang.Object obj) {
         if( obj instanceof MindMapArrowLinkModel) {
@@ -985,6 +1038,7 @@ freemind.main.Resources.getInstance().logException(					e1);
         }
         return null;
     }
+    //#endif
 
 
     //convenience methods
@@ -1052,7 +1106,10 @@ freemind.main.Resources.getInstance().logException(					e1);
         bold.setEnabled(enabled);
         find.setEnabled(enabled);
         findNext.setEnabled(enabled);
+        //#if defined(ARROW_LINK)
+        //@#$LPS-ARROW_LINK:GranularityType:Statement
         addArrowLinkAction.setEnabled(enabled);
+        //#endif
         addLocalLinkAction.setEnabled(enabled);
         nodeColorBlend.setEnabled(enabled);
         nodeUp.setEnabled(enabled);
@@ -1385,35 +1442,43 @@ freemind.main.Resources.getInstance().logException(					e1);
     public int removeLastIcon(MindMapNode node) {
         return removeLastIconAction.removeLastIcon(node);
     }
-    /**
-     *
-     */
 
+    //#if defined(ARROW_LINK)
+    //@#$LPS-ARROW_LINK:GranularityType:Method
     public void addLink(MindMapNode source, MindMapNode target) {
         addArrowLinkAction.addLink(source, target);
     }
+    //#endif
 
+    //#if defined(ARROW_LINK)
+    //@#$LPS-ARROW_LINK:GranularityType:Method
     public void removeReference(MindMapLink arrowLink){
         removeArrowLinkAction.removeReference(arrowLink);
     }
+    //#endif
 
+    //#if defined(ARROW_LINK)
+    //@#$LPS-ARROW_LINK:GranularityType:Method
     public void setArrowLinkColor(MindMapLink arrowLink, Color color) {
         colorArrowLinkAction.setArrowLinkColor(arrowLink, color);
     }
+    //#endif
 
-    /**
-     *
-     */
-
+    //#if defined(ARROW_LINK)
+    //@#$LPS-ARROW_LINK:GranularityType:Method
     public void changeArrowsOfArrowLink(MindMapArrowLinkModel arrowLink,
             boolean hasStartArrow, boolean hasEndArrow) {
         changeArrowsInArrowLinkAction.changeArrowsOfArrowLink(arrowLink, hasStartArrow, hasEndArrow);
     }
+    //#endif
 
+    //#if defined(ARROW_LINK)
+    //@#$LPS-ARROW_LINK:GranularityType:Method
     public void setArrowLinkEndPoints(MindMapArrowLink link, Point startPoint,
             Point endPoint) {
         changeArrowLinkEndPoints.setArrowLinkEndPoints(link, startPoint, endPoint);
     }
+    //#endif
     public void setLink(MindMapNode node, String link) {
         setLinkByTextField.setLink(node, link);
     }

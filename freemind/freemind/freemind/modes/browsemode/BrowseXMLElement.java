@@ -50,15 +50,23 @@ public class BrowseXMLElement extends XMLElementAdapter {
        mModeController = pModeController;
    }
 
+    //#if defined(ARROW_LINK)
+    //@#$LPS-ARROW_LINK:GranularityType:Method
     protected BrowseXMLElement(ModeController pModeController, Vector ArrowLinkAdapters, HashMap IDToTarget) {
         super(pModeController, ArrowLinkAdapters, IDToTarget);
         mModeController = pModeController;
     }
+    //#endif
 
     /** abstract method to create elements of my type (factory).*/
     protected XMLElement  createAnotherElement(){
     // We do not need to initialize the things of XMLElement.
-        return new BrowseXMLElement(mModeController, mArrowLinkAdapters, mIDToTarget);
+        return new BrowseXMLElement(mModeController
+        		//#if defined(ARROW_LINK)
+        		//@#$LPS-ARROW_LINK:GranularityType:Statement
+        		, mArrowLinkAdapters, mIDToTarget
+        		//#endif
+        		);
     }
     protected NodeAdapter createNodeAdapter(FreeMindMain     frame, String nodeClass){
     		if(nodeClass == ENCRYPTED_BROWSE_NODE){
@@ -75,9 +83,12 @@ public class BrowseXMLElement extends XMLElementAdapter {
         return new BrowseCloudModel(node, frame);
     }
     //#endif
+    //#if defined(ARROW_LINK)
+    //@#$LPS-ARROW_LINK:GranularityType:Method
     protected ArrowLinkAdapter createArrowLinkAdapter(NodeAdapter source, NodeAdapter target, FreeMindMain frame) {
         return new BrowseArrowLinkModel(source,target,frame);
     }
+    //#endif
 
     protected NodeAdapter createEncryptedNode(String additionalInfo) {
 		NodeAdapter node = createNodeAdapter(frame, ENCRYPTED_BROWSE_NODE);

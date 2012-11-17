@@ -56,9 +56,15 @@ public abstract class XMLElementAdapter extends XMLElement {
 
    private String iconName;
 
+   	//#if defined(ARROW_LINK)
+   	//@#$LPS-ARROW_LINK:GranularityType:Attribute
     // arrow link attributes:
     protected Vector mArrowLinkAdapters;
+    //#endif
+   	//#if defined(ARROW_LINK)
+   	//@#$LPS-ARROW_LINK:GranularityType:Attribute
     protected HashMap /* id -> target */  mIDToTarget;
+    //#endif
     public static final String XML_NODE_TEXT = "TEXT";
     public static final String XML_NODE = "node";
     public static final String XML_NODE_ATTRIBUTE = "attribute";

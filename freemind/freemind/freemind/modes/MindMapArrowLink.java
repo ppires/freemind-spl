@@ -1,3 +1,5 @@
+//#if defined(ARROW_LINK)
+//@#$LPS-ARROW_LINK:GranularityType:Class
 /*FreeMind - A Program for creating and viewing Mindmaps
  *Copyright (C) 2000-2001  Joerg Mueller <joergmueller@bigfoot.com>
  *See COPYING for Details
@@ -53,3 +55,4 @@ public interface MindMapArrowLink extends MindMapLink {
     public XMLElement save();
 
 }
+//#endif

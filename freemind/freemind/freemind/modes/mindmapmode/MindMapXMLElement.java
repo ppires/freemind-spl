@@ -27,7 +27,10 @@ import java.util.Vector;
 
 import freemind.main.FreeMindMain;
 import freemind.main.XMLElement;
+//#if defined(ARROW_LINK)
+//@#$LPS-ARROW_LINK:GranularityType:Import
 import freemind.modes.ArrowLinkAdapter;
+//#endif
 //#if defined(CLOUD)
 //@#$LPS-CLOUD:GranularityType:Import
 import freemind.modes.CloudAdapter;
@@ -50,10 +53,13 @@ public class MindMapXMLElement extends XMLElementAdapter {
        init();
    }
 
+   //#if defined(ARROW_LINK)
+   //@#$LPS-ARROW_LINK:GranularityType:Method
     protected MindMapXMLElement(ModeController pModeController, Vector ArrowLinkAdapters, HashMap IDToTarget) {
         super(pModeController, ArrowLinkAdapters, IDToTarget);
         init();
     }
+    //#endif
 
     /**
      *
@@ -67,7 +73,12 @@ public class MindMapXMLElement extends XMLElementAdapter {
     /** abstract method to create elements of my type (factory).*/
     protected XMLElement  createAnotherElement(){
     // We do not need to initialize the things of XMLElement.
-        return new MindMapXMLElement(mModeController, mArrowLinkAdapters, mIDToTarget);
+        return new MindMapXMLElement(mModeController
+        	    //#if defined(ARROW_LINK)
+        	    //@#$LPS-ARROW_LINK:GranularityType:Statement
+        		, mArrowLinkAdapters, mIDToTarget
+        		//#endif
+        		);
     }
     protected NodeAdapter createNodeAdapter(FreeMindMain     frame, String nodeClass){
         if (nodeClass==null) {
@@ -101,9 +112,12 @@ public class MindMapXMLElement extends XMLElementAdapter {
         return new MindMapCloudModel(node, frame);
     }
     //#endif
+    //#if defined(ARROW_LINK)
+    //@#$LPS-ARROW_LINK:GranularityType:Method
     protected ArrowLinkAdapter createArrowLinkAdapter(NodeAdapter source, NodeAdapter target, FreeMindMain frame) {
         return new MindMapArrowLinkModel(source,target,frame);
     }
+    //#endif
 
 	protected NodeAdapter createEncryptedNode(String additionalInfo) {
 		NodeAdapter node = createNodeAdapter(frame, EncryptedMindMapNode.class.getName());

@@ -35,12 +35,18 @@ import freemind.extensions.ModeControllerHook;
 import freemind.extensions.NodeHook;
 import freemind.modes.MindIcon;
 import freemind.modes.MindMap;
+//#if defined(ARROW_LINK)
+//@#$LPS-ARROW_LINK:GranularityType:Import
 import freemind.modes.MindMapArrowLink;
+//#endif
 import freemind.modes.MindMapLink;
 import freemind.modes.MindMapNode;
 import freemind.modes.NodeAdapter;
 import freemind.modes.attributes.Attribute;
+//#if defined(ARROW_LINK)
+//@#$LPS-ARROW_LINK:GranularityType:Import
 import freemind.modes.mindmapmode.MindMapArrowLinkModel;
+//#endif
 import freemind.modes.mindmapmode.actions.xml.ActionFactory;
 
 /** This is the central method interface of actions that can be undertaken on
@@ -142,19 +148,34 @@ public interface MindMapActions {
 	//#endif
 //	public void setCloudWidth(MindMapNode node, int width);
 //	public void setCloudStyle(MindMapNode node, String style);
+	//#if defined(ARROW_LINK)
+	//@#$LPS-ARROW_LINK:GranularityType:InterfaceMethod
 	/** Source holds the MindMapArrowLinkModel and points to the id placed in target.*/
 	public void addLink(
 		MindMapNode source,
 		MindMapNode target);
+	//#endif
+	//#if defined(ARROW_LINK)
+	//@#$LPS-ARROW_LINK:GranularityType:InterfaceMethod
 	public void removeReference(MindMapLink arrowLink);
+	//#endif
+	//#if defined(ARROW_LINK)
+	//@#$LPS-ARROW_LINK:GranularityType:InterfaceMethod
 	public void changeArrowsOfArrowLink(
 	    MindMapArrowLinkModel arrowLink,
 		boolean hasStartArrow,
 		boolean hasEndArrow);
+	//#endif
+	//#if defined(ARROW_LINK)
+	//@#$LPS-ARROW_LINK:GranularityType:InterfaceMethod
 	public void setArrowLinkColor(
 		MindMapLink arrowLink,
 		Color color);
+	//#endif
+	//#if defined(ARROW_LINK)
+	//@#$LPS-ARROW_LINK:GranularityType:InterfaceMethod
 	public void setArrowLinkEndPoints(MindMapArrowLink link, Point startPoint, Point endPoint);
+	//#endif
 	/** Adds a textual hyperlink to a node (e.g. http:/freemind.sourceforge.net)
 	 */
 	public void setLink(MindMapNode node, String link);

@@ -25,7 +25,10 @@ import java.awt.Rectangle;
 import java.awt.event.MouseEvent;
 
 import freemind.controller.MapMouseMotionListener.MapMouseMotionReceiver;
+//#if defined(ARROW_LINK)
+//@#$LPS-ARROW_LINK:GranularityType:Import
 import freemind.modes.MindMapArrowLink;
+//#endif
 import freemind.modes.mindmapmode.MindMapController;
 import freemind.view.mindmapview.MapView;
 
@@ -36,11 +39,20 @@ public class MindMapMouseMotionManager implements MapMouseMotionReceiver {
 
     int originY = -1;
 
+    //#if defined(ARROW_LINK)
+    //@#$LPS-ARROW_LINK:GranularityType:Attribute
     MindMapArrowLink draggedLink = null;
+    //#endif
 
+    //#if defined(ARROW_LINK)
+    //@#$LPS-ARROW_LINK:GranularityType:Attribute
     private Point draggedLinkOldStartPoint;
+    //#endif
 
+    //#if defined(ARROW_LINK)
+    //@#$LPS-ARROW_LINK:GranularityType:Attribute
     private Point draggedLinkOldEndPoint;
+    //#endif
 
     private final MindMapController mController;
 
@@ -59,6 +71,8 @@ public class MindMapMouseMotionManager implements MapMouseMotionReceiver {
         MapView mapView = (MapView)e.getComponent();
         // Always try to get mouse to the original position in the Map.
         if (originX >= 0) {
+            //#if defined(ARROW_LINK)
+            //@#$LPS-ARROW_LINK:GranularityType:Statement
 			if (draggedLink != null) {
 				int deltaX = (int) ((e.getX() - originX) / mController
 						.getView().getZoom());
@@ -68,9 +82,9 @@ public class MindMapMouseMotionManager implements MapMouseMotionReceiver {
 				originX = e.getX();
 				originY = e.getY();
 				mController.getView().repaint();
-			} else {
+			} else
+			//#endif
 				 mapView.scrollBy(originX - e.getX(), originY - e.getY());
-			} 
 		}
     }
 
@@ -79,21 +93,28 @@ public class MindMapMouseMotionManager implements MapMouseMotionReceiver {
             mController.getView().setMoveCursor(true);
             originX = e.getX();
             originY = e.getY();
+            //#if defined(ARROW_LINK)
+            //@#$LPS-ARROW_LINK:GranularityType:Statement
             draggedLink = mController.getView().detectCollision(
                     new Point(originX, originY));
+            //#endif
+            //#if defined(ARROW_LINK)
+            //@#$LPS-ARROW_LINK:GranularityType:Statement
             if (draggedLink != null) {
                 draggedLinkOldStartPoint = draggedLink.getStartInclination();
                 draggedLinkOldEndPoint = draggedLink.getEndInclination();
                 draggedLink.showControlPoints(true);
                 mController.getView().repaint();
             }
-
+            //#endif
         }
     }
 
     public void mouseReleased(MouseEvent e) {
         originX = -1;
         originY = -1;
+        //#if defined(ARROW_LINK)
+        //@#$LPS-ARROW_LINK:GranularityType:Statement
         if (draggedLink != null) {
             draggedLink.showControlPoints(false);
             // make action undoable.
@@ -109,7 +130,7 @@ public class MindMapMouseMotionManager implements MapMouseMotionReceiver {
             mController.getView().repaint();
             draggedLink = null;
         }
-
+        //#endif
     }
 
 }
