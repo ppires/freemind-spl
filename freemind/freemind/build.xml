@@ -46,6 +46,7 @@
          ================================= -->
 	<!-- Features Definitions -->
 	<property name="CLOUD" value="Nodes with clouds" />
+	<!--property name="CLOUD_COLOR" value="Clouds with custom colors. Requires CLOUD." /-->
 	
 	<!-- preprocess task -->
 	<taskdef resource="javapp-defs.xml" />
