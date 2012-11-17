@@ -26,7 +26,10 @@ import java.util.Vector;
 
 import freemind.main.FreeMindMain;
 import freemind.main.XMLElement;
+//#if defined(ARROW_LINK)
+//@#$LPS-ARROW_LINK:GranularityType:Import
 import freemind.modes.ArrowLinkAdapter;
+//#endif
 //#if defined(CLOUD)
 //@#$LPS-CLOUD:GranularityType:Import
 import freemind.modes.CloudAdapter;

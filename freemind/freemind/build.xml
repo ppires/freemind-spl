@@ -46,7 +46,8 @@
          ================================= -->
 	<!-- Features Definitions -->
 	<property name="CLOUD" value="Nodes with clouds" />
-	<!--property name="CLOUD_COLOR" value="Clouds with custom colors. Requires CLOUD." /-->
+	<property name="CLOUD_COLOR" value="Clouds with custom colors. Requires CLOUD." />
+	<property name="ARROW_LINK" value="Nodes connected by arrow links" />
 	
 	<!-- preprocess task -->
 	<taskdef resource="javapp-defs.xml" />

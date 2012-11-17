@@ -144,6 +144,8 @@ public class BrowseController extends ViewControllerAdapter {
 		return popupmenu;
 	}
 
+	//#if defined(ARROW_LINK)
+	//@#$LPS-ARROW_LINK:GranularityType:Method
 	/**
 	 * Link implementation: If this is a link, we want to make a popup with at
 	 * least removelink available.
@@ -182,6 +184,7 @@ public class BrowseController extends ViewControllerAdapter {
 		}
 		return null;
 	}
+	//#endif
 
 	/**
 	 */
