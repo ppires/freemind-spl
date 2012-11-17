@@ -96,14 +96,17 @@ public abstract class XMLElementAdapter extends XMLElement {
    //   Overhead methods
 
    public XMLElementAdapter(ModeController modeController) {
+   	//#if defined(ARROW_LINK)
+   	//@#$LPS-ARROW_LINK:GranularityType:Method
 	   this(modeController, new Vector(), new HashMap());
    }
 
     protected XMLElementAdapter(ModeController modeController, Vector ArrowLinkAdapters, HashMap IDToTarget) {
+    	this.mArrowLinkAdapters = ArrowLinkAdapters;
+    	this.mIDToTarget = IDToTarget;
+	//#endif
         this.mModeController = modeController;
         this.frame = modeController.getFrame();
-        this.mArrowLinkAdapters = ArrowLinkAdapters;
-        this.mIDToTarget = IDToTarget;
         if(logger==null) {
         	logger = frame.getLogger(this.getClass().getName());
         }
