@@ -299,8 +299,11 @@ public abstract class XMLElementAdapter extends XMLElement {
          CloudAdapter cloud = (CloudAdapter)userObject;
          if (name.equals("STYLE")) {
 	    cloud.setStyle(sValue); }
+         //#if defined(CLOUD) and defined(CLOUD_COLOR)
+         //@#$LPS-CLOUD_COLOR:GranularityType:Statement
          else if (name.equals("COLOR")) {
 	    cloud.setColor(Tools.xmlToColor(sValue)); }
+         //#endif
          else if (name.equals("WIDTH")) {
                cloud.setWidth(Integer.parseInt(sValue));
          }

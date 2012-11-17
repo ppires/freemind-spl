@@ -221,7 +221,10 @@ public class NodeView extends JComponent implements TreeModelListener{
 	    	//#if defined(CLOUD)
 	    	//@#$LPS-CLOUD:GranularityType:Statement
 	        MindMapCloud cloud = getModel().getCloud();
-	        
+	        //#endif
+
+	    	//#if defined(CLOUD)
+	    	//@#$LPS-CLOUD:GranularityType:Statement
 	        // consider existing clouds of children
 	        if (byChildren && cloud != null){
 	            additionalDistanceForConvexHull  += CloudView.getAdditionalHeigth(cloud, this) / 5;

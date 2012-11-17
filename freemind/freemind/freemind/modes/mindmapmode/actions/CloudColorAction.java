@@ -1,5 +1,5 @@
-//#if defined(CLOUD)
-//@#$LPS-CLOUD:GranularityType:Class
+//#if defined(CLOUD) and defined(CLOUD_COLOR)
+//@#$LPS-CLOUD_COLOR:GranularityType:Class
 /*
  * FreeMind - A Program for creating and viewing Mindmaps Copyright (C)
  * 2000-2004 Joerg Mueller, Daniel Polansky, Christian Foltin and others.

@@ -105,9 +105,12 @@ public abstract class CloudAdapter extends LineAdapter implements MindMapCloud {
         if (style != null) {
             cloud.setAttribute("STYLE",style);
         }
+        //#if defined(CLOUD_COLOR)
+        //@#$LPS-CLOUD:GranularityType:Statement
         if (color != null) {
             cloud.setAttribute("COLOR",Tools.colorToXml(color));
         }
+        //#endif
         if(width != DEFAULT_WIDTH) {
             cloud.setAttribute("WIDTH",Integer.toString(width));
         }

@@ -340,8 +340,8 @@ public class MindMapController extends ControllerAdapter implements MindMapActio
     //@#$LPS-CLOUD:GranularityType:Attribute
     public CloudAction cloud = null;
     //#endif
-    //#if defined(CLOUD)
-    //@#$LPS-CLOUD:GranularityType:Attribute
+    //#if defined(CLOUD) and defined(CLOUD_COLOR)
+    //@#$LPS-CLOUD_COLOR:GranularityType:Attribute
     public freemind.modes.mindmapmode.actions.CloudColorAction cloudColor = null;
     //#endif
     public AddArrowLinkAction addArrowLinkAction = null;
@@ -496,8 +496,8 @@ public class MindMapController extends ControllerAdapter implements MindMapActio
         //@#$LPS-CLOUD:GranularityType:Statement
         cloud = new CloudAction(this);
         //#endif
-        //#if defined(CLOUD)
-        //@#$LPS-CLOUD:GranularityType:Statement
+        //#if defined(CLOUD) and defined(CLOUD_COLOR)
+        //@#$LPS-CLOUD_COLOR:GranularityType:Statement
         cloudColor = new freemind.modes.mindmapmode.actions.CloudColorAction(this);
         //#endif
         addArrowLinkAction = new AddArrowLinkAction(this);
@@ -1066,8 +1066,8 @@ freemind.main.Resources.getInstance().logException(					e1);
         //@#$LPS-CLOUD:GranularityType:Statement
         cloud.setEnabled(enabled);
         //#endif
-        //#if defined(CLOUD)
-        //@#$LPS-CLOUD:GranularityType:Statement
+        //#if defined(CLOUD) and defined(CLOUD_COLOR)
+        //@#$LPS-CLOUD_COLOR:GranularityType:Statement
         cloudColor.setEnabled(enabled);
         //#endif
 //        normalFont.setEnabled(enabled);
@@ -1302,8 +1302,8 @@ freemind.main.Resources.getInstance().logException(					e1);
         cloud.setCloud(node, enable);
     }
     //#endif
-    //#if defined(CLOUD)
-    //@#$LPS-CLOUD:GranularityType:Method
+    //#if defined(CLOUD) and defined(CLOUD_COLOR)
+    //@#$LPS-CLOUD_COLOR:GranularityType:Method
     public void setCloudColor(MindMapNode node, Color color) {
         cloudColor.setCloudColor(node, color);
     }

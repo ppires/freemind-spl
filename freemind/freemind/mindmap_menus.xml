@@ -153,8 +153,8 @@
 			<menu_category name="icons">
 			</menu_category>
 			<!-- 
-			//#if defined(CLOUD)
-			//@#$LPS-CLOUD:GranularityType:XML
+			//#if defined(CLOUD) and defined(CLOUD_COLOR)
+			//@#$LPS-CLOUD_COLOR:GranularityType:XML
 			 -->
 			<menu_category name="clouds">
 				<menu_action field="cloudColor"/>
@@ -289,8 +289,8 @@
 			<menu_category name="icons">
 			</menu_category>
 			<!-- 
-			//#if defined(CLOUD)
-			//@#$LPS-CLOUD:GranularityType:XML
+			//#if defined(CLOUD) and defined(CLOUD_COLOR)
+			//@#$LPS-CLOUD_COLOR:GranularityType:XML
 			 -->
 			<menu_category name="clouds">
 				<menu_action field="cloudColor"/>

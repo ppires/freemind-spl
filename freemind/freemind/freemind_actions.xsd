@@ -47,8 +47,8 @@
 					//#endif
 					 -->
 					<!--
-					//#if defined(CLOUD)
-					//@#$LPS-CLOUD:GranularityType:XML
+					//#if defined(CLOUD) and defined(CLOUD_COLOR)
+					//@#$LPS-CLOUD_COLOR:GranularityType:XML
 					 -->					 
 					<xs:element ref="cloud_color_xml_action"/>
 					<!--

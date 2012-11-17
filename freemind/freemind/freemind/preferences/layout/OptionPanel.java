@@ -801,10 +801,13 @@ public class OptionPanel implements TextTranslator {
 				"keystroke_node_toggle_underlined")); //  control
 		// U
 
+		//#if defined(CLOUD)
+		//@#$LPS-CLOUD:GranularityType:Statement
 		controls
 				.add(new KeyProperty(frame, null, "keystroke_node_toggle_cloud")); //  control
 		// shift
 		// B
+		//#endif
 
 		controls.add(new KeyProperty(frame, null, "keystroke_undo")); //  control
 		// Z

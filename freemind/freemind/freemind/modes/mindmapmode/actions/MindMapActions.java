@@ -136,8 +136,8 @@ public interface MindMapActions {
 	//@#$LPS-CLOUD:GranularityType:InterfaceMethod
 	public void setCloud(MindMapNode node, boolean enable);
 	//#endif
-	//#if defined(CLOUD)
-	//@#$LPS-CLOUD:GranularityType:InterfaceMethod
+	//#if defined(CLOUD) and defined(CLOUD_COLOR)
+	//@#$LPS-CLOUD_COLOR:GranularityType:InterfaceMethod
 	public void setCloudColor(MindMapNode node, Color color);
 	//#endif
 //	public void setCloudWidth(MindMapNode node, int width);
