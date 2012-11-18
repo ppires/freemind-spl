@@ -191,9 +191,12 @@ class NodeViewFactory {
 		if (model.getStyle().equals(MindMapNode.STYLE_FORK) ){
 			return new ForkMainView(); 
 		}
+		//#if defined(BUBBLED_STYLE)
+		//@#$LPS-BUBBLED_STYLE:GranularityType:Statement
 		else if (model.getStyle().equals(MindMapNode.STYLE_BUBBLE)) {
 			return new BubbleMainView(); 
 		}
+		//#endif
 		else {
 		    System.err.println("Tried to create a NodeView of unknown Style.");
 		    return new ForkMainView(); 

@@ -137,7 +137,14 @@
 			<menu_category name="nodes">
 				<menu_category name="style">
 					<menu_action field="fork"/>
+					<!-- 
+					//#if defined(BUBBLED_STYLE)
+					//@#$LPS-BUBBLED_STYLE:GranularityType:Statement
+					 -->
 					<menu_action field="bubble"/>
+					<!-- 
+					//#endif
+					 -->
 				</menu_category>
 				<menu_separator/>
 				<menu_category name="font">
@@ -276,7 +283,14 @@
 			<menu_category name="nodes">
 				<menu_category name="style">
 					<menu_action field="fork"/>
+					<!-- 
+					//#if defined(BUBBLED_STYLE)
+					//@#$LPS-BUBBLED_STYLE:GranularityType:Statement
+					 -->
 					<menu_action field="bubble"/>
+					<!-- 
+					//#endif
+					 -->
 				</menu_category>
 				<menu_separator/>
 				<menu_category name="font">
