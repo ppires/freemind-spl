@@ -45,6 +45,9 @@
           target: preprocess (freemind-spl)
          ================================= -->
 	<!-- Features Definitions -->
+	<!-- Preprocess properties -->
+	<property name="preprocess-tmp" value="${src}/../javapp-tmp" />
+	
 	<property name="CLOUD" value="Nodes with clouds" />
 	<property name="CLOUD_COLOR" value="Clouds with custom colors. Requires CLOUD." />
 	<!--property name="ARROW_LINK" value="Nodes connected by arrow links" /-->
@@ -53,30 +56,29 @@
 	<taskdef resource="javapp-defs.xml" />
 	<target name="preprocess">
 		<echo message="Preparing files to be pre-processed.../" />
-		<mkdir dir="${src}/javapp-tmp" />
-		<copy todir="${src}/javapp-tmp">
+		<mkdir dir="${preprocess-tmp}" />
+		<copy todir="${preprocess-tmp}">
 			<fileset dir="${src}">
 				<include name="**/*.java"/>
 				<include name="*.xsd" />
 				<include name="*.xml" />
 				<exclude name="build.xml" />
-				<exclude name="javapp-tmp/"/>
 			</fileset>
 		</copy>
 		
 		<echo message="[javapp] processing .java files..." />
 		<javapp destdir="${src}" prefix="//#">
-			<fileset dir="${src}/javapp-tmp" includes="**/*.java" />
+			<fileset dir="${preprocess-tmp}" includes="**/*.java" />
 		</javapp>
 		
 		<echo message="[javapp] processing .xsd files..." />
 		<javapp destdir="${src}" prefix="//#">
-			<fileset dir="${src}/javapp-tmp" includes="**/*.xsd" />
+			<fileset dir="${preprocess-tmp}" includes="**/*.xsd" />
 		</javapp>
 		
 		<echo message="[javapp] processing .xml files..." />
 		<javapp destdir="${src}" prefix="//#">
-			<fileset dir="${src}/javapp-tmp" includes="**/*.xml" />
+			<fileset dir="${preprocess-tmp}" includes="**/*.xml" />
 		</javapp>
 		
 		<echo message="[javapp] Done!" />
@@ -215,13 +217,13 @@
 
 		<!-- freemind-spl: moving source back to original place -->
 		<copy todir="${src}" overwrite="true">
-			<fileset dir="${src}/javapp-tmp">
+			<fileset dir="${preprocess-tmp}">
 				<include name="**/*.java"/>
 				<include name="**/*.xsd" />
 				<include name="**/*.xml" />
 			</fileset>
 		</copy>
-		<delete dir="${src}/javapp-tmp" />
+		<delete dir="${preprocess-tmp}" />
 		
 		<copy todir="${dist}">
 			<fileset dir="${src}"
