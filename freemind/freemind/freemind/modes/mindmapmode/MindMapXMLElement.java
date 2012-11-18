@@ -67,7 +67,6 @@ public class MindMapXMLElement extends XMLElementAdapter {
         		, IDToTarget);
         init();
     }
-    //#endif
 
     /**
      *
