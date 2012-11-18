@@ -42,7 +42,7 @@
 
 
 	<!-- =================================
-          target: preprocess
+          target: preprocess (freemind-spl)
          ================================= -->
 	<!-- Features Definitions -->
 	<property name="CLOUD" value="Nodes with clouds" />
