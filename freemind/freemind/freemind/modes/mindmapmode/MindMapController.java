@@ -357,7 +357,7 @@ public class MindMapController extends ControllerAdapter implements MindMapActio
     //@#$LPS-BUBBLED_STYLE:GranularityType:Attribute
     public NodeStyleAction bubble = null;
     //#endif
-    //#if defined(CLOUD)BUBBLED_STYLE
+    //#if defined(CLOUD)
     //@#$LPS-CLOUD:GranularityType:Attribute
     public CloudAction cloud = null;
     //#endif
