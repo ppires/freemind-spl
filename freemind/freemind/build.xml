@@ -53,28 +53,30 @@
 	<taskdef resource="javapp-defs.xml" />
 	<target name="preprocess">
 		<echo message="Preparing files to be pre-processed.../" />
-		<copy todir="javapp-tmp">
+		<mkdir dir="${src}/javapp-tmp" />
+		<copy todir="${src}/javapp-tmp">
 			<fileset dir="${src}">
 				<include name="**/*.java"/>
 				<include name="*.xsd" />
 				<include name="*.xml" />
 				<exclude name="build.xml" />
+				<exclude name="javapp-tmp/"/>
 			</fileset>
 		</copy>
 		
 		<echo message="[javapp] processing .java files..." />
 		<javapp destdir="${src}" prefix="//#">
-			<fileset dir="javapp-tmp" includes="**/*.java" />
+			<fileset dir="${src}/javapp-tmp" includes="**/*.java" />
 		</javapp>
 		
 		<echo message="[javapp] processing .xsd files..." />
 		<javapp destdir="${src}" prefix="//#">
-			<fileset dir="javapp-tmp" includes="**/*.xsd" />
+			<fileset dir="${src}/javapp-tmp" includes="**/*.xsd" />
 		</javapp>
 		
 		<echo message="[javapp] processing .xml files..." />
 		<javapp destdir="${src}" prefix="//#">
-			<fileset dir="javapp-tmp" includes="**/*.xml" />
+			<fileset dir="${src}/javapp-tmp" includes="**/*.xml" />
 		</javapp>
 		
 		<echo message="[javapp] Done!" />
@@ -213,13 +215,13 @@
 
 		<!-- freemind-spl: moving source back to original place -->
 		<copy todir="${src}" overwrite="true">
-			<fileset dir="javapp-tmp">
+			<fileset dir="${src}/javapp-tmp">
 				<include name="**/*.java"/>
 				<include name="**/*.xsd" />
 				<include name="**/*.xml" />
 			</fileset>
 		</copy>
-		<delete dir="javapp-tmp" />
+		<delete dir="${src}/javapp-tmp" />
 		
 		<copy todir="${dist}">
 			<fileset dir="${src}"
