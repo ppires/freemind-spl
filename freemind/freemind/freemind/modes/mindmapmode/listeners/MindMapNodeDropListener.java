@@ -100,9 +100,12 @@ public class MindMapNodeDropListener implements DropTargetListener {
                             .isDataFlavorSupported(MindMapNodesSelection.dropActionFlavor)) {
                 String sourceAction = (String) t
                         .getTransferData(MindMapNodesSelection.dropActionFlavor);
+				//#if defined(ARROW_LINK)
+				//@#$LPS-ARROW_LINK:GranularityType:Statement
                 if (sourceAction.equals("LINK")) {
                     dropAction = DnDConstants.ACTION_LINK;
                 }
+                //#endif
                 if (sourceAction.equals("COPY")) {
                     dropAction = DnDConstants.ACTION_COPY;
                 }
@@ -149,6 +152,8 @@ public class MindMapNodeDropListener implements DropTargetListener {
             // to implement extra application dnd or dnd between different Java
             // Virtual Machines.
 
+			//#if defined(ARROW_LINK)
+			//@#$LPS-ARROW_LINK:GranularityType:Statement
             if (dropAction == DnDConstants.ACTION_LINK) {
                 // ACTION_LINK means for us change the color, style and font.
 
@@ -185,6 +190,7 @@ public class MindMapNodeDropListener implements DropTargetListener {
                     }
                 }
             } else {
+            //#endif
             	if(!targetNode.isWriteable()){
             		String message = mMindMapController
 							.getText("node_is_write_protected");
@@ -225,7 +231,10 @@ public class MindMapNodeDropListener implements DropTargetListener {
                 	// an error occured. how to react?
                 	
                 }
+			//#if defined(ARROW_LINK)
+			//@#$LPS-ARROW_LINK:GranularityType:Statement
             }
+            //#endif
         } catch (Exception e) {
             System.err.println("Drop exception:" + e);
             freemind.main.Resources.getInstance().logException(e);
