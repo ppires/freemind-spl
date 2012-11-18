@@ -1378,7 +1378,12 @@ public class NodeView extends JComponent implements TreeModelListener{
     		paintCloudsAndEdges(g2d);
     		super.paint(g);
     		// return to std stroke
+    		//#if defined(BUBBLED_STYLE)
+    		//@#$LPS-BUBBLED_STYLE:GranularityType:Statement
     		g2d.setStroke(BubbleMainView.DEF_STROKE);
+    		//#else
+    		g2d.setStroke(new BasicStroke());
+    		//#endif
     		if(! isRoot){
     			paintFoldingMark(g2d);
     		}
