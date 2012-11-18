@@ -466,23 +466,12 @@ public abstract class ControllerAdapter implements ModeController {
         }
     }
 
-    public MindMapNode createNodeTreeFromXml(Reader pReader
-    		//#if defined(ARROW_LINK)
-    		//@#$LPS-ARROW_LINK:GranularityType:ClassSignature
-    		, HashMap pIDToTarget
-    		//#endif
-    		)
+    public MindMapNode createNodeTreeFromXml(Reader pReader, HashMap pIDToTarget)
 			throws XMLParseException, IOException {
 		XMLElementAdapter element = (XMLElementAdapter) createXMLElement();
-		//#if defined(ARROW_LINK)
-		//@#$LPS-ARROW_LINK:GranularityType:Statement
 		element.setIDToTarget(pIDToTarget);
-		//#endif
 		element.parseFromReader(pReader);
-		//#if defined(ARROW_LINK)
-		//@#$LPS-ARROW_LINK:GranularityType:Statement
 		element.processUnfinishedLinks(getModel().getLinkRegistry());
-		//#endif
 		MindMapNode node = element.getMapChild();
 		return node;
 	}
