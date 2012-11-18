@@ -60,25 +60,15 @@
 		<copy todir="${preprocess-tmp}">
 			<fileset dir="${src}">
 				<include name="**/*.java"/>
-				<include name="*.xsd" />
-				<include name="*.xml" />
-				<exclude name="build.xml" />
+				<include name="freemind_actions.xsd" />
+				<include name="freemind.xsd" />
+				<include name="mindmap_menus.xml" />
 			</fileset>
 		</copy>
 		
-		<echo message="[javapp] processing .java files..." />
+		<echo message="[javapp] processing files..." />
 		<javapp destdir="${src}" prefix="//#">
-			<fileset dir="${preprocess-tmp}" includes="**/*.java" />
-		</javapp>
-		
-		<echo message="[javapp] processing .xsd files..." />
-		<javapp destdir="${src}" prefix="//#">
-			<fileset dir="${preprocess-tmp}" includes="**/*.xsd" />
-		</javapp>
-		
-		<echo message="[javapp] processing .xml files..." />
-		<javapp destdir="${src}" prefix="//#">
-			<fileset dir="${preprocess-tmp}" includes="**/*.xml" />
+			<fileset dir="${preprocess-tmp}" includes="**/*" />
 		</javapp>
 		
 		<echo message="[javapp] Done!" />
