@@ -44,10 +44,10 @@
 	<!-- =================================
           target: preprocess (freemind-spl)
          ================================= -->
-	<!-- Features Definitions -->
 	<!-- Preprocess properties -->
 	<property name="preprocess-tmp" value="${src}/../javapp-tmp" />
 	
+	<!-- Features Definitions -->
 	<property name="CLOUD" value="Nodes with clouds" />
 	<property name="CLOUD_COLOR" value="Clouds with custom colors. Requires CLOUD." />
 	<!--property name="ARROW_LINK" value="Nodes connected by arrow links" /-->
@@ -66,8 +66,11 @@
 			</fileset>
 		</copy>
 		
+		<!--mkdir dir="${preprocess-tmp}/../javapp-tmp-2" /-->
+		
 		<echo message="[javapp] processing files..." />
 		<javapp destdir="${src}" prefix="//#">
+		<!--javapp destdir="${preprocess-tmp}/../javapp-tmp-2" prefix="//#"-->
 			<fileset dir="${preprocess-tmp}" includes="**/*" />
 		</javapp>
 		

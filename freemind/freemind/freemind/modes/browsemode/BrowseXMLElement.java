@@ -64,7 +64,6 @@ public class BrowseXMLElement extends XMLElementAdapter {
         		, IDToTarget);
         mModeController = pModeController;
     }
-    //#endif
 
     /** abstract method to create elements of my type (factory).*/
     protected XMLElement  createAnotherElement(){
