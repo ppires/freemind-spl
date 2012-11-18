@@ -61,10 +61,7 @@ public abstract class XMLElementAdapter extends XMLElement {
     // arrow link attributes:
     protected Vector mArrowLinkAdapters;
     //#endif
-   	//#if defined(ARROW_LINK)
-   	//@#$LPS-ARROW_LINK:GranularityType:Attribute
     protected HashMap /* id -> target */  mIDToTarget;
-    //#endif
     public static final String XML_NODE_TEXT = "TEXT";
     public static final String XML_NODE = "node";
     public static final String XML_NODE_ATTRIBUTE = "attribute";
@@ -96,15 +93,25 @@ public abstract class XMLElementAdapter extends XMLElement {
    //   Overhead methods
 
    public XMLElementAdapter(ModeController modeController) {
-   	//#if defined(ARROW_LINK)
-   	//@#$LPS-ARROW_LINK:GranularityType:Method
-	   this(modeController, new Vector(), new HashMap());
+	   this(modeController
+			   	//#if defined(ARROW_LINK)
+			   	//@#$LPS-ARROW_LINK:GranularityType:Expression
+			   , new Vector()
+	   			//#endif
+	   		   , new HashMap());
    }
 
-    protected XMLElementAdapter(ModeController modeController, Vector ArrowLinkAdapters, HashMap IDToTarget) {
+    protected XMLElementAdapter(ModeController modeController
+    	   	//#if defined(ARROW_LINK)
+    	   	//@#$LPS-ARROW_LINK:GranularityType:Expression
+    		, Vector ArrowLinkAdapters
+    		//#endif
+    		, HashMap IDToTarget) {
+       	//#if defined(ARROW_LINK)
+       	//@#$LPS-ARROW_LINK:GranularityType:Statement
     	this.mArrowLinkAdapters = ArrowLinkAdapters;
+    	//#endif
     	this.mIDToTarget = IDToTarget;
-	//#endif
         this.mModeController = modeController;
         this.frame = modeController.getFrame();
         if(logger==null) {
@@ -453,14 +460,11 @@ public abstract class XMLElementAdapter extends XMLElement {
 	    node.setLink(sValue); }
 	 else if (name.equals("STYLE")) {
 	    node.setStyle(sValue); }
-	//#if defined(ARROW_LINK)
-	//@#$LPS-ARROW_LINK:GranularityType:Statement
 	 else if (name.equals("ID")) {
 	     // do not set label but annotate in list:
 	     //System.out.println("(sValue, node) = " + sValue + ", "+  node);
 	     mIDToTarget.put(sValue, node);
 	 }
-     //#endif
 	 else if (name.equals("VSHIFT")) {
 	 	node.setShiftY(Integer.parseInt(sValue));
 	 }
@@ -521,12 +525,12 @@ public abstract class XMLElementAdapter extends XMLElement {
         }
     }
 
-   	//#if defined(ARROW_LINK)
-   	//@#$LPS-ARROW_LINK:GranularityType:Method
     /** Completes the links within the getMap(). They are registered in the registry.*/
     public void processUnfinishedLinks(MindMapLinkRegistry registry) {
         // add labels to the nodes:
         setIDs(mIDToTarget, registry);
+        //#if defined(ARROW_LINK)
+        //@#$LPS-ARROW_LINK:GranularityType:Statement
         // complete arrow links with right labels:
         for(int i = 0; i < mArrowLinkAdapters.size(); ++i) {
             ArrowLinkAdapter arrowLink = (ArrowLinkAdapter) mArrowLinkAdapters.get(i);
@@ -570,12 +574,10 @@ public abstract class XMLElementAdapter extends XMLElement {
             registry.registerLink(arrowLink);
 
         }
+        //#endif
     }
-    //#endif
 
 
-   	//#if defined(ARROW_LINK)
-   	//@#$LPS-ARROW_LINK:GranularityType:Method
     /**Recursive method to set the ids of the nodes.*/
     private void setIDs(HashMap IDToTarget, MindMapLinkRegistry registry) {
         for(Iterator i = IDToTarget.keySet().iterator(); i.hasNext();) {
@@ -584,7 +586,12 @@ public abstract class XMLElementAdapter extends XMLElement {
             String newId = registry.registerLinkTarget(target, key /* Proposed name for the target, is changed by the registry, if already present.*/);
             // and in the cutted case:
             // search for links to this ids that have been cutted earlier:
+            //#if defined(ARROW_LINK)
+            //@#$LPS-ARROW_LINK:GranularityType:Statement
             Vector cuttedLinks = registry.getCuttedLinks(key /* old target id*/);
+            //#endif
+            //#if defined(ARROW_LINK)
+            //@#$LPS-ARROW_LINK:GranularityType:Statement
             for(int j=0; j < cuttedLinks.size(); ++j) {
                 ArrowLinkAdapter link = (ArrowLinkAdapter) cuttedLinks.get(j);
                 // repair link
@@ -593,26 +600,20 @@ public abstract class XMLElementAdapter extends XMLElement {
                 // register link
                 registry.registerLink(link);
             }
+            //#endif
         }
     }
-    //#endif
 
 
     protected MindMap getMap() {
         return mModeController.getMap();
     }
 
-   	//#if defined(ARROW_LINK)
-   	//@#$LPS-ARROW_LINK:GranularityType:Method
 	public HashMap getIDToTarget() {
 		return mIDToTarget;
 	}
-	//#endif
 
-   	//#if defined(ARROW_LINK)
-   	//@#$LPS-ARROW_LINK:GranularityType:Method
 	public void setIDToTarget(HashMap pToTarget) {
 		mIDToTarget = pToTarget;
 	}
-	//#endif
 }

@@ -86,8 +86,8 @@ public interface ModeController extends TextTranslator  {
     /** Given a valid Xml parameterization of a node (tree),
      * this method returns freshly created nodes.
      */
-    MindMapNode createNodeTreeFromXml(Reader pReader, HashMap pIDToTarget)
-		throws XMLParseException, IOException;
+    MindMapNode createNodeTreeFromXml(Reader pReader, HashMap pIDToTarget) 
+    		throws XMLParseException, IOException;
     // activation methods:
     void startupController();
     void shutdownController();

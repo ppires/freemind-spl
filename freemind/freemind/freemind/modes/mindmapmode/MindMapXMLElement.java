@@ -53,10 +53,18 @@ public class MindMapXMLElement extends XMLElementAdapter {
        init();
    }
 
-   //#if defined(ARROW_LINK)
-   //@#$LPS-ARROW_LINK:GranularityType:Method
-    protected MindMapXMLElement(ModeController pModeController, Vector ArrowLinkAdapters, HashMap IDToTarget) {
-        super(pModeController, ArrowLinkAdapters, IDToTarget);
+    protected MindMapXMLElement(ModeController pModeController
+    		    //#if defined(ARROW_LINK)
+    		    //@#$LPS-ARROW_LINK:GranularityType:ClassSignature
+    			, Vector ArrowLinkAdapters
+    			//#endif
+    			, HashMap IDToTarget) {
+        super(pModeController
+        		//#if defined(ARROW_LINK)
+        		//@#$LPS-ARROW_LINK:GranularityType:Expression
+        		, ArrowLinkAdapters
+        		//#endif
+        		, IDToTarget);
         init();
     }
     //#endif
@@ -76,9 +84,9 @@ public class MindMapXMLElement extends XMLElementAdapter {
         return new MindMapXMLElement(mModeController
         	    //#if defined(ARROW_LINK)
         	    //@#$LPS-ARROW_LINK:GranularityType:Statement
-        		, mArrowLinkAdapters, mIDToTarget
+        		, mArrowLinkAdapters
         		//#endif
-        		);
+        		, mIDToTarget);
     }
     protected NodeAdapter createNodeAdapter(FreeMindMain     frame, String nodeClass){
         if (nodeClass==null) {

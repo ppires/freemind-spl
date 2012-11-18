@@ -50,10 +50,18 @@ public class BrowseXMLElement extends XMLElementAdapter {
        mModeController = pModeController;
    }
 
-    //#if defined(ARROW_LINK)
-    //@#$LPS-ARROW_LINK:GranularityType:Method
-    protected BrowseXMLElement(ModeController pModeController, Vector ArrowLinkAdapters, HashMap IDToTarget) {
-        super(pModeController, ArrowLinkAdapters, IDToTarget);
+    protected BrowseXMLElement(ModeController pModeController
+    	    //#if defined(ARROW_LINK)
+    	    //@#$LPS-ARROW_LINK:GranularityType:ClassSignature
+    		, Vector ArrowLinkAdapters
+    		//#endif
+    		, HashMap IDToTarget) {
+        super(pModeController
+        	    //#if defined(ARROW_LINK)
+        	    //@#$LPS-ARROW_LINK:GranularityType:Expression
+        		, ArrowLinkAdapters
+        		//#endif
+        		, IDToTarget);
         mModeController = pModeController;
     }
     //#endif
@@ -63,10 +71,10 @@ public class BrowseXMLElement extends XMLElementAdapter {
     // We do not need to initialize the things of XMLElement.
         return new BrowseXMLElement(mModeController
         		//#if defined(ARROW_LINK)
-        		//@#$LPS-ARROW_LINK:GranularityType:Statement
-        		, mArrowLinkAdapters, mIDToTarget
+        		//@#$LPS-ARROW_LINK:GranularityType:Expression
+        		, mArrowLinkAdapters
         		//#endif
-        		);
+        		, mIDToTarget);
     }
     protected NodeAdapter createNodeAdapter(FreeMindMain     frame, String nodeClass){
     		if(nodeClass == ENCRYPTED_BROWSE_NODE){
