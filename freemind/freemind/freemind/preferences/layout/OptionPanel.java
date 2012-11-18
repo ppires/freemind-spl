@@ -552,7 +552,10 @@ public class OptionPanel implements TextTranslator {
 
 		"standardrootnodestyle.tooltip", FreeMind.RESOURCES_ROOT_NODE_STYLE, new String[] {
 		        MindMapNode.STYLE_FORK,
+	     	    //#if defined(BUBBLED_STYLE)
+	     	    //@#$LPS-BUBBLED_STYLE:GranularityType:Expression
                 MindMapNode.STYLE_BUBBLE,
+                //#endif
                 MindMapNode.STYLE_COMBINED }, this)); //  fork
 
 		controls.add(new NextLineProperty());

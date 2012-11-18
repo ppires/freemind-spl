@@ -50,13 +50,19 @@ import freemind.view.mindmapview.NodeViewVisitor;
 
 public interface MindMapNode extends MutableTreeNode {
 
+    //#if defined(BUBBLED_STYLE)
+    //@#$LPS-BUBBLED_STYLE:GranularityType:Attribute
 	public static final String STYLE_BUBBLE = "bubble";
+	//#endif
 	public static final String STYLE_FORK = "fork";
 	public static final String STYLE_COMBINED = "combined";
 	public static final String STYLE_AS_PARENT = "as_parent";
-	public static final String[] NODE_STYLES = new String[] { STYLE_FORK,
-		STYLE_BUBBLE, STYLE_AS_PARENT,
-		STYLE_COMBINED };
+	public static final String[] NODE_STYLES = new String[] { STYLE_FORK
+	    //#if defined(BUBBLED_STYLE)
+	    //@#$LPS-BUBBLED_STYLE:GranularityType:Attribute
+		,STYLE_BUBBLE
+		//#endif
+		,STYLE_AS_PARENT, STYLE_COMBINED };
 
 	/**
 	 * @return the text representation of the nodes content. HTML is represented as <html>....</html>

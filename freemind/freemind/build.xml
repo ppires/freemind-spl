@@ -51,6 +51,7 @@
 	<property name="CLOUD" value="Nodes with clouds" />
 	<property name="CLOUD_COLOR" value="Clouds with custom colors. Requires CLOUD." />
 	<property name="ARROW_LINK" value="Nodes connected by arrow links" />
+	<property name="BUBBLED_STYLE" value="Bubbled style for nodes" />
 	
 	<!-- preprocess task -->
 	<taskdef resource="javapp-defs.xml" />

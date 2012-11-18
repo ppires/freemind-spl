@@ -386,12 +386,14 @@ public abstract class NodeAdapter implements MindMapNode {
     	// Handle the combined node style
      	if (returnedString.equals(MindMapNode.STYLE_COMBINED))
      	{
+     	    //#if defined(BUBBLED_STYLE)
+     	    //@#$LPS-BUBBLED_STYLE:GranularityType:Statement
      		if (this.isFolded()){
      			return MindMapNode.STYLE_BUBBLE;
      		}
-     		else{
+     		else
+     		//#endif
     			return MindMapNode.STYLE_FORK;
-     		}
      	}
     	return returnedString;
 	}

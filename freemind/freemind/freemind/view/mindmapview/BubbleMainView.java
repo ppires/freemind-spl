@@ -1,3 +1,5 @@
+//#if defined(BUBBLED_STYLE)
+//@#$LPS-BUBBLED_STYLE:GranularityType:Class
 /*FreeMind - A Program for creating and viewing Mindmaps
  *Copyright (C) 2000-2007  Joerg Mueller, Daniel Polansky, Christian Foltin, Dimitri Polivaev and others.
  *See COPYING for Details
@@ -154,3 +156,4 @@ class BubbleMainView extends MainView{
 
 
 }
+//#endif

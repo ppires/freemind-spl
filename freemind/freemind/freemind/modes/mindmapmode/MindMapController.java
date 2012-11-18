@@ -353,8 +353,11 @@ public class MindMapController extends ControllerAdapter implements MindMapActio
     public EdgeStyleAction edgeStyles[] = null;
     public NodeColorBlendAction nodeColorBlend = null;
     public NodeStyleAction fork = null;
+    //#if defined(BUBBLED_STYLE)
+    //@#$LPS-BUBBLED_STYLE:GranularityType:Attribute
     public NodeStyleAction bubble = null;
-    //#if defined(CLOUD)
+    //#endif
+    //#if defined(CLOUD)BUBBLED_STYLE
     //@#$LPS-CLOUD:GranularityType:Attribute
     public CloudAction cloud = null;
     //#endif
@@ -496,7 +499,10 @@ public class MindMapController extends ControllerAdapter implements MindMapActio
         nodeColor = new NodeColorAction(this);
         nodeColorBlend = new NodeColorBlendAction(this);
         fork = new NodeStyleAction(this, MindMapNode.STYLE_FORK);
+        //#if defined(BUBBLED_STYLE)
+        //@#$LPS-BUBBLED_STYLE:GranularityType:Statement
         bubble = new NodeStyleAction(this, MindMapNode.STYLE_BUBBLE);
+        //#endif
         // this is an unknown icon and thus corrected by mindicon:
         removeLastIconAction = new RemoveIconAction(this);
         // this action handles the xml stuff: (undo etc.)
@@ -1141,7 +1147,10 @@ freemind.main.Resources.getInstance().logException(					e1);
             edgeWidths[i].setEnabled(enabled);
         }
         fork.setEnabled(enabled);
+        //#if defined(BUBBLED_STYLE)
+        //@#$LPS-BUBBLED_STYLE:GranularityType:Statement
         bubble.setEnabled(enabled);
+        //#endif
         for (int i=0; i<edgeStyles.length; ++i) {
             edgeStyles[i].setEnabled(enabled);
         }
