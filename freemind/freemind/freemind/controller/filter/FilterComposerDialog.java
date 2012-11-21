@@ -67,7 +67,10 @@ import freemind.controller.filter.util.ExtendedComboBoxModel;
 import freemind.main.Resources;
 import freemind.main.Tools;
 import freemind.modes.MapRegistry;
+//#if defined(ICONS)
+//@#$LPS-ICONS:GranularityType:Import
 import freemind.modes.MindIcon;
+//#endif
 import freemind.modes.MindMap;
 import freemind.modes.ModeController;
 import freemind.modes.attributes.AttributeRegistry;
@@ -359,7 +362,10 @@ public class FilterComposerDialog extends JDialog {
     }
 
    private static final int NODE_POSITION = 0;
+	//#if defined(ICONS)
+	//@#$LPS-ICONS:GranularityType:Attribute
     private static final int ICON_POSITION = 1;
+    //#endif
     private class SimpleConditionChangeListener implements ItemListener {
         public void itemStateChanged(ItemEvent e) {
             if(e.getStateChange() == ItemEvent.SELECTED)
@@ -388,6 +394,8 @@ public class FilterComposerDialog extends JDialog {
                     caseInsensitive.setEnabled(true);
                     return;
                 }
+				//#if defined(ICONS)
+				//@#$LPS-ICONS:GranularityType:Statement
                 if (attributes.getSelectedIndex() == ICON_POSITION){
                     simpleCondition.setModel(simpleIconConditionComboBoxModel);
                     simpleCondition.setSelectedIndex(0);
@@ -401,6 +409,7 @@ public class FilterComposerDialog extends JDialog {
                     caseInsensitive.setEnabled(false);
                     return;
                 }
+                //#endif
                 if (attributes.getSelectedIndex() > NODE_POSITION){
                     final String attributeName = attributes.getSelectedItem().toString();
                     nodes.setExtensionList(registeredAttributes.getElement(attributeName).getValues());
@@ -442,11 +451,17 @@ public class FilterComposerDialog extends JDialog {
     private JButton btnOr;
     private JButton btnDelete;
     private JCheckBox caseInsensitive;
+	//#if defined(ICONS)
+	//@#$LPS-ICONS:GranularityType:Attribute
     private ExtendedComboBoxModel icons;
+    //#endif
     private ExtendedComboBoxModel nodes;
     private AttributeRegistry registeredAttributes;
     private DefaultComboBoxModel simpleNodeConditionComboBoxModel;
+	//#if defined(ICONS)
+	//@#$LPS-ICONS:GranularityType:Attribute
     private DefaultComboBoxModel simpleIconConditionComboBoxModel;
+    //#endif
     private DefaultComboBoxModel simpleAttributeConditionComboBoxModel;
     private ExtendedComboBoxModel filteredAttributeComboBoxModel;
     private DefaultComboBoxModel internalConditionsModel;
@@ -470,8 +485,11 @@ public class FilterComposerDialog extends JDialog {
 
         attributes = new JComboBox();
         filteredAttributeComboBoxModel = new ExtendedComboBoxModel(new NamedObject[] {
-                        Resources.getInstance().createTranslatedString("filter_node"),
-                        Resources.getInstance().createTranslatedString("filter_icon")
+                        Resources.getInstance().createTranslatedString("filter_node")
+                        //#if defined(ICONS)
+                        //@#$LPS-ICONS:GranularityType:Expression
+                        ,Resources.getInstance().createTranslatedString("filter_icon")
+                        //#endif
                 });
         MapRegistry registry = c.getModel().getRegistry();
         registeredAttributes = registry.getAttributes();
@@ -483,7 +501,10 @@ public class FilterComposerDialog extends JDialog {
         attributes.setRenderer(fc.getConditionRenderer());
 
         simpleNodeConditionComboBoxModel = new DefaultComboBoxModel(fc.getConditionFactory().getNodeConditionNames());
+		//#if defined(ICONS)
+		//@#$LPS-ICONS:GranularityType:Statement
         simpleIconConditionComboBoxModel = new DefaultComboBoxModel(fc.getConditionFactory().getIconConditionNames());
+        //#endif
 
         simpleCondition = new JComboBox();
         simpleCondition.setModel(simpleNodeConditionComboBoxModel);
@@ -501,8 +522,14 @@ public class FilterComposerDialog extends JDialog {
         values.setRenderer(fc.getConditionRenderer());
         values.setEditable(true);
 
+		//#if defined(ICONS)
+		//@#$LPS-ICONS:GranularityType:Statement
         icons = new ExtendedComboBoxModel();
+        //#endif
+		//#if defined(ICONS)
+		//@#$LPS-ICONS:GranularityType:Statement        
         icons.setExtensionList(registry.getIcons());
+        //#endif
 
         caseInsensitive = new JCheckBox();
         simpleConditionBox.add(Box.createHorizontalGlue());
@@ -612,10 +639,13 @@ public class FilterComposerDialog extends JDialog {
     }
 
     private String getAttributeValue() {
+		//#if defined(ICONS)
+		//@#$LPS-ICONS:GranularityType:Statement
         if (attributes.getSelectedIndex() == ICON_POSITION){
             MindIcon mi = (MindIcon)values.getSelectedItem();
             return mi.getName();
         }
+        //#endif
         Object item = values.getSelectedItem();
         return item != null ? item.toString() : "";
     }
@@ -624,23 +654,35 @@ public class FilterComposerDialog extends JDialog {
      */
     void mapChanged(MindMap newMap) {
     	if(newMap != null){
+    		//#if defined(ICONS)
+    		//@#$LPS-ICONS:GranularityType:Statement
     		icons.setExtensionList(newMap.getRegistry().getIcons());
+    		//#endif
+    		//#if defined(ICONS)
+    		//@#$LPS-ICONS:GranularityType:Statement
     		if(icons.getSize() >= 1 && values.getModel()==icons){
     			values.setSelectedIndex(0);
     		}
     		else{
+    		//#endif
     			values.setSelectedIndex(-1);
+			//#if defined(ICONS)
+			//@#$LPS-ICONS:GranularityType:Statement
     			if(values.getModel()==icons){
     				values.setSelectedItem(null);
     			}
     		}
+    		//#endif
     		if(attributes.getSelectedIndex() > 1)
     			attributes.setSelectedIndex(0);
     		registeredAttributes = newMap.getRegistry().getAttributes();
     		filteredAttributeComboBoxModel.setExtensionList(registeredAttributes.getListBoxModel());
     	}
     	else{
+    		//#if defined(ICONS)
+    		//@#$LPS-ICONS:GranularityType:Statement
     		icons.setExtensionList(null);
+    		//#endif
     		values.setSelectedIndex(-1);
     		attributes.setSelectedIndex(0);
     		filteredAttributeComboBoxModel.setExtensionList(null);

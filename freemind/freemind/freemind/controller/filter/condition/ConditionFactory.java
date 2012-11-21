@@ -38,7 +38,10 @@ import freemind.main.XMLElement;
  */
 public class ConditionFactory {
 
+    //#if defined(ICONS)
+    //@#$LPS-ICONS:GranularityType:Attribute
 	static final String FILTER_ICON = "filter_icon";
+	//#endif
     static final String FILTER_NODE = "filter_node";
     
 	static final String FILTER_DOES_NOT_EXIST = "filter_does_not_exist";
@@ -83,8 +86,11 @@ public class ConditionFactory {
 			return AttributeExistsCondition.load(element);
        	if (element.getName().equalsIgnoreCase(AttributeNotExistsCondition.NAME))
 			return AttributeNotExistsCondition.load(element);
+        //#if defined(ICONS)
+        //@#$LPS-ICONS:GranularityType:Statement
        	if (element.getName().equalsIgnoreCase(IconContainedCondition.NAME))
 			return IconContainedCondition.load(element);
+       	//#endif
        	if (element.getName().equalsIgnoreCase(ConditionNotSatisfiedDecorator.NAME)){
        		return ConditionNotSatisfiedDecorator.load(element);
        	}
@@ -143,9 +149,12 @@ public class ConditionFactory {
             String value,
             boolean ignoreCase)
     {
+        //#if defined(ICONS)
+        //@#$LPS-ICONS:GranularityType:Statement
         if (attribute.equals(FILTER_ICON)
             && simpleCondition.equals(FILTER_CONTAINS)    )
             return new IconContainedCondition(value);
+        //#endif
         if (attribute.equals(FILTER_NODE)){
                 return createNodeCondition(simpleCondition, value, ignoreCase);
         }
@@ -166,11 +175,14 @@ public class ConditionFactory {
             };
         }
 
+    //#if defined(ICONS)
+    //@#$LPS-ICONS:GranularityType:Method
     public Object[] getIconConditionNames() {
         return new NamedObject[] {
                 Resources.getInstance().createTranslatedString(FILTER_CONTAINS),
         };
     }
+    //#endif
     public  NamedObject[] getAttributeConditionNames() {
         return new NamedObject[] {
                 Resources.getInstance().createTranslatedString(FILTER_EXIST),

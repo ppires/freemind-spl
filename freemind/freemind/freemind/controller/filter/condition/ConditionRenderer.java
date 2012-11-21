@@ -29,8 +29,10 @@ import javax.swing.JComponent;
 import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.ListCellRenderer;
-
+//#if defined(ICONS)
+//@#$LPS-ICONS:GranularityType:Import
 import freemind.modes.MindIcon;
+//#endif
 import freemind.main.Resources;;
 
 
@@ -53,10 +55,14 @@ public class ConditionRenderer implements ListCellRenderer {
         if(value == null) 
             return new JLabel(Resources.getInstance().getResourceString("filter_no_filtering"));
         JComponent component;
+		//#if defined(ICONS)
+		//@#$LPS-ICONS:GranularityType:Statement
         if(value instanceof MindIcon){
             component = new JLabel(((MindIcon)value).getIcon());
         }
-        else if(value instanceof Condition){ 
+        else 
+        //#endif
+        if(value instanceof Condition){ 
             Condition cond = (Condition) value;            
             component = cond.getListCellRendererComponent();
         }
