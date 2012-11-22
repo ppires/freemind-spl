@@ -219,9 +219,15 @@ public class StylePatternFrame extends JPanel implements TextTranslator,
 
 	private ColorProperty mEdgeColor;
 
+	//#if defined(ICONS)
+	//@#$LPS-ICONS:GranularityType:Attribute
 	private ThreeCheckBoxProperty mSetIcon;
+	//#endif
 
+	//#if defined(ICONS)
+	//@#$LPS-ICONS:GranularityType:Attribute
 	private IconProperty mIcon;
+	//#endif
 
 	private ThreeCheckBoxProperty mSetChildPattern;
 
@@ -356,18 +362,30 @@ public class StylePatternFrame extends JPanel implements TextTranslator,
 		Vector iconActions = controller.iconActions;
 		//#endif
 		//#if defined(ICONS)
-		//@#$LPS-ICONS:GranularityType:Class
+		//@#$LPS-ICONS:GranularityType:Statement
 		for (Enumeration e = iconActions.elements(); e.hasMoreElements();) {
 			IconAction action = ((IconAction) e.nextElement());
 			MindIcon info = action.getMindIcon();
 			mIconInformationVector.add(info);
 		}
 		//#endif
+		//#if defined(ICONS)
+		//@#$LPS-ICONS:GranularityType:Statement
 		mSetIcon = new ThreeCheckBoxProperty(SET_ICON + ".tooltip", SET_ICON);
+		//#endif
+		//#if defined(ICONS)
+		//@#$LPS-ICONS:GranularityType:Statement
 		controls.add(mSetIcon);
+		//#endif
+		//#if defined(ICONS)
+		//@#$LPS-ICONS:GranularityType:Statement
 		mIcon = new IconProperty(ICON + ".tooltip", ICON, mMindMapController
 				.getFrame(), mIconInformationVector);
+		//#endif
+		//#if defined(ICONS)
+		//@#$LPS-ICONS:GranularityType:Statement
 		controls.add(mIcon);
+		//#endif
 		controls.add(new NextLineProperty());
 		controls.add(new SeparatorProperty("NodeFont"));
 		mSetNodeFontName = new ThreeCheckBoxProperty(SET_NODE_FONT_NAME
@@ -447,7 +465,10 @@ public class StylePatternFrame extends JPanel implements TextTranslator,
 		mPropertyChangePropagation.put(mSetEdgeColor, mEdgeColor);
 		mPropertyChangePropagation.put(mSetEdgeStyle, mEdgeStyle);
 		mPropertyChangePropagation.put(mSetEdgeWidth, mEdgeWidth);
+		//#if defined(ICONS)
+		//@#$LPS-ICONS:GranularityType:Statement
 		mPropertyChangePropagation.put(mSetIcon, mIcon);
+		//#endif
 		mPropertyChangePropagation.put(mSetScriptPattern, mScriptPattern);
 		if (StylePatternFrameType.WITH_NAME_AND_CHILDS.equals(mType)) {
 			// child pattern
