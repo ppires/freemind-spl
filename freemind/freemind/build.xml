@@ -68,7 +68,8 @@
 				<include name="freemind_actions.xsd" />
 				<include name="freemind.xsd" />
 				<include name="mindmap_menus.xml" />
-				<include name="accessories/**/*.xml" />
+				<include name="**/*.xml" />
+				<exclude name="build.xml" />
 			</fileset>
 		</copy>
 		
