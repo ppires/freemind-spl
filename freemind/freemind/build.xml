@@ -197,10 +197,6 @@
 		     classpath problems of the plugins. -->
 			<exclude name="tests/**" />
 			<exclude name="plugins/**" />
-
-			<!-- freemind-spl: exclude unprocessed source files -->
-			<exclude name="javapp-tmp/**" />
-
 		</javac>
 		<!-- Starter should work with java 1.1, too as it checks the java version.-->
 		<delete failonerror="false" file="${build}/freemind/main/FreeMindStarter.class"></delete>
