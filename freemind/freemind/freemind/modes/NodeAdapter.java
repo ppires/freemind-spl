@@ -1224,13 +1224,9 @@ freemind.main.Resources.getInstance().logException(			e);
 			stateIcons = null;
     }
     public Map getStateIcons() {
-    	System.out.println("NodeAdapter.getStateIcons()");
-    	System.out.println("   " + this.getShortText(getModeController()));
-    		if(stateIcons==null) {
-    			System.out.println("   no state icons...");
-    			return Collections.EMPTY_MAP;
-    		}
-    	System.out.println("   state icons size: " + stateIcons.size());
+		if(stateIcons==null)
+			return Collections.EMPTY_MAP;
+
         return Collections.unmodifiableSortedMap(stateIcons);
     }
 	public HistoryInformation getHistoryInformation() {
