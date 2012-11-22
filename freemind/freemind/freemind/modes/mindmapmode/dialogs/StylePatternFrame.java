@@ -79,7 +79,10 @@ import freemind.modes.MindIcon;
 import freemind.modes.MindMapNode;
 import freemind.modes.mindmapmode.MindMapController;
 import freemind.modes.mindmapmode.actions.ApplyPatternAction;
+//#if defined(ICONS)
+//@#$LPS-ICONS:GranularityType:Import
 import freemind.modes.mindmapmode.actions.IconAction;
+//#endif
 
 /**
  * @author foltin
