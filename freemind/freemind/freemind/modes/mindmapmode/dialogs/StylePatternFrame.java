@@ -239,7 +239,10 @@ public class StylePatternFrame extends JPanel implements TextTranslator,
 	
 	private StringProperty mName;
 
+	//#if defined(ICONS)
+	//@#$LPS-ICONS:GranularityType:Attribute
 	private Vector mIconInformationVector;
+	//#endif
 
 	/**
 	 * Denotes pairs property -> ThreeCheckBoxProperty such that the boolean
@@ -355,7 +358,10 @@ public class StylePatternFrame extends JPanel implements TextTranslator,
 		mNodeStyle = new ComboProperty(NODE_STYLE + ".tooltip", NODE_STYLE,
 				MindMapNode.NODE_STYLES, this);
 		controls.add(mNodeStyle);
+		//#if defined(ICONS)
+		//@#$LPS-ICONS:GranularityType:Statement
 		mIconInformationVector = new Vector();
+		//#endif
 		MindMapController controller = mMindMapController;
 		//#if defined(ICONS)
 		//@#$LPS-ICONS:GranularityType:Statement
@@ -514,8 +520,11 @@ public class StylePatternFrame extends JPanel implements TextTranslator,
 				mNodeFontBold, BooleanProperty.TRUE_VALUE);
 		setPatternControls(pattern.getPatternNodeFontItalic(),
 				mSetNodeFontItalic, mNodeFontItalic, BooleanProperty.TRUE_VALUE);
+		//#if defined(ICONS)
+		//@#$LPS-ICONS:GranularityType:Statement
 		MindIcon firstInfo = (MindIcon) mIconInformationVector
 				.get(0);
+		//#endif
 		//#if defined(ICONS)
 		//@#$LPS-ICONS:GranularityType:Statement
 		setPatternControls(pattern.getPatternIcon(), mSetIcon, mIcon,
