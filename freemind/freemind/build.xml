@@ -52,6 +52,7 @@
 	<property name="CLOUD_COLOR" value="Clouds with custom colors. Requires CLOUD." />
 	<property name="ARROW_LINK" value="Nodes connected by arrow links" />
 	<property name="BUBBLED_STYLE" value="Bubbled style for nodes" />
+	<property name="BACKGROUND_COLOR" value="Nodes can have background color" />
 	
 	<!--property name="ICONS" value="Nodes can have icons"/-->
 	<!--property name="FOLLOWABLE_LINKS" value="Nodes can contain followable links" /-->
