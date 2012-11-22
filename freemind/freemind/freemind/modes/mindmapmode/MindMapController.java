@@ -193,7 +193,10 @@ import freemind.modes.mindmapmode.actions.MoveNodeAction;
 import freemind.modes.mindmapmode.actions.NewChildAction;
 import freemind.modes.mindmapmode.actions.NewPreviousSiblingAction;
 import freemind.modes.mindmapmode.actions.NewSiblingAction;
+//#if defined(BACKGROUND_COLOR)
+//@#$LPS-BACKGROUND_COLOR:GranularityType:Import
 import freemind.modes.mindmapmode.actions.NodeBackgroundColorAction;
+//#endif
 import freemind.modes.mindmapmode.actions.NodeColorAction;
 import freemind.modes.mindmapmode.actions.NodeColorBlendAction;
 import freemind.modes.mindmapmode.actions.NodeGeneralAction;
@@ -381,8 +384,14 @@ public class MindMapController extends ControllerAdapter implements MindMapActio
     //@#$LPS-ARROW_LINK:GranularityType:Attribute
     public ChangeArrowsInArrowLinkAction changeArrowsInArrowLinkAction = null;
     //#endif
+	//#if defined(BACKGROUND_COLOR)
+	//@#$LPS-BACKGROUND_COLOR:GranularityType:Attribute
     public NodeBackgroundColorAction nodeBackgroundColor = null;
+    //#endif
+	//#if defined(BACKGROUND_COLOR)
+	//@#$LPS-BACKGROUND_COLOR:GranularityType:Attribute
     public RemoveNodeBackgroundColorAction removeNodeBackgroundColor = null;
+    //#endif
 
     public IconAction unknownIconAction = null;
     public RemoveIconAction removeLastIconAction = null;
@@ -559,8 +568,14 @@ public class MindMapController extends ControllerAdapter implements MindMapActio
         //@#$LPS-ARROW_LINK:GranularityType:Statement
         changeArrowsInArrowLinkAction = new ChangeArrowsInArrowLinkAction(this, "none", null, null, true, true);
         //#endif
+    	//#if defined(BACKGROUND_COLOR)
+    	//@#$LPS-BACKGROUND_COLOR:GranularityType:Statement
         nodeBackgroundColor = new NodeBackgroundColorAction(this);
+        //#endif
+    	//#if defined(BACKGROUND_COLOR)
+    	//@#$LPS-BACKGROUND_COLOR:GranularityType:Statement
         removeNodeBackgroundColor = new RemoveNodeBackgroundColorAction(this);
+        //#endif
         setLinkByTextField = new SetLinkByTextFieldAction(this);
         addLocalLinkAction = new AddLocalLinkAction(this);
         gotoLinkNodeAction = new GotoLinkNodeAction(this, null);
@@ -1119,7 +1134,10 @@ freemind.main.Resources.getInstance().logException(					e1);
         addLocalLinkAction.setEnabled(enabled);
         nodeColorBlend.setEnabled(enabled);
         nodeUp.setEnabled(enabled);
+    	//#if defined(BACKGROUND_COLOR)
+    	//@#$LPS-BACKGROUND_COLOR:GranularityType:Statement
         nodeBackgroundColor.setEnabled(enabled);
+        //#endif
         nodeDown.setEnabled(enabled);
         importExplorerFavorites.setEnabled(enabled);
         importFolderStructure.setEnabled(enabled);
@@ -1140,7 +1158,10 @@ freemind.main.Resources.getInstance().logException(					e1);
         removeAllIconsAction.setEnabled(enabled);
         selectAllAction.setEnabled(enabled);
         selectBranchAction.setEnabled(enabled);
+    	//#if defined(BACKGROUND_COLOR)
+    	//@#$LPS-BACKGROUND_COLOR:GranularityType:Statement
         removeNodeBackgroundColor.setEnabled(enabled);
+        //#endif
         moveNodeAction.setEnabled(enabled);
         revertAction.setEnabled(enabled);
         for (int i=0; i<edgeWidths.length; ++i) {

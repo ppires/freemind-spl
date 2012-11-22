@@ -57,6 +57,7 @@
 	<!--property name="ICONS" value="Nodes can have icons"/-->
 	<!--property name="FOLLOWABLE_LINKS" value="Nodes can contain followable links" /-->
 	<!--property name="RICH_TEXT_NODES" value="Nodes can have rich text" /-->
+	<!--property name="NOTES" value="Nodes can have notes"-->
 	
 	<!-- preprocess task -->
 	<taskdef resource="javapp-defs.xml" />

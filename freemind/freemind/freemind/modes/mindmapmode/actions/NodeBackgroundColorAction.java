@@ -1,3 +1,5 @@
+//#if defined(BACKGROUND_COLOR)
+//@#$LPS-BACKGROUND_COLOR:GranularityType:Class
 /*
  * FreeMind - A Program for creating and viewing Mindmaps Copyright (C)
  * 2000-2004 Joerg Mueller, Daniel Polansky, Christian Foltin and others.
@@ -111,3 +113,4 @@ public class NodeBackgroundColorAction extends FreemindAction implements ActorXm
     }
 
 }
+//#endif
