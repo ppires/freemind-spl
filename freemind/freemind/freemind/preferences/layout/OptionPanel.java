@@ -1045,7 +1045,10 @@ public class OptionPanel implements TextTranslator {
         controls.add(new KeyProperty(frame, null, "keystroke_accessories/plugins/ChangeNodeLevelAction_right.properties_key"));
         controls.add(new KeyProperty(frame, null, "keystroke_accessories/plugins/FormatCopy.properties.properties_key"));
         controls.add(new KeyProperty(frame, null, "keystroke_accessories/plugins/FormatPaste.properties.properties_key"));
+		//#if defined(ICONS)
+		//@#$LPS-ICONS:GranularityType:Statement
         controls.add(new KeyProperty(frame, null, "keystroke_accessories/plugins/IconSelectionPlugin.properties.properties_key"));
+        //#endif
         controls.add(new KeyProperty(frame, null, "keystroke_accessories/plugins/NewParentNode.properties_key"));
         //controls.add(new KeyProperty(frame, null, "keystroke_accessories/plugins/NodeNote.properties_key"));
         controls.add(new KeyProperty(frame, null, "keystroke_accessories/plugins/NodeNote_jumpto.keystroke.alt_N"));

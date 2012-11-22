@@ -1,3 +1,7 @@
+<!-- 
+//#if defined(ICONS)
+//@#$LPS-ICONS:GranularityType:XML
+ -->
 <?xml version="1.0"?>
 <plugin label="accessories/plugins/IconSelectionPlugin">
     <plugin_action documentation="%accessories/plugins/IconSelectionPlugin.properties_documentation" name="%accessories/plugins/IconSelectionPlugin.properties_name" key_stroke="%keystroke_accessories/plugins/IconSelectionPlugin.properties.properties_key" base="freemind.extensions.NodeHookAdapter" icon_path="accessories/plugins/icons/kalzium.png" label="accessories/plugins/IconSelectionPlugin.properties" class_name="accessories.plugins.IconSelectionPlugin" instanciation="ApplyToRoot">
@@ -8,3 +12,6 @@
 			<plugin_menu location="mindmapmode_toolbar/icons/IconSelection"/> -->
     </plugin_action>
 </plugin>
+<!-- 
+//#endif
+ -->
