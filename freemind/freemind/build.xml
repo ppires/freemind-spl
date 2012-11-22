@@ -67,7 +67,7 @@
 				<include name="**/*.java"/>
 				<include name="**/*.xsd" />
 				<include name="**/*.xml" />
-				<exclude name="**/build.xml" />
+				<exclude name="**/build*.xml" />
 			</fileset>
 		</copy>
 		
