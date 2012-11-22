@@ -493,9 +493,12 @@ class MindMapHTMLWriter {
 			fileout.write("<span style=\"" + fontStyle + "\">");
 		}
 
+		//#if defined(ICONS)
+		//@#$LPS-ICONS:GranularityType:Statement
 		if (Resources.getInstance().getBoolProperty("export_icons_in_html")) {
 			writeIcons(model);
 		}
+		//#endif
 
 		writeModelContent(model);
 
@@ -655,6 +658,8 @@ class MindMapHTMLWriter {
 //        }
     }
 
+	//#if defined(ICONS)
+	//@#$LPS-ICONS:GranularityType:Method
 	private void writeIcons(MindMapNodeModel model) throws IOException {
         for (int i = 0; i < model.getIcons().size(); ++i) {
             fileout.write("<img src=\""
@@ -664,6 +669,7 @@ class MindMapHTMLWriter {
                     + "\">");
         }
     }
+	//#endif
 
     private void writeFoldingButtons(String localParentID) throws IOException {
         fileout.write("<span id=\"show" + localParentID

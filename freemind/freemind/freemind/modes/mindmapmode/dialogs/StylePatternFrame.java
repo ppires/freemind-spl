@@ -56,7 +56,10 @@ import freemind.controller.actions.generated.instance.PatternChild;
 import freemind.controller.actions.generated.instance.PatternEdgeColor;
 import freemind.controller.actions.generated.instance.PatternEdgeStyle;
 import freemind.controller.actions.generated.instance.PatternEdgeWidth;
+//#if defined(ICONS)
+//@#$LPS-ICONS:GranularityType:Import
 import freemind.controller.actions.generated.instance.PatternIcon;
+//#endif
 import freemind.controller.actions.generated.instance.PatternNodeBackgroundColor;
 import freemind.controller.actions.generated.instance.PatternNodeColor;
 import freemind.controller.actions.generated.instance.PatternNodeFontBold;
@@ -480,8 +483,11 @@ public class StylePatternFrame extends JPanel implements TextTranslator,
 				mSetNodeFontItalic, mNodeFontItalic, BooleanProperty.TRUE_VALUE);
 		MindIcon firstInfo = (MindIcon) mIconInformationVector
 				.get(0);
+		//#if defined(ICONS)
+		//@#$LPS-ICONS:GranularityType:Statement
 		setPatternControls(pattern.getPatternIcon(), mSetIcon, mIcon,
 				firstInfo.getName());
+		//#endif
 		setPatternControls(pattern.getPatternScript(), mSetScriptPattern, mScriptPattern,
 				"");
 		if (StylePatternFrameType.WITH_NAME_AND_CHILDS.equals(mType)) {
@@ -621,8 +627,11 @@ public class StylePatternFrame extends JPanel implements TextTranslator,
 				.setPatternNodeFontItalic((PatternNodeFontItalic) getPatternResult(
 						new PatternNodeFontItalic(), mSetNodeFontItalic,
 						mNodeFontItalic));
+		//#if defined(ICONS)
+		//@#$LPS-ICONS:GranularityType:Statement
 		pattern.setPatternIcon((PatternIcon) getPatternResult(
 				new PatternIcon(), mSetIcon, mIcon));
+		//#endif
 		pattern.setPatternScript((PatternScript) getPatternResult(
 				new PatternScript(), mSetScriptPattern, mScriptPattern));
 		if (StylePatternFrameType.WITH_NAME_AND_CHILDS.equals(mType)) {

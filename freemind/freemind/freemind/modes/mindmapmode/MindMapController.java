@@ -94,7 +94,10 @@ import freemind.controller.actions.generated.instance.Pattern;
 import freemind.controller.actions.generated.instance.PatternEdgeColor;
 import freemind.controller.actions.generated.instance.PatternEdgeStyle;
 import freemind.controller.actions.generated.instance.PatternEdgeWidth;
+//#if defined(ICONS)
+//@#$LPS-ICONS:GranularityType:Import
 import freemind.controller.actions.generated.instance.PatternIcon;
+//#endif
 import freemind.controller.actions.generated.instance.PatternNodeBackgroundColor;
 import freemind.controller.actions.generated.instance.PatternNodeColor;
 import freemind.controller.actions.generated.instance.PatternNodeFontBold;
@@ -392,9 +395,8 @@ public class MindMapController extends ControllerAdapter implements MindMapActio
     //#endif
     public NodeBackgroundColorAction nodeBackgroundColor = null;
     public RemoveNodeBackgroundColorAction removeNodeBackgroundColor = null;
-
-	//#if defined(ICONS)
-	//@#$LPS-ICONS:GranularityType:Attribute
+    //#if defined(ICONS)
+    //@#$LPS-ICONS:GranularityType:Attribute
     public IconAction unknownIconAction = null;
     //#endif
 	//#if defined(ICONS)
@@ -456,7 +458,7 @@ public class MindMapController extends ControllerAdapter implements MindMapActio
         // create standard actions:
         createStandardActions();
     	//#if defined(ICONS)
-    	//@#$LPS-ICONS:GranularityType:Attribute
+    	//@#$LPS-ICONS:GranularityType:Statement
         // icon actions:
         createIconActions();
         //#endif
@@ -716,13 +718,19 @@ public class MindMapController extends ControllerAdapter implements MindMapActio
 			patterns[i] = new ApplyPatternAction(this,
                     actualPattern);
 
+			//#if defined(ICONS)
+			//@#$LPS-ICONS:GranularityType:Statement
             // search icons for patterns:
             PatternIcon patternIcon = actualPattern
                     .getPatternIcon();
+            //#endif
+    		//#if defined(ICONS)
+    		//@#$LPS-ICONS:GranularityType:Statement
             if (patternIcon != null && patternIcon.getValue() != null) {
                 patterns[i].putValue(Action.SMALL_ICON, MindIcon.factory(
                         patternIcon.getValue()).getIcon());
             }
+            //#endif
         }
     }
 
@@ -1496,18 +1504,27 @@ freemind.main.Resources.getInstance().logException(					e1);
         }
     }
 
+    
+    //#if defined(ICONS)
+    //@#$LPS-ICONS:GranularityType:Method
     public void addIcon(MindMapNode node, MindIcon icon) {
         unknownIconAction.addIcon(node, icon);
     }
+    //#endif
 
-
+    //#if defined(ICONS)
+    //@#$LPS-ICONS:GranularityType:Method
     public void removeAllIcons(MindMapNode node) {
         removeAllIconsAction.removeAllIcons(node);
     }
+    //#endif
 
+	//#if defined(ICONS)
+	//@#$LPS-ICONS:GranularityType:Method
     public int removeLastIcon(MindMapNode node) {
         return removeLastIconAction.removeLastIcon(node);
     }
+    //#endif
 
     //#if defined(ARROW_LINK)
     //@#$LPS-ARROW_LINK:GranularityType:Method
@@ -2254,7 +2271,10 @@ freemind.main.Resources.getInstance().logException(					e1);
 		erasePattern.setPatternEdgeColor(new PatternEdgeColor());
 		erasePattern.setPatternEdgeStyle(new PatternEdgeStyle());
 		erasePattern.setPatternEdgeWidth(new PatternEdgeWidth());
+		//#if defined(ICONS)
+		//@#$LPS-ICONS:GranularityType:Statement
 		erasePattern.setPatternIcon(new PatternIcon());
+		//#endif
 		erasePattern.setPatternNodeBackgroundColor(new PatternNodeBackgroundColor());
 		erasePattern.setPatternNodeColor(new PatternNodeColor());
 		erasePattern.setPatternNodeFontBold(new PatternNodeFontBold());

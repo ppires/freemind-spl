@@ -54,7 +54,10 @@ public class MindMapPopupMenu extends FreeMindPopupMenu {
 	public void update(StructuredMenuHolder holder) {
 		this.removeAll();
 		c.createPatternSubMenu(holder, MINDMAPMODE_POPUP);
+		//#if defined(ICONS)
+		//@#$LPS-ICONS:GranularityType:Statement
 		c.addIconsToMenu(holder, MINDMAPMODE_POPUP+"icons/");
+		//#endif
 		holder.updateMenus(this, MINDMAPMODE_POPUP);
 		
 	}

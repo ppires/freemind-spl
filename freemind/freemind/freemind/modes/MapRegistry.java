@@ -68,7 +68,10 @@ public class MapRegistry {
     
     public void registrySubtree(MindMapNode root, boolean registerMyself){
         if(registerMyself){
+        	//#if defined(ICONS)
+        	//@#$LPS-ICONS:GranularityType:Statement
             registryNodeIcons(root);
+            //#endif
             registryAttributes(root);
         }
         ListIterator iterator = root.childrenUnfolded();
@@ -88,6 +91,8 @@ public class MapRegistry {
         }
     }
 
+	//#if defined(ICONS)
+	//@#$LPS-ICONS:GranularityType:Method
     public void registryNodeIcons(MindMapNode node) {
         List icons = node.getIcons();
         Iterator i = icons.iterator();
@@ -96,6 +101,7 @@ public class MapRegistry {
             addIcon(icon);
         }
     }
+    //#endif
 
     public MindMap getMap() {
         return map;

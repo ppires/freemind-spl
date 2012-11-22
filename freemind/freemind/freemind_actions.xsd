@@ -34,9 +34,30 @@
 					<xs:element ref="move_nodes_action"/>
 					<xs:element ref="hook_node_action"/>
 					<xs:element ref="hook_content_node_action"/>
+					<!-- 
+					//#if defined(ICONS)
+					//@#$LPS-ICONS:GranularityType:XML
+					 -->
 					<xs:element ref="add_icon_action"/>
+					<!-- 
+					//#endif
+					 -->
+					<!-- 
+					//#if defined(ICONS)
+					//@#$LPS-ICONS:GranularityType:XML
+					 -->
 					<xs:element ref="remove_icon_xml_action"/>
+					<!-- 
+					//#endif
+					 -->
+					<!-- 
+					//#if defined(ICONS)
+					//@#$LPS-ICONS:GranularityType:XML
+					 -->
 					<xs:element ref="remove_all_icons_xml_action"/>
+					<!-- 
+					//#endif
+					 -->
 					<xs:element ref="move_node_xml_action"/>
 					<!-- 
 					//#if defined(CLOUD)
@@ -211,6 +232,10 @@
 		</xs:complexContent>
 	  </xs:complexType>
 
+	<!-- 
+	//#if defined(ICONS)
+	//@#$LPS-ICONS:GranularityType:XML
+	 -->
 	<!-- Add Icon Action -->
 	<xs:element name="add_icon_action">
 	  <xs:complexType>
@@ -222,7 +247,14 @@
 		</xs:complexContent>
 	  </xs:complexType>
 	</xs:element>
+	<!-- 
+	//#endif
+	 -->
 
+	<!-- 
+	//#if defined(ICONS)
+	//@#$LPS-ICONS:GranularityType:XML
+	 -->
 	<!-- Remove last Icon Action -->
 	<xs:element name="remove_icon_xml_action">
 	  <xs:complexType>
@@ -233,7 +265,14 @@
 		</xs:complexContent>
 	  </xs:complexType>
 	</xs:element>
+	<!-- 
+	//#endif
+	 -->
 
+	<!-- 
+	//#if defined(ICONS)
+	//@#$LPS-ICONS:GranularityType:XML
+	 -->
 	<!-- Remove All Icon Action -->
 	<xs:element name="remove_all_icons_xml_action">
 	  <xs:complexType>
@@ -242,6 +281,9 @@
 		</xs:complexContent>
 	  </xs:complexType>
 	</xs:element>
+	<!-- 
+	//#endif
+	 -->
 
 	<!-- 
 	//#if defined(CLOUD)
@@ -969,7 +1011,14 @@
     <xs:element name="pattern_node_font_bold">        <xs:complexType><xs:complexContent><xs:extension base="pattern_property_base"></xs:extension></xs:complexContent></xs:complexType>  </xs:element>
     <xs:element name="pattern_node_font_italic">      <xs:complexType><xs:complexContent><xs:extension base="pattern_property_base"></xs:extension></xs:complexContent></xs:complexType>  </xs:element>
     <xs:element name="pattern_node_font_size">        <xs:complexType><xs:complexContent><xs:extension base="pattern_property_base"></xs:extension></xs:complexContent></xs:complexType>  </xs:element>
+	<!-- 
+	//#if defined(ICONS)
+	//@#$LPS-ICONS:GranularityType:XML
+	 -->
     <xs:element name="pattern_icon">                  <xs:complexType><xs:complexContent><xs:extension base="pattern_property_base"></xs:extension></xs:complexContent></xs:complexType>  </xs:element>
+    <!-- 
+    //#endif
+     -->
     <xs:element name="pattern_edge_color">            <xs:complexType><xs:complexContent><xs:extension base="pattern_property_base"></xs:extension></xs:complexContent></xs:complexType>  </xs:element>
     <xs:element name="pattern_edge_style">            <xs:complexType><xs:complexContent><xs:extension base="pattern_property_base"></xs:extension></xs:complexContent></xs:complexType>  </xs:element>
     <xs:element name="pattern_edge_width">            <xs:complexType><xs:complexContent><xs:extension base="pattern_property_base"></xs:extension></xs:complexContent></xs:complexType>  </xs:element>
@@ -989,7 +1038,14 @@
 						<xs:element minOccurs="0" maxOccurs="1" ref="pattern_node_font_bold"/>
 						<xs:element minOccurs="0" maxOccurs="1" ref="pattern_node_font_italic"/>
 						<xs:element minOccurs="0" maxOccurs="1" ref="pattern_node_font_size"/>
+						<!-- 
+						//#if defined(ICONS)
+						//@#$LPS-ICONS:GranularityType:XML
+						 -->
 						<xs:element minOccurs="0" maxOccurs="1" ref="pattern_icon"/>
+						<!-- 
+						//#endif
+						 -->
 						<xs:element minOccurs="0" maxOccurs="1" ref="pattern_edge_color"/>
 						<xs:element minOccurs="0" maxOccurs="1" ref="pattern_edge_style"/>
 						<xs:element minOccurs="0" maxOccurs="1" ref="pattern_edge_width"/>

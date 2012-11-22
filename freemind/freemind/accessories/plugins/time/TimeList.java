@@ -845,7 +845,10 @@ public class TimeList extends MindMapHookAdapter {
 		private Vector iconNames;
 
 		public IconsHolder(MindMapNode node) {
+		    //#if defined(ICONS)
+		    //@#$LPS-ICONS:GranularityType:Statement
 			icons.addAll(node.getIcons());
+			//#endif
 			// sorting the output.
 			iconNames = new Vector();
 			for (Iterator i = icons.iterator(); i.hasNext();) {

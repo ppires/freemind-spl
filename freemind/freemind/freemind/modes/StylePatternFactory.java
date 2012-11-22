@@ -121,12 +121,14 @@ public class StylePatternFactory {
 			subPattern.setValue(node.getFontFamilyName());
 			pattern.setPatternNodeFontName(subPattern);
 		}
-
+		//#if defined(ICONS)
+		//@#$LPS-ICONS:GranularityType:Statement
 		if (node.getIcons().size() == 1) {
 			PatternIcon iconPattern = new PatternIcon();
 			iconPattern.setValue(((MindIcon) node.getIcons().get(0)).getName());
 			pattern.setPatternIcon(iconPattern);
 		}
+		//#endif
 		if (node.getEdge().getColor() != null) {
 			PatternEdgeColor subPattern = new PatternEdgeColor();
 			subPattern.setValue(Tools.colorToXml(node.getEdge().getColor()));
@@ -180,8 +182,11 @@ public class StylePatternFactory {
 		"PatternToString.EdgeColor");
 		result = addSubPatternToString(translator, result, pPattern.getPatternEdgeWidth(),
 		"PatternToString.EdgeWidth");
+		//#if defined(ICONS)
+		//@#$LPS-ICONS:GranularityType:Statement
 		result = addSubPatternToString(translator, result, pPattern.getPatternIcon(),
 		"PatternToString.Icon");
+		//#endif
 		result = addSubPatternToString(translator, result, pPattern.getPatternChild(),
 		"PatternToString.Child");
 		return result;
@@ -242,7 +247,10 @@ public class StylePatternFactory {
 		result.setPatternEdgeColor((PatternEdgeColor) processPatternProperties(p1.getPatternEdgeColor(), p2.getPatternEdgeColor(), new PatternEdgeColor()));
 		result.setPatternEdgeStyle((PatternEdgeStyle) processPatternProperties(p1.getPatternEdgeStyle(), p2.getPatternEdgeStyle(), new PatternEdgeStyle()));
 		result.setPatternEdgeWidth((PatternEdgeWidth) processPatternProperties(p1.getPatternEdgeWidth(), p2.getPatternEdgeWidth(), new PatternEdgeWidth()));
+		//#if defined(ICONS)
+		//@#$LPS-ICONS:GranularityType:Statement
 		result.setPatternIcon((PatternIcon) processPatternProperties(p1.getPatternIcon(), p2.getPatternIcon(), new PatternIcon()));
+		//#endif
 		result.setPatternNodeBackgroundColor((PatternNodeBackgroundColor) processPatternProperties(p1.getPatternNodeBackgroundColor(), p2.getPatternNodeBackgroundColor(), new PatternNodeBackgroundColor()));
 		result.setPatternNodeColor((PatternNodeColor) processPatternProperties(p1.getPatternNodeColor(), p2.getPatternNodeColor(), new PatternNodeColor()));
 		result.setPatternNodeFontBold((PatternNodeFontBold) processPatternProperties(p1.getPatternNodeFontBold(), p2.getPatternNodeFontBold(), new PatternNodeFontBold()));
