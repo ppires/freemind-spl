@@ -1069,11 +1069,23 @@ public class OptionPanel implements TextTranslator {
         final ModeController modeController = fmMain.getController().getModeController();
         if(modeController instanceof MindMapController){
     		MindMapController controller = (MindMapController)modeController;
+    		//#if defined(ICONS)
+    		//@#$LPS-ICONS:GranularityType:Statement
     		Vector iconActions = controller.iconActions;
+    		//#endif
     		Vector actions = new Vector();
+    		//#if defined(ICONS)
+    		//@#$LPS-ICONS:GranularityType:Statement
     		actions.addAll(iconActions);
+    		//#endif
+    		//#if defined(ICONS)
+    		//@#$LPS-ICONS:GranularityType:Statement
     		actions.add(controller.removeLastIconAction);
+    		//#endif
+    		//#if defined(ICONS)
+    		//@#$LPS-ICONS:GranularityType:Statement
     		actions.add(controller.removeAllIconsAction);
+    		//#endif
             controls.add(new NextLineProperty());
             controls.add(new SeparatorProperty("icons"));
             final Iterator iterator = actions.iterator();

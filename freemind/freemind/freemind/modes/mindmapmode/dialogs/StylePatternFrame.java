@@ -42,7 +42,10 @@ import freemind.common.BooleanProperty;
 import freemind.common.ColorProperty;
 import freemind.common.ComboProperty;
 import freemind.common.FontProperty;
+//#if defined(ICONS)
+//@#$LPS-ICONS:GranularityType:Import
 import freemind.common.IconProperty;
+//#endif
 import freemind.common.NextLineProperty;
 import freemind.common.PropertyBean;
 import freemind.common.PropertyControl;
@@ -345,12 +348,18 @@ public class StylePatternFrame extends JPanel implements TextTranslator,
 		controls.add(mNodeStyle);
 		mIconInformationVector = new Vector();
 		MindMapController controller = mMindMapController;
+		//#if defined(ICONS)
+		//@#$LPS-ICONS:GranularityType:Statement
 		Vector iconActions = controller.iconActions;
+		//#endif
+		//#if defined(ICONS)
+		//@#$LPS-ICONS:GranularityType:Class
 		for (Enumeration e = iconActions.elements(); e.hasMoreElements();) {
 			IconAction action = ((IconAction) e.nextElement());
 			MindIcon info = action.getMindIcon();
 			mIconInformationVector.add(info);
 		}
+		//#endif
 		mSetIcon = new ThreeCheckBoxProperty(SET_ICON + ".tooltip", SET_ICON);
 		controls.add(mSetIcon);
 		mIcon = new IconProperty(ICON + ".tooltip", ICON, mMindMapController
