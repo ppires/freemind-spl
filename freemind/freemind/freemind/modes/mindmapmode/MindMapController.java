@@ -234,7 +234,10 @@ import freemind.modes.mindmapmode.actions.UnderlinedAction;
 import freemind.modes.mindmapmode.actions.UndoAction;
 import freemind.modes.mindmapmode.actions.UsePlainTextAction;
 import freemind.modes.mindmapmode.actions.UseRichFormattingAction;
+//#if defined(BACKGROUND_COLOR)
+//@#$LPS-BACKGROUND_COLOR:GranularityType:Import
 import freemind.modes.mindmapmode.actions.NodeBackgroundColorAction.RemoveNodeBackgroundColorAction;
+//#endif
 import freemind.modes.mindmapmode.actions.xml.ActionFactory;
 import freemind.modes.mindmapmode.actions.xml.ActionPair;
 import freemind.modes.mindmapmode.actions.xml.NodeHookUndoableContentActor;
@@ -1486,9 +1489,12 @@ freemind.main.Resources.getInstance().logException(					e1);
         nodeColor.setNodeColor(node, color);
     }
 
+	//#if defined(BACKGROUND_COLOR)
+	//@#$LPS-BACKGROUND_COLOR:GranularityType:Method
     public void setNodeBackgroundColor(MindMapNode node, Color color) {
         nodeBackgroundColor.setNodeBackgroundColor(node, color);
     }
+    //#endif
     public void blendNodeColor(MindMapNode node) {
         Color mapColor = getView().getBackground();
         Color nodeColor = node.getColor();
