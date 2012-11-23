@@ -123,11 +123,20 @@ public interface MindMapActions {
 		MindMapNode node,
 		String fontFamily);
 	public void setFontSize(MindMapNode node, String fontSizeValue);
+	//#if defined(ICONS)
+	//@#$LPS-ICONS:GranularityType:InterfaceMethod
 	/** This method is nice, but how to get a MindIcon ? 
 	 * see freemind.modes.MindIcon.factory(String)*/
 	public void addIcon(MindMapNode node, MindIcon icon);
+	//#endif
+	//#if defined(ICONS)
+	//@#$LPS-ICONS:GranularityType:InterfaceMethod
 	public int removeLastIcon(MindMapNode node);
+	//#endif
+	//#if defined(ICONS)
+	//@#$LPS-ICONS:GranularityType:InterfaceMethod
 	public void removeAllIcons(MindMapNode node);
+	//#endif
 	/** @param patternName is one of the names. They can be received using
 	 * the patterns list of ApplyPatternActions from the MindMapController. Each action
 	 * has a getPattern() method and the pattern has a getName() method ... */

@@ -89,8 +89,12 @@ public abstract class NodeAdapter implements MindMapNode {
     //the save() method instead of using getXXX(). This way the stored file is smaller and looks better.
     //(if the default is used, it is not stored) Look at mindmapmode for an example.
     protected String style;
+    
+    //#if defined(ICONS)
+    //@#$LPS-ICONS:GranularityType:Attribute
     /**stores the icons associated with this node.*/
     protected Vector/*<MindIcon>*/ icons = null; // lazy, fc, 30.6.2005
+    //#endif
 
     protected TreeMap /* of String to MindIcon s*/ stateIcons = null; // lazy, fc, 30.6.2005
 //     /**stores the label associated with this node:*/
@@ -502,15 +506,20 @@ public abstract class NodeAdapter implements MindMapNode {
        return folded; }
 
     // fc, 24.9.2003:
+    //#if defined(ICONS)
+    //@#$LPS-ICONS:GranularityType:Method
     public List getIcons() {
     		if(icons==null)
     			return Collections.EMPTY_LIST;
     		return icons;
     	}
+    //#endif
 
     public MindMap getMap() {
         return map;
     }
+    //#if defined(ICONS)
+    //@#$LPS-ICONS:GranularityType:Method
     public void   addIcon(MindIcon _icon, int position) {
     		createIcons();
     		if(position == MindIcon.LAST){
@@ -521,7 +530,10 @@ public abstract class NodeAdapter implements MindMapNode {
     		}
             getMap().getRegistry().addIcon(_icon);
     	}
+    //#endif
 
+    //#if defined(ICONS)
+    //@#$LPS-ICONS:GranularityType:Method
     /** @return returns the number of remaining icons. */
 	public int removeIcon(int position) {
 		createIcons();
@@ -535,6 +547,7 @@ public abstract class NodeAdapter implements MindMapNode {
 		}
 		return returnSize;
 	};
+	//#endif
 
     // end, fc, 24.9.2003
 
@@ -896,11 +909,14 @@ freemind.main.Resources.getInstance().logException(			e);
 			stateIcons = new TreeMap();
 		}
 	}
+    //#if defined(ICONS)
+    //@#$LPS-ICONS:GranularityType:Method
 	private void createIcons() {
 		if(icons == null) {
 			icons = new Vector();
 		}
 	}
+	//#endif
 
 	/* (non-Javadoc)
 	 * @see freemind.modes.MindMapNode#getHooks()
@@ -1108,12 +1124,15 @@ freemind.main.Resources.getInstance().logException(			e);
     	    if (isUnderlined()) {
                    fontElement.setAttribute("UNDERLINE","true"); }
     	    node.addChild(fontElement); }
+    	//#if defined(ICONS)
+    	//@#$LPS-ICONS:GranularityType:Class
         for(int i = 0; i < getIcons().size(); ++i) {
     	    XMLElement iconElement = new XMLElement();
     	    iconElement.setName("icon");
             iconElement.setAttribute("BUILTIN", ((MindIcon) getIcons().get(i)).getName());
             node.addChild(iconElement);
         }
+        //#endif
 
     	for (Iterator i = getActivatedHooks().iterator(); i.hasNext();) {
             XMLElement hookElement = new XMLElement();
@@ -1205,8 +1224,9 @@ freemind.main.Resources.getInstance().logException(			e);
 			stateIcons = null;
     }
     public Map getStateIcons() {
-    		if(stateIcons==null)
-    			return Collections.EMPTY_MAP;
+		if(stateIcons==null)
+			return Collections.EMPTY_MAP;
+
         return Collections.unmodifiableSortedMap(stateIcons);
     }
 	public HistoryInformation getHistoryInformation() {

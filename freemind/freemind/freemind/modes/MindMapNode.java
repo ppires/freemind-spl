@@ -201,13 +201,22 @@ public interface MindMapNode extends MutableTreeNode {
     void setColor(Color color);
 
     // fc, 06.10.2003:
+	//#if defined(ICONS)
+	//@#$LPS-ICONS:GranularityType:InterfaceMethod
     /** Is a vector of MindIcon s*/
     List getIcons();
+    //#endif
 
+	//#if defined(ICONS)
+	//@#$LPS-ICONS:GranularityType:InterfaceMethod
     void   addIcon(MindIcon icon, int position);
+    //#endif
 
+	//#if defined(ICONS)
+	//@#$LPS-ICONS:GranularityType:InterfaceMethod
     /* @return returns the new amount of icons.*/
     int   removeIcon(int position);
+    //#endif
     // end, fc, 24.9.2003
 
     //#if defined(CLOUD)

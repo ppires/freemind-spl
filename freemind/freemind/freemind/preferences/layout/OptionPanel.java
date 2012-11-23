@@ -1045,7 +1045,10 @@ public class OptionPanel implements TextTranslator {
         controls.add(new KeyProperty(frame, null, "keystroke_accessories/plugins/ChangeNodeLevelAction_right.properties_key"));
         controls.add(new KeyProperty(frame, null, "keystroke_accessories/plugins/FormatCopy.properties.properties_key"));
         controls.add(new KeyProperty(frame, null, "keystroke_accessories/plugins/FormatPaste.properties.properties_key"));
+		//#if defined(ICONS)
+		//@#$LPS-ICONS:GranularityType:Statement
         controls.add(new KeyProperty(frame, null, "keystroke_accessories/plugins/IconSelectionPlugin.properties.properties_key"));
+        //#endif
         controls.add(new KeyProperty(frame, null, "keystroke_accessories/plugins/NewParentNode.properties_key"));
         //controls.add(new KeyProperty(frame, null, "keystroke_accessories/plugins/NodeNote.properties_key"));
         controls.add(new KeyProperty(frame, null, "keystroke_accessories/plugins/NodeNote_jumpto.keystroke.alt_N"));
@@ -1069,11 +1072,23 @@ public class OptionPanel implements TextTranslator {
         final ModeController modeController = fmMain.getController().getModeController();
         if(modeController instanceof MindMapController){
     		MindMapController controller = (MindMapController)modeController;
+    		//#if defined(ICONS)
+    		//@#$LPS-ICONS:GranularityType:Statement
     		Vector iconActions = controller.iconActions;
+    		//#endif
     		Vector actions = new Vector();
+    		//#if defined(ICONS)
+    		//@#$LPS-ICONS:GranularityType:Statement
     		actions.addAll(iconActions);
+    		//#endif
+    		//#if defined(ICONS)
+    		//@#$LPS-ICONS:GranularityType:Statement
     		actions.add(controller.removeLastIconAction);
+    		//#endif
+    		//#if defined(ICONS)
+    		//@#$LPS-ICONS:GranularityType:Statement
     		actions.add(controller.removeAllIconsAction);
+    		//#endif
             controls.add(new NextLineProperty());
             controls.add(new SeparatorProperty("icons"));
             final Iterator iterator = actions.iterator();

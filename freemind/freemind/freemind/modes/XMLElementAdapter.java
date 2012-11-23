@@ -240,8 +240,11 @@ public abstract class XMLElementAdapter extends XMLElement {
              layout.setColumnWidth(0, ((XMLElementAdapter)child).attributeNameWidth);
              layout.setColumnWidth(1, ((XMLElementAdapter)child).attributeValueWidth);
              }
+         //#if defined(ICONS)
+         //@#$LPS-ICONS:GranularityType:Class
           else if (child.getName().equals("icon")) {
              node.addIcon((MindIcon)child.getUserObject(), MindIcon.LAST); }
+         //#endif
           else if (child.getName().equals(XML_NODE_XHTML_CONTENT_TAG)) {
 				String xmlText = ((XMLElement) child).getContent();
 				Object typeAttribute = child

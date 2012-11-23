@@ -93,6 +93,7 @@ public class ImportWizard {
 				foundPlugins.add(key);
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
+				System.out.println("EXCEPTION!!!");
 			    freemind.main.Resources.getInstance().logException(				e);
 			}
 			if (classPathFile.exists()) {

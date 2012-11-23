@@ -53,8 +53,8 @@
 	<property name="ARROW_LINK" value="Nodes connected by arrow links" />
 	<property name="BUBBLED_STYLE" value="Bubbled style for nodes" />
 	<property name="BACKGROUND_COLOR" value="Nodes can have background color" />
-	
 	<!--property name="ICONS" value="Nodes can have icons"/-->
+	
 	<!--property name="FOLLOWABLE_LINKS" value="Nodes can contain followable links" /-->
 	<!--property name="RICH_TEXT_NODES" value="Nodes can have rich text" /-->
 	<!--property name="NOTES" value="Nodes can have notes"-->
@@ -67,9 +67,9 @@
 		<copy todir="${preprocess-tmp}">
 			<fileset dir="${src}">
 				<include name="**/*.java"/>
-				<include name="freemind_actions.xsd" />
-				<include name="freemind.xsd" />
-				<include name="mindmap_menus.xml" />
+				<include name="**/*.xsd" />
+				<include name="**/*.xml" />
+				<exclude name="**/build*.xml" />
 			</fileset>
 		</copy>
 		
@@ -199,10 +199,6 @@
 		     classpath problems of the plugins. -->
 			<exclude name="tests/**" />
 			<exclude name="plugins/**" />
-
-			<!-- freemind-spl: exclude unprocessed source files -->
-			<exclude name="javapp-tmp/**" />
-
 		</javac>
 		<!-- Starter should work with java 1.1, too as it checks the java version.-->
 		<delete failonerror="false" file="${build}/freemind/main/FreeMindStarter.class"></delete>
@@ -218,9 +214,7 @@
 		<!-- freemind-spl: moving source back to original place -->
 		<copy todir="${src}" overwrite="true">
 			<fileset dir="${preprocess-tmp}">
-				<include name="**/*.java"/>
-				<include name="**/*.xsd" />
-				<include name="**/*.xml" />
+				<include name="**/*"/>
 			</fileset>
 		</copy>
 		<delete dir="${preprocess-tmp}" />

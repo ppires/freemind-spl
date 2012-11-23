@@ -42,7 +42,10 @@ import freemind.common.BooleanProperty;
 import freemind.common.ColorProperty;
 import freemind.common.ComboProperty;
 import freemind.common.FontProperty;
+//#if defined(ICONS)
+//@#$LPS-ICONS:GranularityType:Import
 import freemind.common.IconProperty;
+//#endif
 import freemind.common.NextLineProperty;
 import freemind.common.PropertyBean;
 import freemind.common.PropertyControl;
@@ -56,7 +59,10 @@ import freemind.controller.actions.generated.instance.PatternChild;
 import freemind.controller.actions.generated.instance.PatternEdgeColor;
 import freemind.controller.actions.generated.instance.PatternEdgeStyle;
 import freemind.controller.actions.generated.instance.PatternEdgeWidth;
+//#if defined(ICONS)
+//@#$LPS-ICONS:GranularityType:Import
 import freemind.controller.actions.generated.instance.PatternIcon;
+//#endif
 import freemind.controller.actions.generated.instance.PatternNodeBackgroundColor;
 import freemind.controller.actions.generated.instance.PatternNodeColor;
 import freemind.controller.actions.generated.instance.PatternNodeFontBold;
@@ -73,7 +79,10 @@ import freemind.modes.MindIcon;
 import freemind.modes.MindMapNode;
 import freemind.modes.mindmapmode.MindMapController;
 import freemind.modes.mindmapmode.actions.ApplyPatternAction;
+//#if defined(ICONS)
+//@#$LPS-ICONS:GranularityType:Import
 import freemind.modes.mindmapmode.actions.IconAction;
+//#endif
 
 /**
  * @author foltin
@@ -210,9 +219,15 @@ public class StylePatternFrame extends JPanel implements TextTranslator,
 
 	private ColorProperty mEdgeColor;
 
+	//#if defined(ICONS)
+	//@#$LPS-ICONS:GranularityType:Attribute
 	private ThreeCheckBoxProperty mSetIcon;
+	//#endif
 
+	//#if defined(ICONS)
+	//@#$LPS-ICONS:GranularityType:Attribute
 	private IconProperty mIcon;
+	//#endif
 
 	private ThreeCheckBoxProperty mSetChildPattern;
 
@@ -224,7 +239,10 @@ public class StylePatternFrame extends JPanel implements TextTranslator,
 	
 	private StringProperty mName;
 
+	//#if defined(ICONS)
+	//@#$LPS-ICONS:GranularityType:Attribute
 	private Vector mIconInformationVector;
+	//#endif
 
 	/**
 	 * Denotes pairs property -> ThreeCheckBoxProperty such that the boolean
@@ -340,19 +358,40 @@ public class StylePatternFrame extends JPanel implements TextTranslator,
 		mNodeStyle = new ComboProperty(NODE_STYLE + ".tooltip", NODE_STYLE,
 				MindMapNode.NODE_STYLES, this);
 		controls.add(mNodeStyle);
+		//#if defined(ICONS)
+		//@#$LPS-ICONS:GranularityType:Statement
 		mIconInformationVector = new Vector();
+		//#endif
 		MindMapController controller = mMindMapController;
+		//#if defined(ICONS)
+		//@#$LPS-ICONS:GranularityType:Statement
 		Vector iconActions = controller.iconActions;
+		//#endif
+		//#if defined(ICONS)
+		//@#$LPS-ICONS:GranularityType:Statement
 		for (Enumeration e = iconActions.elements(); e.hasMoreElements();) {
 			IconAction action = ((IconAction) e.nextElement());
 			MindIcon info = action.getMindIcon();
 			mIconInformationVector.add(info);
 		}
+		//#endif
+		//#if defined(ICONS)
+		//@#$LPS-ICONS:GranularityType:Statement
 		mSetIcon = new ThreeCheckBoxProperty(SET_ICON + ".tooltip", SET_ICON);
+		//#endif
+		//#if defined(ICONS)
+		//@#$LPS-ICONS:GranularityType:Statement
 		controls.add(mSetIcon);
+		//#endif
+		//#if defined(ICONS)
+		//@#$LPS-ICONS:GranularityType:Statement
 		mIcon = new IconProperty(ICON + ".tooltip", ICON, mMindMapController
 				.getFrame(), mIconInformationVector);
+		//#endif
+		//#if defined(ICONS)
+		//@#$LPS-ICONS:GranularityType:Statement
 		controls.add(mIcon);
+		//#endif
 		controls.add(new NextLineProperty());
 		controls.add(new SeparatorProperty("NodeFont"));
 		mSetNodeFontName = new ThreeCheckBoxProperty(SET_NODE_FONT_NAME
@@ -432,7 +471,10 @@ public class StylePatternFrame extends JPanel implements TextTranslator,
 		mPropertyChangePropagation.put(mSetEdgeColor, mEdgeColor);
 		mPropertyChangePropagation.put(mSetEdgeStyle, mEdgeStyle);
 		mPropertyChangePropagation.put(mSetEdgeWidth, mEdgeWidth);
+		//#if defined(ICONS)
+		//@#$LPS-ICONS:GranularityType:Statement
 		mPropertyChangePropagation.put(mSetIcon, mIcon);
+		//#endif
 		mPropertyChangePropagation.put(mSetScriptPattern, mScriptPattern);
 		if (StylePatternFrameType.WITH_NAME_AND_CHILDS.equals(mType)) {
 			// child pattern
@@ -478,10 +520,16 @@ public class StylePatternFrame extends JPanel implements TextTranslator,
 				mNodeFontBold, BooleanProperty.TRUE_VALUE);
 		setPatternControls(pattern.getPatternNodeFontItalic(),
 				mSetNodeFontItalic, mNodeFontItalic, BooleanProperty.TRUE_VALUE);
+		//#if defined(ICONS)
+		//@#$LPS-ICONS:GranularityType:Statement
 		MindIcon firstInfo = (MindIcon) mIconInformationVector
 				.get(0);
+		//#endif
+		//#if defined(ICONS)
+		//@#$LPS-ICONS:GranularityType:Statement
 		setPatternControls(pattern.getPatternIcon(), mSetIcon, mIcon,
 				firstInfo.getName());
+		//#endif
 		setPatternControls(pattern.getPatternScript(), mSetScriptPattern, mScriptPattern,
 				"");
 		if (StylePatternFrameType.WITH_NAME_AND_CHILDS.equals(mType)) {
@@ -621,8 +669,11 @@ public class StylePatternFrame extends JPanel implements TextTranslator,
 				.setPatternNodeFontItalic((PatternNodeFontItalic) getPatternResult(
 						new PatternNodeFontItalic(), mSetNodeFontItalic,
 						mNodeFontItalic));
+		//#if defined(ICONS)
+		//@#$LPS-ICONS:GranularityType:Statement
 		pattern.setPatternIcon((PatternIcon) getPatternResult(
 				new PatternIcon(), mSetIcon, mIcon));
+		//#endif
 		pattern.setPatternScript((PatternScript) getPatternResult(
 				new PatternScript(), mSetScriptPattern, mScriptPattern));
 		if (StylePatternFrameType.WITH_NAME_AND_CHILDS.equals(mType)) {

@@ -108,13 +108,28 @@ public class MindMapToolBar extends FreeMindToolBar {
 		add(size);
         
         // button tool bar.
+		//#if defined(ICONS)
+		//@#$LPS-ICONS:GranularityType:Statement
         iconToolBar.removeAll();
+        //#endif
+		//#if defined(ICONS)
+		//@#$LPS-ICONS:GranularityType:Statement
         iconToolBar.add(c.removeLastIconAction);
+        //#endif
+		//#if defined(ICONS)
+		//@#$LPS-ICONS:GranularityType:Statement
         iconToolBar.add(c.removeAllIconsAction);
+        //#endif
+		//#if defined(ICONS)
+		//@#$LPS-ICONS:GranularityType:Statement
         iconToolBar.addSeparator();
+        //#endif
+		//#if defined(ICONS)
+		//@#$LPS-ICONS:GranularityType:Statement
         for(int i = 0; i < c.iconActions.size(); ++i) {
             iconToolBar.add((Action) c.iconActions.get(i));
         }
+        //#endif
    }
 
    // Daniel Polansky: both the following methods trigger item listeners above.

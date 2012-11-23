@@ -1,3 +1,5 @@
+//#if defined(ICONS)
+//@#$LPS-ICONS:GranularityType:Class
 /*FreeMind - A Program for creating and viewing Mindmaps
  *Copyright (C) 2000-2001  Joerg Mueller <joergmueller@bigfoot.com>
  *See COPYING for Details
@@ -216,4 +218,4 @@ public class HierarchicalIcons extends PermanentMindMapNodeHookAdapter implement
     }
 
 }
-
+//#endif

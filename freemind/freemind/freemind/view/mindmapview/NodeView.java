@@ -858,42 +858,47 @@ public class NodeView extends JComponent implements TreeModelListener{
 
 
 	private void updateIcons() {
-        updateIconPosition();
+		updateIconPosition();
 		MultipleImage iconImages = new MultipleImage(1.0f);
 		boolean iconPresent = false;
 		/* fc, 06.10.2003: images? */
 
-      FreeMindMain frame = map.getController().getFrame();
-      Map stateIcons = (getModel()).getStateIcons();
-      for (Iterator i = stateIcons.keySet().iterator(); i.hasNext();) {
-		String key = (String) i.next();
-		iconPresent = true;
-		ImageIcon myIcon = (ImageIcon) stateIcons.get(key);
-		iconImages.addImage(myIcon);
+		FreeMindMain frame = map.getController().getFrame();
+		Map stateIcons = (getModel()).getStateIcons();
+		for (Iterator i = stateIcons.keySet().iterator(); i.hasNext();) {
+			String key = (String) i.next();
+			iconPresent = true;
+			ImageIcon myIcon = (ImageIcon) stateIcons.get(key);
+			iconImages.addImage(myIcon);
 
-      }
-
-      List icons = (getModel()).getIcons();
-		for (Iterator i = icons.iterator(); i.hasNext();) {
-		MindIcon myIcon = (MindIcon) i.next();
-		iconPresent = true;
-		//System.out.println("print the icon " + myicon.toString());
-		iconImages.addImage(myIcon.getIcon());
-      }
-      String link = ((NodeAdapter)getModel()).getLink();
-      if (link != null) {
-		iconPresent = true;
-		String iconPath = "images/Link.png";
-		if (link.startsWith("#")) {
-			iconPath = "images/LinkLocal.png";
-		} else if (link.startsWith("mailto:")) {
-			iconPath = "images/Mail.png";
-		} else if (Tools.executableByExtension(link)) {
-			iconPath = "images/Executable.png";
 		}
-		ImageIcon icon = new ImageIcon(frame.getResource(iconPath));
-		iconImages.addImage(icon);
-}
+		//#if defined(ICONS)
+		//@#$LPS-ICONS:GranularityType:Statement
+		List icons = (getModel()).getIcons();
+		//#endif
+		//#if defined(ICONS)
+		//@#$LPS-ICONS:GranularityType:Statement
+		for (Iterator i = icons.iterator(); i.hasNext();) {
+			MindIcon myIcon = (MindIcon) i.next();
+			iconPresent = true;
+			//System.out.println("print the icon " + myicon.toString());
+			iconImages.addImage(myIcon.getIcon());
+		}
+		//#endif
+		String link = ((NodeAdapter)getModel()).getLink();
+		if (link != null) {
+			iconPresent = true;
+			String iconPath = "images/Link.png";
+			if (link.startsWith("#")) {
+				iconPath = "images/LinkLocal.png";
+			} else if (link.startsWith("mailto:")) {
+				iconPath = "images/Mail.png";
+			} else if (Tools.executableByExtension(link)) {
+				iconPath = "images/Executable.png";
+			}
+			ImageIcon icon = new ImageIcon(frame.getResource(iconPath));
+			iconImages.addImage(icon);
+		}
 // /* Folded icon by Matthias Schade (mascha2), fc, 20.12.2003*/
 // if (((NodeAdapter)getModel()).isFolded()) {
 //             iconPresent = true;

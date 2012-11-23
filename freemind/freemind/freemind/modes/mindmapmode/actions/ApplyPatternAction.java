@@ -83,6 +83,8 @@ public class ApplyPatternAction extends NodeGeneralAction implements
         if (pattern.getPatternNodeStyle() != null) {
             getMindMapController().setNodeStyle(node, pattern.getPatternNodeStyle().getValue());
         }
+		//#if defined(ICONS)
+		//@#$LPS-ICONS:GranularityType:Statement
         if (pattern.getPatternIcon() != null) {
             String iconName = pattern.getPatternIcon().getValue();
 			if (iconName == null) {
@@ -106,6 +108,7 @@ public class ApplyPatternAction extends NodeGeneralAction implements
 				}
             }
         } // fc, 28.9.2003
+        //#endif
         if (pattern.getPatternNodeFontName() != null) {
             String nodeFontFamily = pattern.getPatternNodeFontName().getValue();
             if (nodeFontFamily == null) {

@@ -164,8 +164,15 @@
 				</menu_category>
 				<menu_separator/>
 			</menu_category>
+			<!-- 
+			//#if defined(ICONS)
+			//@#$LPS-ICONS:GranularityType:XML
+			 -->
 			<menu_category name="icons">
 			</menu_category>
+			<!-- 
+			//#endif
+			 -->
 			<!-- 
 			//#if defined(CLOUD) and defined(CLOUD_COLOR)
 			//@#$LPS-CLOUD_COLOR:GranularityType:XML
@@ -274,8 +281,15 @@
 		<menu_category name="context">
 		</menu_category>
 		<menu_separator/>
+		<!-- 
+		//#if defined(ICONS)
+		//@#$LPS-ICONS:GranularityType:XML
+		 -->
 		<menu_category name="icons">
 		</menu_category>
+		<!-- 
+		//#endif
+		 -->
 		<menu_submenu name="export"  name_ref="menu_file_export">
 			<menu_action field="exportBranch" key_ref="keystroke_export_branch"/>
 		</menu_submenu>
@@ -307,8 +321,15 @@
 				</menu_category>
 				<menu_separator/>
 			</menu_category>
+			<!-- 
+			//#if defined(ICONS)
+			//@#$LPS-ICONS:GranularityType:XML
+			 -->
 			<menu_category name="icons">
 			</menu_category>
+			<!-- 
+			//#endif
+			 -->
 			<!-- 
 			//#if defined(CLOUD) and defined(CLOUD_COLOR)
 			//@#$LPS-CLOUD_COLOR:GranularityType:XML
@@ -402,8 +423,15 @@
 				<menu_action field="italic" key_ref="keystroke_node_toggle_italic"/>
 				<menu_action field="bold" key_ref="keystroke_node_toggle_boldface"/>
 			</menu_category>
+			<!-- 
+			//#if defined(ICONS)
+			//@#$LPS-ICONS:GranularityType:XML
+			 -->
 			<menu_category name="icons">
 			</menu_category>
+			<!-- 
+			//#endif
+			 -->
 			<!-- 
 			//#if defined(CLOUD)
 			//@#$LPS-CLOUD:GranularityType:XML
