@@ -94,11 +94,14 @@ public class StylePatternFactory {
 			subPattern.setValue(Tools.colorToXml(node.getColor()));
 			pattern.setPatternNodeColor(subPattern);
 		}
+		//#if defined(BACKGROUND_COLOR)
+		//@#$LPS-BACKGROUND_COLOR:GranularityType:Statement
 		if (node.getBackgroundColor() != null) {
 			PatternNodeBackgroundColor subPattern = new PatternNodeBackgroundColor();
 			subPattern.setValue(Tools.colorToXml(node.getBackgroundColor()));
 			pattern.setPatternNodeBackgroundColor(subPattern);
 		}
+		//#endif
 		if (node.getStyle() != null) {
 			PatternNodeStyle subPattern = new PatternNodeStyle();
 			subPattern.setValue(node.getStyle());

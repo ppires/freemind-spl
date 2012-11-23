@@ -74,9 +74,12 @@ public class ApplyPatternAction extends NodeGeneralAction implements
         if(pattern.getPatternNodeColor() != null) {
             getMindMapController().setNodeColor(node, Tools.xmlToColor(pattern.getPatternNodeColor().getValue()));
         }
+    	//#if defined(BACKGROUND_COLOR)
+    	//@#$LPS-BACKGROUND_COLOR:GranularityType:Statement
         if(pattern.getPatternNodeBackgroundColor() != null) {
             getMindMapController().setNodeBackgroundColor(node, Tools.xmlToColor(pattern.getPatternNodeBackgroundColor().getValue()));
         }
+        //#endif
         // Perhaps already fixed?:
         //FIXME: fc, 3.1.2004: setting the style to "null" causes strange behaviour. 
         // see https://sourceforge.net/tracker/?func=detail&atid=107118&aid=1094623&group_id=7118

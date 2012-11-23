@@ -231,8 +231,14 @@ public interface MindMapNode extends MutableTreeNode {
     //#endif
 
     //fc, 24.2.2004: background color:
+	//#if defined(BACKGROUND_COLOR)
+	//@#$LPS-BACKGROUND_COLOR:GranularityType:InterfaceMethod
     Color getBackgroundColor(           );
+    //#endif
+	//#if defined(BACKGROUND_COLOR)
+	//@#$LPS-BACKGROUND_COLOR:GranularityType:InterfaceMethod
     void  setBackgroundColor(Color color);
+    //#endif
 
     //hooks, fc 28.2.2004:
     List getHooks();

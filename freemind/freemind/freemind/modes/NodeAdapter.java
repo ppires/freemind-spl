@@ -107,7 +107,10 @@ public abstract class NodeAdapter implements MindMapNode {
     //#endif
 
     protected Color color;
+	//#if defined(BACKGROUND_COLOR)
+	//@#$LPS-BACKGROUND_COLOR:GranularityType:Attribute
     protected Color backgroundColor;
+    //#endif
     protected boolean folded;
     private int position = UNKNOWN_POSITION;
 
@@ -425,8 +428,14 @@ public abstract class NodeAdapter implements MindMapNode {
     }
 
     //fc, 24.2.2004: background color:
+	//#if defined(BACKGROUND_COLOR)
+	//@#$LPS-BACKGROUND_COLOR:GranularityType:Method
     public Color getBackgroundColor(           ) { return backgroundColor; };
+    //#endif
+	//#if defined(BACKGROUND_COLOR)
+	//@#$LPS-BACKGROUND_COLOR:GranularityType:Method
     public void  setBackgroundColor(Color color) { this.backgroundColor = color; };
+    //#endif
 
     //
     //  font handling
@@ -1073,8 +1082,11 @@ freemind.main.Resources.getInstance().logException(			e);
                node.setAttribute("COLOR", Tools.colorToXml(getColor())); }
 
     	// new background color.
+		//#if defined(BACKGROUND_COLOR)
+		//@#$LPS-BACKGROUND_COLOR:GranularityType:Statement
     	if (getBackgroundColor() != null) {
     		   node.setAttribute("BACKGROUND_COLOR", Tools.colorToXml(getBackgroundColor())); }
+    	//#endif
 
 
     	if (style != null) {

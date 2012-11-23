@@ -116,7 +116,10 @@ public interface MindMapActions {
 	public void setBold(MindMapNode node, boolean bolded);
 	public void setItalic(MindMapNode node, boolean isItalic);
 	public void setNodeColor(MindMapNode node, Color color);
+	//#if defined(BACKGROUND_COLOR)
+	//@#$LPS-BACKGROUND_COLOR:GranularityType:InterfaceMethod
 	public void setNodeBackgroundColor(MindMapNode node, Color color);
+	//#endif
 
 	public void blendNodeColor(MindMapNode node);
 	public void setFontFamily(

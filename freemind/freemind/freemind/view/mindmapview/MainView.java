@@ -150,12 +150,15 @@ public abstract class MainView extends JLabel{
             if (getNodeView().useSelectionColors()) {
                 paintBackground(graphics, getNodeView().getSelectedColor());
             }
+        	//#if defined(BACKGROUND_COLOR)
+        	//@#$LPS-BACKGROUND_COLOR:GranularityType:InterfaceMethod
             else {
             	final Color backgroundColor = getNodeView().getModel().getBackgroundColor();
 				if (backgroundColor != null) {
             		paintBackground(graphics, backgroundColor);
             	}
             }
+            //#endif
         }
 
         protected void paintBackground(Graphics2D graphics, Color color) {

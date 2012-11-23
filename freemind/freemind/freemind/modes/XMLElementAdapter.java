@@ -456,9 +456,12 @@ public abstract class XMLElementAdapter extends XMLElement {
 	 else if (name.equals("COLOR")) {
 	    if (sValue.length() == 7) {
 	       node.setColor(Tools.xmlToColor(sValue)); }}
+ 	//#if defined(BACKGROUND_COLOR)
+ 	//@#$LPS-BACKGROUND_COLOR:GranularityType:Statement
 	 else if (name.equals("BACKGROUND_COLOR")) {
 	    if (sValue.length() == 7) {
 	       node.setBackgroundColor(Tools.xmlToColor(sValue)); }}
+     //#endif
 	 else if (name.equals("LINK")) {
 	    node.setLink(sValue); }
 	 else if (name.equals("STYLE")) {

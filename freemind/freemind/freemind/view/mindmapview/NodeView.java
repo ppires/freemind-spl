@@ -1431,10 +1431,16 @@ public class NodeView extends JComponent implements TreeModelListener{
 
 
 	public Color getTextBackground() {
+		//#if defined(BACKGROUND_COLOR)
+		//@#$LPS-BACKGROUND_COLOR:GranularityType:Statement
 		final Color modelBackgroundColor = getModel().getBackgroundColor();
+		//#endif
+		//#if defined(BACKGROUND_COLOR)
+		//@#$LPS-BACKGROUND_COLOR:GranularityType:Statement
 		if(modelBackgroundColor != null) {
 			return modelBackgroundColor;
 		}
+		//#endif
 		return getBackgroundColor();
 	}
 

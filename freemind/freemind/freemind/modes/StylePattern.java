@@ -56,7 +56,10 @@ public class StylePattern {
     private String text;
 
     private Color  nodeColor;
+	//#if defined(BACKGROUND_COLOR)
+	//@#$LPS-BACKGROUND_COLOR:GranularityType:Attribute
     private Color  nodeBackgroundColor;
+    //#endif
     private String nodeStyle;
 
     private String   nodeFontFamily=null;
@@ -88,7 +91,10 @@ public class StylePattern {
      */
     public StylePattern(MindMapNode node) {
         nodeColor = node.getColor();
+    	//#if defined(BACKGROUND_COLOR)
+    	//@#$LPS-BACKGROUND_COLOR:GranularityType:Attribute
         nodeBackgroundColor = node.getBackgroundColor();
+        //#endif
         nodeStyle = node.getStyle();
 
         nodeFontBold = new Boolean(node.isBold());

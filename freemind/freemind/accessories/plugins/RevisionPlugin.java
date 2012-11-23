@@ -75,7 +75,10 @@ public class RevisionPlugin extends PermanentMindMapNodeHookAdapter implements A
     		// there is an edit action.
 			EditNodeAction editAction = (EditNodeAction) action;
 			NodeAdapter node = getMindMapController().getNodeFromID(editAction.getNode());
+			//#if defined(BACKGROUND_COLOR)
+			//@#$LPS-BACKGROUND_COLOR:GranularityType:Statement
 			node.setBackgroundColor(color);
+			//#endif
 			nodeChanged(node);
     	}
     }
