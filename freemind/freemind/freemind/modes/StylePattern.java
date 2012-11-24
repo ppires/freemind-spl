@@ -350,9 +350,12 @@ public class StylePattern {
               if (child.getStringAttribute("color")!=null &&
                   child.getStringAttribute("color").length() == 7) {
                  setNodeColor(Tools.xmlToColor(child.getStringAttribute("color") ) ); }
+			  //#if defined(BACKGROUND_COLOR)
+			  //@#$LPS-BACKGROUND_COLOR:GranularityType:Attribute
               if (child.getStringAttribute("background_color")!=null &&
                   child.getStringAttribute("background_color").length() == 7) {
                  setNodeBackgroundColor(Tools.xmlToColor(child.getStringAttribute("background_color") ) ); }
+              //#endif
               if (child.getStringAttribute("style")!=null) {
                  setNodeStyle(child.getStringAttribute("style")); }
               if (child.getStringAttribute("icon") != null) {
