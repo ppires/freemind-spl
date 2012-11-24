@@ -127,7 +127,10 @@ public class MapView extends JPanel implements Printable, Autoscroll{
 	//#endif
 	static Color standardSelectColor;
 	static Color standardSelectRectangleColor;
+	//#if defined(COLOR)
+	//@#$LPS-COLOR:GranularityType:Attribute
 	public static Color standardNodeTextColor;
+	//#endif
     static boolean standardDrawRectangleForSelection;
 	private static Stroke standardSelectionStroke;
     static private FreemindPropertyListener propertyChangeListener;
@@ -243,6 +246,8 @@ public class MapView extends JPanel implements Printable, Autoscroll{
                 	standardMapBackgroundColor = Color.WHITE;
                 }
             //#endif
+        	//#if defined(COLOR)
+        	//@#$LPS-COLOR:GranularityType:Statement
                 try{
                     String stdcolor = getController().getFrame().getProperty(FreeMind.RESOURCES_NODE_TEXT_COLOR);
                     standardNodeTextColor = Tools.xmlToColor(stdcolor);
@@ -251,6 +256,7 @@ public class MapView extends JPanel implements Printable, Autoscroll{
                     	freemind.main.Resources.getInstance().logException(ex);
                     	standardSelectColor = Color.WHITE;
                     }
+            //#endif
             // initialize the selectedColor:
             try{
             String stdcolor = getController().getFrame().getProperty(FreeMind.RESOURCES_SELECTED_NODE_COLOR);

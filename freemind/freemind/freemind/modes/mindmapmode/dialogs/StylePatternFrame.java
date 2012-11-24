@@ -181,9 +181,15 @@ public class StylePatternFrame extends JPanel implements TextTranslator,
 
 	private Vector mControls;
 
+	//#if defined(COLOR)
+	//@#$LPS-COLOR:GranularityType:Attribute
 	private ThreeCheckBoxProperty mSetNodeColor;
+	//#endif
 
+	//#if defined(COLOR)
+	//@#$LPS-COLOR:GranularityType:Attribute
 	private ColorProperty mNodeColor;
+	//#endif
 
 	//#if defined(BACKGROUND_COLOR)
 	//@#$LPS-BACKGROUND_COLOR:GranularityType:Attribute
@@ -346,16 +352,25 @@ public class StylePatternFrame extends JPanel implements TextTranslator,
 		}
 		controls.add(new NextLineProperty());
 		controls.add(new SeparatorProperty("NodeColors"));
+		//#if defined(COLOR)
+		//@#$LPS-COLOR:GranularityType:Statement
 		mSetNodeColor = new ThreeCheckBoxProperty(SET_NODE_COLOR + ".tooltip",
 				SET_NODE_COLOR);
+		//#endif
+		//#if defined(COLOR)
+		//@#$LPS-COLOR:GranularityType:Statement
 		controls.add(mSetNodeColor);
+		//#endif
 		FreeMind fmMain = (FreeMind)mMindMapController.getFrame();
 		//#if defined(COLOR)
 		//@#$LPS-COLOR:GranularityType:Statement
 		mNodeColor = new ColorProperty(NODE_COLOR + ".tooltip", NODE_COLOR,
 				fmMain.getDefaultProperty(FreeMind.RESOURCES_NODE_TEXT_COLOR), this);
 		//#endif
+		//#if defined(COLOR)
+		//@#$LPS-COLOR:GranularityType:Statement
 		controls.add(mNodeColor);
+		//#endif
 		//#if defined(BACKGROUND_COLOR)
 		//@#$LPS-BACKGROUND_COLOR:GranularityType:Statement
 		mSetNodeBackgroundColor = new ThreeCheckBoxProperty(
@@ -483,7 +498,10 @@ public class StylePatternFrame extends JPanel implements TextTranslator,
 				mMindMapController);
 		controls.add(mScriptPattern);
 		// fill map;
+		//#if defined(COLOR)
+		//@#$LPS-COLOR:GranularityType:Statement
 		mPropertyChangePropagation.put(mSetNodeColor, mNodeColor);
+		//#endif
 		//#if defined(BACKGROUND_COLOR)
 		//@#$LPS-BACKGROUND_COLOR:GranularityType:Statement
 		mPropertyChangePropagation.put(mSetNodeBackgroundColor,
@@ -673,8 +691,11 @@ public class StylePatternFrame extends JPanel implements TextTranslator,
 	}
 
 	public Pattern getResultPattern(Pattern pattern) {
+		//#if defined(COLOR)
+		//@#$LPS-COLOR:GranularityType:Statement
 		pattern.setPatternNodeColor((PatternNodeColor) getPatternResult(
 				new PatternNodeColor(), mSetNodeColor, mNodeColor));
+		//#endif
 		//#if defined(BACKGROUND_COLOR)
 		//@#$LPS-BACKGROUND_COLOR:GranularityType:Statement
 		pattern
