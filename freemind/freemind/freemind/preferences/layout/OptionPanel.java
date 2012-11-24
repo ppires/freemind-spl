@@ -572,9 +572,12 @@ public class OptionPanel implements TextTranslator {
 
 		FreeMind.RESOURCES_LINK_COLOR, fmMain.getDefaultProperty(FreeMind.RESOURCES_LINK_COLOR), this)); //  #b0b0b0
 
+		//#if defined(BACKGROUND_COLOR)
+		//@#$LPS-BACKGROUND_COLOR:GranularityType:Statement
 		controls.add(new ColorProperty("standardbackgroundcolor.tooltip",
 
 		FreeMind.RESOURCES_BACKGROUND_COLOR, fmMain.getDefaultProperty(FreeMind.RESOURCES_BACKGROUND_COLOR), this)); //  #ffffff
+		//#endif
 
 		controls.add(new BooleanProperty(FreeMind.RESOURCE_PRINT_ON_WHITE_BACKGROUND+".tooltip",
                 FreeMind.RESOURCE_PRINT_ON_WHITE_BACKGROUND)); // true

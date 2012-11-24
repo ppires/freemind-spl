@@ -116,8 +116,11 @@ public class FreeMind extends JFrame implements FreeMindMain {
 	//#endif
 
 	public static final String RESOURCES_LINK_COLOR = "standardlinkcolor";
-
+	
+	//#if defined(BACKGROUND_COLOR)
+	//@#$LPS-BACKGROUND_COLOR:GranularityType:Attribute
 	public static final String RESOURCES_BACKGROUND_COLOR = "standardbackgroundcolor";
+	//#endif
 
 	public static final String RESOURCE_PRINT_ON_WHITE_BACKGROUND = "printonwhitebackground";
 

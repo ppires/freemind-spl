@@ -121,7 +121,10 @@ public class MapView extends JPanel implements Printable, Autoscroll{
 	int mPaintingTime;
 	int mPaintingAmount;
 	static boolean printOnWhiteBackground;
+	//#if defined(BACKGROUND_COLOR)
+	//@#$LPS-BACKGROUND_COLOR:GranularityType:Attribute
 	static Color standardMapBackgroundColor;
+	//#endif
 	static Color standardSelectColor;
 	static Color standardSelectRectangleColor;
 	public static Color standardNodeTextColor;
@@ -229,6 +232,8 @@ public class MapView extends JPanel implements Printable, Autoscroll{
     	this.controller= controller;
         // initialize the standard colors.
         if (standardNodeTextColor == null) {
+        	//#if defined(BACKGROUND_COLOR)
+        	//@#$LPS-BACKGROUND_COLOR:GranularityType:Statement
             try{
                 String stdcolor = getController().getFrame().getProperty(FreeMind.RESOURCES_BACKGROUND_COLOR);
                 standardMapBackgroundColor = Tools.xmlToColor(stdcolor);
@@ -237,6 +242,7 @@ public class MapView extends JPanel implements Printable, Autoscroll{
                 	freemind.main.Resources.getInstance().logException(ex);
                 	standardMapBackgroundColor = Color.WHITE;
                 }
+            //#endf
                 try{
                     String stdcolor = getController().getFrame().getProperty(FreeMind.RESOURCES_NODE_TEXT_COLOR);
                     standardNodeTextColor = Tools.xmlToColor(stdcolor);
@@ -294,7 +300,10 @@ public class MapView extends JPanel implements Printable, Autoscroll{
 
         initRoot();
 
+    	//#if defined(BACKGROUND_COLOR)
+    	//@#$LPS-BACKGROUND_COLOR:GranularityType:Statement
 		setBackground(standardMapBackgroundColor);
+		//#endif
         addMouseListener( controller.getMapMouseMotionListener() );
         addMouseMotionListener( controller.getMapMouseMotionListener() );
         addMouseWheelListener( controller.getMapMouseWheelListener() );
@@ -322,11 +331,14 @@ public class MapView extends JPanel implements Printable, Autoscroll{
 		                        standardNodeTextColor = Tools.xmlToColor(newValue);
 		                        controller.getMapModule().getView().getRoot().updateAll();
 		                    }
+		                	//#if defined(BACKGROUND_COLOR)
+		                	//@#$LPS-BACKGROUND_COLOR:GranularityType:Attribute
 		                    else if (propertyName
 		                            .equals(FreeMind.RESOURCES_BACKGROUND_COLOR)) {
 		                        standardMapBackgroundColor = Tools.xmlToColor(newValue);
 		                        controller.getMapModule().getView().setBackground(standardMapBackgroundColor);
 		                    }
+		                    //#endif
 		                    else if (propertyName
 		                            .equals(FreeMind.RESOURCES_SELECTED_NODE_COLOR)) {
 		                        standardSelectColor = Tools.xmlToColor(newValue);

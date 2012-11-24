@@ -109,11 +109,17 @@ public class StylePatternFrame extends JPanel implements TextTranslator,
 			"EdgeWidth_parent", "EdgeWidth_thin", "EdgeWidth_1", "EdgeWidth_2",
 			"EdgeWidth_4", "EdgeWidth_8" };
 
+	//#if defined(BACKGROUND_COLOR)
+	//@#$LPS-BACKGROUND_COLOR:GranularityType:Attribute
 	private static final String NODE_BACKGROUND_COLOR = "nodebackgroundcolor";
+	//#endif
 
 	private static final String SET_RESOURCE = "set_property_text";
 
+	//#if defined(BACKGROUND_COLOR)
+	//@#$LPS-BACKGROUND_COLOR:GranularityType:Attribute
 	private static final String SET_NODE_BACKGROUND_COLOR= SET_RESOURCE;
+	//#endif
 
 	private static final String NODE_COLOR = "nodecolor";
 
@@ -179,7 +185,10 @@ public class StylePatternFrame extends JPanel implements TextTranslator,
 
 	private ColorProperty mNodeColor;
 
+	//#if defined(BACKGROUND_COLOR)
+	//@#$LPS-BACKGROUND_COLOR:GranularityType:Attribute
 	private ThreeCheckBoxProperty mSetNodeBackgroundColor;
+	//#endif
 
 	private ColorProperty mNodeBackgroundColor;
 
@@ -344,13 +353,25 @@ public class StylePatternFrame extends JPanel implements TextTranslator,
 		mNodeColor = new ColorProperty(NODE_COLOR + ".tooltip", NODE_COLOR,
 				fmMain.getDefaultProperty(FreeMind.RESOURCES_NODE_TEXT_COLOR), this);
 		controls.add(mNodeColor);
+		//#if defined(BACKGROUND_COLOR)
+		//@#$LPS-BACKGROUND_COLOR:GranularityType:Statement
 		mSetNodeBackgroundColor = new ThreeCheckBoxProperty(
 				SET_NODE_BACKGROUND_COLOR + ".tooltip",
 				SET_NODE_BACKGROUND_COLOR);
+		//#endif
+		//#if defined(BACKGROUND_COLOR)
+		//@#$LPS-BACKGROUND_COLOR:GranularityType:Statement
 		controls.add(mSetNodeBackgroundColor);
+		//#endif
+		//#if defined(BACKGROUND_COLOR)
+		//@#$LPS-BACKGROUND_COLOR:GranularityType:Statement
 		mNodeBackgroundColor = new ColorProperty(NODE_BACKGROUND_COLOR
 				+ ".tooltip", NODE_BACKGROUND_COLOR, fmMain.getDefaultProperty(FreeMind.RESOURCES_BACKGROUND_COLOR), this);
+		//#endif
+		//#if defined(BACKGROUND_COLOR)
+		//@#$LPS-BACKGROUND_COLOR:GranularityType:Statement
 		controls.add(mNodeBackgroundColor);
+		//#endif
 		controls.add(new SeparatorProperty("NodeStyles"));
 		mSetNodeStyle = new ThreeCheckBoxProperty(SET_NODE_STYLE + ".tooltip",
 				SET_NODE_STYLE);
@@ -460,8 +481,11 @@ public class StylePatternFrame extends JPanel implements TextTranslator,
 		controls.add(mScriptPattern);
 		// fill map;
 		mPropertyChangePropagation.put(mSetNodeColor, mNodeColor);
+		//#if defined(BACKGROUND_COLOR)
+		//@#$LPS-BACKGROUND_COLOR:GranularityType:Statement
 		mPropertyChangePropagation.put(mSetNodeBackgroundColor,
 				mNodeBackgroundColor);
+		//#endif
 		mPropertyChangePropagation.put(mSetNodeStyle, mNodeStyle);
 		mPropertyChangePropagation.put(mSetNodeFontName, mNodeFontName);
 		mPropertyChangePropagation.put(mSetNodeFontSize, mNodeFontSize);
@@ -500,8 +524,11 @@ public class StylePatternFrame extends JPanel implements TextTranslator,
 		FreeMind fmMain = (FreeMind)mMindMapController.getFrame();
 		setPatternControls(pattern.getPatternNodeColor(), mSetNodeColor,
 				mNodeColor, fmMain.getDefaultProperty(FreeMind.RESOURCES_NODE_TEXT_COLOR));
+		//#if defined(BACKGROUND_COLOR)
+		//@#$LPS-BACKGROUND_COLOR:GranularityType:Attribute
 		setPatternControls(pattern.getPatternNodeBackgroundColor(),
 				mSetNodeBackgroundColor, mNodeBackgroundColor, fmMain.getDefaultProperty(FreeMind.RESOURCES_BACKGROUND_COLOR));
+		//#endif
 		setPatternControls(pattern.getPatternNodeStyle(), mSetNodeStyle,
 				mNodeStyle, MindMapNode.STYLE_AS_PARENT);
 		setPatternControls(pattern.getPatternNodeText(), mSetNodeText,
@@ -642,10 +669,13 @@ public class StylePatternFrame extends JPanel implements TextTranslator,
 	public Pattern getResultPattern(Pattern pattern) {
 		pattern.setPatternNodeColor((PatternNodeColor) getPatternResult(
 				new PatternNodeColor(), mSetNodeColor, mNodeColor));
+		//#if defined(BACKGROUND_COLOR)
+		//@#$LPS-BACKGROUND_COLOR:GranularityType:Statement
 		pattern
 				.setPatternNodeBackgroundColor((PatternNodeBackgroundColor) getPatternResult(
 						new PatternNodeBackgroundColor(),
 						mSetNodeBackgroundColor, mNodeBackgroundColor));
+		//#endif
 		pattern.setPatternNodeStyle((PatternNodeStyle) getPatternResult(
 				new PatternNodeStyle(), mSetNodeStyle, mNodeStyle));
 		pattern.setPatternNodeText((PatternNodeText) getPatternResult(
