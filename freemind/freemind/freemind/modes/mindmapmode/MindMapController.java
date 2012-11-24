@@ -203,8 +203,14 @@ import freemind.modes.mindmapmode.actions.NewSiblingAction;
 //@#$LPS-BACKGROUND_COLOR:GranularityType:Import
 import freemind.modes.mindmapmode.actions.NodeBackgroundColorAction;
 //#endif
+//#if defined(COLOR)
+//@#$LPS-COLOR:GranularityType:Import
 import freemind.modes.mindmapmode.actions.NodeColorAction;
+//#endif
+//#if defined(COLOR)
+//@#$LPS-COLOR:GranularityType:Import
 import freemind.modes.mindmapmode.actions.NodeColorBlendAction;
+//#endif
 import freemind.modes.mindmapmode.actions.NodeGeneralAction;
 import freemind.modes.mindmapmode.actions.NodeHookAction;
 import freemind.modes.mindmapmode.actions.NodeStyleAction;
