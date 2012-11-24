@@ -242,7 +242,7 @@ public class MapView extends JPanel implements Printable, Autoscroll{
                 	freemind.main.Resources.getInstance().logException(ex);
                 	standardMapBackgroundColor = Color.WHITE;
                 }
-            //#endf
+            //#endif
                 try{
                     String stdcolor = getController().getFrame().getProperty(FreeMind.RESOURCES_NODE_TEXT_COLOR);
                     standardNodeTextColor = Tools.xmlToColor(stdcolor);
