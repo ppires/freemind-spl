@@ -156,8 +156,22 @@
 						<menu_action field="underlined" key_ref="keystroke_node_toggle_underlined"/>-->
 					<menu_action field="nodeColor" key_ref="keystroke_node_color"/>
 					<menu_action field="nodeColorBlend" key_ref="keystroke_node_color_blend"/>
+					<!-- 
+					//#if defined(BACKGROUND_COLOR)
+					//@#$LPS-BACKGROUND_COLOR:GranularityType:XML
+					 -->
 					<menu_action field="nodeBackgroundColor"/>
+					<!-- 
+					//#endif
+					 -->
+					<!-- 
+					//#if defined(BACKGROUND_COLOR)
+					//@#$LPS-BACKGROUND_COLOR:GranularityType:XML
+					 -->
 					<menu_action field="removeNodeBackgroundColor"/>
+					<!-- 
+					//#endif
+					 -->
 				</menu_category>
 				<menu_category name="position">
 					<menu_action field="moveNodeAction"/>
@@ -316,8 +330,22 @@
 						<menu_action field="underlined" key_ref="keystroke_node_toggle_underlined"/>-->
 					<menu_action field="nodeColor" key_ref="keystroke_node_color"/>
 					<menu_action field="nodeColorBlend" key_ref="keystroke_node_color_blend"/>
+					<!-- 
+					//#if defined(BACKGROUND_COLOR)
+					//@#$LPS-BACKGROUND_COLOR:GranularityType:XML
+					 -->
 					<menu_action field="nodeBackgroundColor"/>
+					<!-- 
+					//#endif
+					 -->
+					<!-- 
+					//#if defined(BACKGROUND_COLOR)
+					//@#$LPS-BACKGROUND_COLOR:GranularityType:XML
+					 -->
 					<menu_action field="removeNodeBackgroundColor"/>
+					<!-- 
+					//#endif
+					 -->
 				</menu_category>
 				<menu_separator/>
 			</menu_category>
