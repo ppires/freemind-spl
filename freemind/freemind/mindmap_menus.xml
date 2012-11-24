@@ -154,8 +154,22 @@
 					<menu_action field="bold" key_ref="keystroke_node_toggle_boldface"/>
 					<!-- Underlined is not implemented in the view yet.
 						<menu_action field="underlined" key_ref="keystroke_node_toggle_underlined"/>-->
+					<!-- 
+					//#if defined(COLOR)
+					//@#$LPS-COLOR:GranularityType:XML
+					 -->
 					<menu_action field="nodeColor" key_ref="keystroke_node_color"/>
+					<!-- 
+					//#endif
+					 -->
+					<!-- 
+					//#if defined(COLOR)
+					//@#$LPS-COLOR:GranularityType:XML
+					 -->
 					<menu_action field="nodeColorBlend" key_ref="keystroke_node_color_blend"/>
+					<!-- 
+					//#endif
+					 -->
 					<!-- 
 					//#if defined(BACKGROUND_COLOR)
 					//@#$LPS-BACKGROUND_COLOR:GranularityType:XML
@@ -328,8 +342,22 @@
 					<menu_action field="bold" key_ref="keystroke_node_toggle_boldface"/>
 					<!-- Underlined is not implemented in the view yet.
 						<menu_action field="underlined" key_ref="keystroke_node_toggle_underlined"/>-->
+					<!-- 
+					//#if defined(COLOR)
+					//@#$LPS-COLOR:GranularityType:XML
+					 -->
 					<menu_action field="nodeColor" key_ref="keystroke_node_color"/>
+					<!-- 
+					//#endif
+					 -->
+					<!-- 
+					//#if defined(COLOR)
+					//@#$LPS-COLOR:GranularityType:XML
+					 -->
 					<menu_action field="nodeColorBlend" key_ref="keystroke_node_color_blend"/>
+					<!-- 
+					//#endif
+					 -->
 					<!-- 
 					//#if defined(BACKGROUND_COLOR)
 					//@#$LPS-BACKGROUND_COLOR:GranularityType:XML

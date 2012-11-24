@@ -20,7 +20,14 @@
 					<xs:element ref="underlined_node_action"/>
 					<xs:element ref="font_size_node_action"/>
 					<xs:element ref="font_node_action"/>
+					<!-- 
+					//#if defined(COLOR)
+					//@#$LPS-COLOR:GranularityType:XML
+					 -->
 					<xs:element ref="node_color_format_action"/>
+					<!-- 
+					//#endif
+					 -->
 					<!-- 
 					//#if defined(BACKGROUND_COLOR)
 					//@#$LPS-BACKGROUND_COLOR:GranularityType:XML
@@ -502,6 +509,10 @@
 	  </xs:complexType>
 	</xs:element>
 
+	<!-- 
+	//#if defined(COLOR)
+	//@#$LPS-COLOR:GranularityType:XML
+	 -->
 	<!-- Sets the color of the nodes Action -->
 	<xs:element name="node_color_format_action">
 	  <xs:complexType>
@@ -512,6 +523,9 @@
 		</xs:complexContent>
 	  </xs:complexType>
 	</xs:element>
+	<!-- 
+	//#endif
+	 -->
 
 	<!-- 
 	//#if defined(BACKGROUND_COLOR)
@@ -1025,7 +1039,14 @@
 	<!-- 
 	//#endif
 	 -->
+	<!-- 
+	//#if defined(COLOR)
+	//@#$LPS-COLOR:GranularityType:XML
+	 -->
     <xs:element name="pattern_node_color">            <xs:complexType><xs:complexContent><xs:extension base="pattern_property_base"></xs:extension></xs:complexContent></xs:complexType>  </xs:element>
+    <!-- 
+    //#endif
+     -->
     <xs:element name="pattern_node_style">            <xs:complexType><xs:complexContent><xs:extension base="pattern_property_base"></xs:extension></xs:complexContent></xs:complexType>  </xs:element>
     <xs:element name="pattern_node_text">             <xs:complexType><xs:complexContent><xs:extension base="pattern_property_base"></xs:extension></xs:complexContent></xs:complexType>  </xs:element>
     <xs:element name="pattern_node_font_name">        <xs:complexType><xs:complexContent><xs:extension base="pattern_property_base"></xs:extension></xs:complexContent></xs:complexType>  </xs:element>
@@ -1059,7 +1080,14 @@
 						<!-- 
 						//#endif
 						 -->
+						<!-- 
+						//#if defined(COLOR)
+						//@#$LPS-COLOR:GranularityType:XML
+						 -->
 						<xs:element minOccurs="0" maxOccurs="1" ref="pattern_node_color"/>
+						<!-- 
+						//#endif
+						 -->
 						<xs:element minOccurs="0" maxOccurs="1" ref="pattern_node_style"/>
 						<xs:element minOccurs="0" maxOccurs="1" ref="pattern_node_text"/>
 						<xs:element minOccurs="0" maxOccurs="1" ref="pattern_node_font_name"/>

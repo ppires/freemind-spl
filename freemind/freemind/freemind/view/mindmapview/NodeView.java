@@ -916,17 +916,17 @@ public class NodeView extends JComponent implements TreeModelListener{
 	}
 
 
-	//#if defined(COLOR)
-	//@#$LPS-COLOR:GranularityType:Method
 	private void updateTextColor() {
 		Color color;
 		color= getModel().getColor();
+		//#if defined(COLOR)
+		//@#$LPS-COLOR:GranularityType:Statement
 		if (color==null) {
 			color = MapView.standardNodeTextColor;
 		}
+		//#endif
 		mainView.setForeground(color);
 	}
-	//#endif
 
 
 	boolean useSelectionColors() {
@@ -1109,17 +1109,17 @@ public class NodeView extends JComponent implements TreeModelListener{
         return getMainView().getFont();
     }
     
-	//#if defined(COLOR)
-	//@#$LPS-COLOR:GranularityType:Method
     public Color getTextColor() {
         Color color= getModel().getColor();
+    	//#if defined(COLOR)
+    	//@#$LPS-COLOR:GranularityType:Statement
 		if (color==null) {
 			color = MapView.standardNodeTextColor;
 		}
+		//#endif
 		return color;
 
     }
-    //#endif
     /**
      */
     public AttributeView getAttributeView() {

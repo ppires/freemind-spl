@@ -13,7 +13,14 @@
 		<!-- 
 		//#endif
 		 -->
+		<!-- 
+		//#if defined(COLOR)
+		//@#$LPS-COLOR:GranularityType:XML
+		 -->
 		<pattern_node_color/>
+		<!-- 
+		//#endif
+		 -->
 		<pattern_node_style/>
 		<pattern_node_font_name/>
 		<pattern_node_font_bold/>
@@ -40,7 +47,14 @@
 		<!-- 
 		//#endif
 		 -->
+		<!-- 
+		//#if defined(COLOR)
+		//@#$LPS-COLOR:GranularityType:XML
+		 -->		 
 		<pattern_node_color value="#000000"/>
+		<!-- 
+		//#endif
+		 -->
 		<pattern_node_style/>
 	</pattern>
 	<!-- task -->
@@ -53,7 +67,14 @@
 		<!-- 
 		//#endif
 		 -->
+		<!-- 
+		//#if defined(COLOR)
+		//@#$LPS-COLOR:GranularityType:XML
+		 -->
 		<pattern_node_color value="#338800"/>
+		<!-- 
+		//#endif
+		 -->
 		<pattern_node_style/>
 	</pattern>
 	<pattern name="Needs action">
@@ -65,7 +86,14 @@
 		<!-- 
 		//#endif
 		 -->
+		<!-- 
+		//#if defined(COLOR)
+		//@#$LPS-COLOR:GranularityType:XML
+		 -->
 		<pattern_node_color value="#990000"/>
+		<!-- 
+		//#endif
+		 -->
 		<pattern_node_style/>
 	</pattern>
 	<pattern name="Hot">
@@ -77,7 +105,14 @@
 		<!-- 
 		//#endif
 		 -->
+		<!-- 
+		//#if defined(COLOR)
+		//@#$LPS-COLOR:GranularityType:XML
+		 -->
 		<pattern_node_color value="#ff0000"/>
+		<!-- 
+		//#endif
+		 -->
 		<pattern_node_style/>
 	</pattern>
 	<!-- document -->
@@ -90,7 +125,14 @@
 		<!-- 
 		//#endif
 		 -->
+		<!-- 
+		//#if defined(COLOR)
+		//@#$LPS-COLOR:GranularityType:XML
+		 -->
 		<pattern_node_color value="#999999"/>
+		<!-- 
+		//#endif
+		 -->
 		<pattern_node_style/>
 		<pattern_node_font_name/>
 		<pattern_node_font_bold/>
@@ -107,7 +149,14 @@
 		<!-- 
 		//#endif
 		 -->
+		<!-- 
+		//#if defined(COLOR)
+		//@#$LPS-COLOR:GranularityType:XML
+		 -->
 		<pattern_node_color value="#006699"/>
+		<!-- 
+		//#endif
+		 -->
 		<pattern_node_style/>
 	</pattern>
 	<pattern name="Topic">
@@ -119,7 +168,14 @@
 		<!-- 
 		//#endif
 		 -->
+		<!-- 
+		//#if defined(COLOR)
+		//@#$LPS-COLOR:GranularityType:XML
+		 -->
 		<pattern_node_color value="#669900"/>
+		<!-- 
+		//#endif
+		 -->
 		<pattern_node_style/>
 	</pattern>
 	<pattern name="Larger Topic">
@@ -131,7 +187,14 @@
 		<!-- 
 		//#endif
 		 -->
+		<!-- 
+		//#if defined(COLOR)
+		//@#$LPS-COLOR:GranularityType:XML
+		 -->
 		<pattern_node_color value="#006633"/>
+		<!-- 
+		//#endif
+		 -->
 		<pattern_node_style/>
 	</pattern>
 	<pattern name="Waiting Topic">
@@ -143,7 +206,14 @@
 		<!-- 
 		//#endif
 		 -->
+		<!-- 
+		//#if defined(COLOR)
+		//@#$LPS-COLOR:GranularityType:XML
+		 -->
 		<pattern_node_color value="#B3B95C"/>
+		<!-- 
+		//#endif
+		 -->
 		<pattern_node_style/>
 	</pattern>
 	<pattern name="Object / Keyword">
@@ -155,7 +225,14 @@
 		<!-- 
 		//#endif
 		 -->
+		<!-- 
+		//#if defined(COLOR)
+		//@#$LPS-COLOR:GranularityType:XML
+		 -->
 		<pattern_node_color value="#996600"/>
+		<!-- 
+		//#endif
+		 -->
 		<pattern_node_style/>
 	</pattern>
 	<pattern name="Object of Code">
@@ -168,7 +245,14 @@
 		<!-- 
 		//#endif
 		 -->
+		<!-- 
+		//#if defined(COLOR)
+		//@#$LPS-COLOR:GranularityType:XML
+		 -->
 		<pattern_node_color value="#CC6600"/>
+		<!-- 
+		//#endif
+		 -->
 		<pattern_node_style/>
 	</pattern>
 	<pattern name="Question">
@@ -180,7 +264,14 @@
 		<!-- 
 		//#endif
 		 -->
+		<!-- 
+		//#if defined(COLOR)
+		//@#$LPS-COLOR:GranularityType:XML
+		 -->
 		<pattern_node_color value="#999900"/>
+		<!-- 
+		//#endif
+		 -->
 		<pattern_node_style/>
 	</pattern>
 	<pattern name="Open Question">
@@ -192,7 +283,14 @@
 		<!-- 
 		//#endif
 		 -->
+		<!-- 
+		//#if defined(COLOR)
+		//@#$LPS-COLOR:GranularityType:XML
+		 -->
 		<pattern_node_color value="#CC3300"/>
+		<!-- 
+		//#endif
+		 -->
 		<pattern_node_style/>
 	</pattern>
 	<pattern name="Bad">
@@ -204,7 +302,14 @@
 		<!-- 
 		//#endif
 		 -->
+		<!-- 
+		//#if defined(COLOR)
+		//@#$LPS-COLOR:GranularityType:XML
+		 -->		 
 		<pattern_node_color value="#990099"/>
+		<!-- 
+		//#endif
+		 -->
 		<pattern_node_style/>
 	</pattern>
 	<pattern name="Blue">
@@ -216,7 +321,14 @@
 		<!-- 
 		//#endif
 		 -->
+		<!-- 
+		//#if defined(COLOR)
+		//@#$LPS-COLOR:GranularityType:XML
+		 -->
 		<pattern_node_color value="#0033FF"/>
+		<!-- 
+		//#endif
+		 -->
 		<pattern_node_style/>
 	</pattern>
 	<pattern name="Pink">
@@ -228,7 +340,14 @@
 		<!-- 
 		//#endif
 		 -->
+		<!-- 
+		//#if defined(COLOR)
+		//@#$LPS-COLOR:GranularityType:XML
+		 -->
 		<pattern_node_color value="#FF6666"/>
+		<!-- 
+		//#endif
+		 -->
 		<pattern_node_style/>
 	</pattern>
 	<pattern name="Cyan">
@@ -240,7 +359,14 @@
 		<!-- 
 		//#endif
 		 -->
+		<!-- 
+		//#if defined(COLOR)
+		//@#$LPS-COLOR:GranularityType:XML
+		 -->
 		<pattern_node_color value="#009999"/>
+		<!-- 
+		//#endif
+		 -->
 		<pattern_node_style/>
 	</pattern>
 	
@@ -257,7 +383,14 @@
 		<!-- 
 		//#endif
 		 -->
+		<!-- 
+		//#if defined(COLOR)
+		//@#$LPS-COLOR:GranularityType:XML
+		 -->
 		<pattern_node_color value="#000000"/>
+		<!-- 
+		//#endif
+		 -->
 		<pattern_node_style/>
 		<pattern_edge_color value="#000000"/>
 		<pattern_edge_style/>
@@ -274,7 +407,14 @@
 		<!-- 
 		//#endif
 		 -->
+		<!-- 
+		//#if defined(COLOR)
+		//@#$LPS-COLOR:GranularityType:XML
+		 -->
 		<pattern_node_color value="#0033FF"/>
+		<!-- 
+		//#endif
+		 -->
 		<pattern_node_style/>
 		<pattern_edge_color value="#0033FF"/>
 		<pattern_edge_style/>
@@ -291,7 +431,14 @@
 		<!-- 
 		//#endif
 		 -->
+		<!-- 
+		//#if defined(COLOR)
+		//@#$LPS-COLOR:GranularityType:XML
+		 -->
 		<pattern_node_color value="#00b439"/>
+		<!-- 
+		//#endif
+		 -->
 		<pattern_node_style/>
 		<pattern_edge_color value="#00b439"/>
 		<pattern_edge_style/>
@@ -308,7 +455,14 @@
 		<!-- 
 		//#endif
 		 -->
+		<!-- 
+		//#if defined(COLOR)
+		//@#$LPS-COLOR:GranularityType:XML
+		 -->
 		<pattern_node_color value="#990000"/>
+		<!-- 
+		//#endif
+		 -->
 		<pattern_node_style/>
 		<pattern_edge_color value="#990000"/>
 		<pattern_edge_style/>
@@ -325,7 +479,14 @@
 		<!-- 
 		//#endif
 		 -->
+		<!-- 
+		//#if defined(COLOR)
+		//@#$LPS-COLOR:GranularityType:XML
+		 -->
 		<pattern_node_color value="#111111"/>
+		<!-- 
+		//#endif
+		 -->
 		<pattern_node_style/>
 		<pattern_edge_color value="#111111"/>
 		<pattern_edge_style/>
