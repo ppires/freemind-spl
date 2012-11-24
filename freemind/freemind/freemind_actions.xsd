@@ -21,7 +21,14 @@
 					<xs:element ref="font_size_node_action"/>
 					<xs:element ref="font_node_action"/>
 					<xs:element ref="node_color_format_action"/>
+					<!-- 
+					//#if defined(BACKGROUND_COLOR)
+					//@#$LPS-BACKGROUND_COLOR:GranularityType:XML
+					 -->
 					<xs:element ref="node_background_color_format_action"/>
+					<!-- 
+					//#endif
+					 -->
 					<xs:element ref="node_style_format_action"/>
 					<xs:element ref="edge_color_format_action"/>
 					<xs:element ref="edge_width_format_action"/>
@@ -506,6 +513,10 @@
 	  </xs:complexType>
 	</xs:element>
 
+	<!-- 
+	//#if defined(BACKGROUND_COLOR)
+	//@#$LPS-BACKGROUND_COLOR:GranularityType:XML
+	 -->
 	<!-- Sets the color of the node's background Action -->
 	<xs:element name="node_background_color_format_action">
 	  <xs:complexType>
@@ -516,6 +527,9 @@
 		</xs:complexContent>
 	  </xs:complexType>
 	</xs:element>
+	<!-- 
+	//#endif
+	 -->
 
 	<!-- Sets the color of the edges Action -->
 	<xs:element name="edge_color_format_action">
@@ -1003,7 +1017,14 @@
 				
 
 	<xs:complexType name="pattern_property_base"><xs:complexContent><!-- if value is not present, the attribute is cleared. -->     <xs:attribute name="value" use="optional" type="xs:string"/>  </xs:complexContent>  </xs:complexType>
+	<!-- 
+	//#if defined(BACKGROUND_COLOR)
+	//@#$LPS-BACKGROUND_COLOR:GranularityType:XML
+	 -->	
 	<xs:element name="pattern_node_background_color"> <xs:complexType><xs:complexContent><xs:extension base="pattern_property_base"></xs:extension></xs:complexContent></xs:complexType>  </xs:element>
+	<!-- 
+	//#endif
+	 -->
     <xs:element name="pattern_node_color">            <xs:complexType><xs:complexContent><xs:extension base="pattern_property_base"></xs:extension></xs:complexContent></xs:complexType>  </xs:element>
     <xs:element name="pattern_node_style">            <xs:complexType><xs:complexContent><xs:extension base="pattern_property_base"></xs:extension></xs:complexContent></xs:complexType>  </xs:element>
     <xs:element name="pattern_node_text">             <xs:complexType><xs:complexContent><xs:extension base="pattern_property_base"></xs:extension></xs:complexContent></xs:complexType>  </xs:element>
@@ -1030,7 +1051,14 @@
 			<xs:complexContent>
 				<xs:extension base="xml_action">
 					<xs:choice>
+						<!-- 
+						//#if defined(BACKGROUND_COLOR)
+						//@#$LPS-BACKGROUND_COLOR:GranularityType:XML
+						 -->
 						<xs:element minOccurs="0" maxOccurs="1" ref="pattern_node_background_color"/>
+						<!-- 
+						//#endif
+						 -->
 						<xs:element minOccurs="0" maxOccurs="1" ref="pattern_node_color"/>
 						<xs:element minOccurs="0" maxOccurs="1" ref="pattern_node_style"/>
 						<xs:element minOccurs="0" maxOccurs="1" ref="pattern_node_text"/>
