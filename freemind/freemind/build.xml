@@ -63,8 +63,10 @@
 	<taskdef resource="javapp-defs.xml" />
 	<target name="preprocess">
 		<echo message="Preparing files to be pre-processed.../" />
-		<mkdir dir="${preprocess-tmp}" />
-		<copy todir="${preprocess-tmp}">
+		<delete dir="${preprocess-tmp}" quiet="true" />
+		<mkdir dir="${preprocess-tmp}/src" />
+		<mkdir dir="${preprocess-tmp}/pre" />
+		<copy todir="${preprocess-tmp}/src">
 			<fileset dir="${src}">
 				<include name="**/*.java"/>
 				<include name="**/*.xsd" />
@@ -73,15 +75,15 @@
 			</fileset>
 		</copy>
 		
-		<!--mkdir dir="${preprocess-tmp}/../javapp-tmp-2" /-->
-		
 		<echo message="[javapp] processing files..." />
-		<javapp destdir="${src}" prefix="//#">
-		<!--javapp destdir="${preprocess-tmp}/../javapp-tmp-2" prefix="//#"-->
-			<fileset dir="${preprocess-tmp}" includes="**/*" />
+		<javapp destdir="${preprocess-tmp}/pre" prefix="//#">
+			<fileset dir="${preprocess-tmp}/src" includes="**/*" />
 		</javapp>
-		
 		<echo message="[javapp] Done!" />
+		
+		<copy todir="${src}" overwrite="true">
+			<fileset dir="${preprocess-tmp}/pre" includes="**/*" />
+		</copy>
 	</target>
 
 
@@ -211,13 +213,11 @@
 
 	<target name="dist" depends="jar, browser">
 
-		<!-- freemind-spl: moving source back to original place -->
+		<!-- freemind-spl: moving source back to original state -->
 		<copy todir="${src}" overwrite="true">
-			<fileset dir="${preprocess-tmp}">
-				<include name="**/*"/>
-			</fileset>
+			<fileset dir="${preprocess-tmp}/src" includes="**/*" />
 		</copy>
-		<delete dir="${preprocess-tmp}" />
+		<!--delete dir="${preprocess-tmp}" /-->
 		
 		<copy todir="${dist}">
 			<fileset dir="${src}"
