@@ -71,9 +71,12 @@ public class ApplyPatternAction extends NodeGeneralAction implements
                 getMindMapController().setNodeText(node, "");
             }
         }
+    	//#if defined(COLOR)
+    	//@#$LPS-COLOR:GranularityType:Statement
         if(pattern.getPatternNodeColor() != null) {
             getMindMapController().setNodeColor(node, Tools.xmlToColor(pattern.getPatternNodeColor().getValue()));
         }
+        //#endif
     	//#if defined(BACKGROUND_COLOR)
     	//@#$LPS-BACKGROUND_COLOR:GranularityType:Statement
         if(pattern.getPatternNodeBackgroundColor() != null) {

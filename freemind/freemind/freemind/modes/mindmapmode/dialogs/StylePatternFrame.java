@@ -350,8 +350,11 @@ public class StylePatternFrame extends JPanel implements TextTranslator,
 				SET_NODE_COLOR);
 		controls.add(mSetNodeColor);
 		FreeMind fmMain = (FreeMind)mMindMapController.getFrame();
+		//#if defined(COLOR)
+		//@#$LPS-COLOR:GranularityType:Statement
 		mNodeColor = new ColorProperty(NODE_COLOR + ".tooltip", NODE_COLOR,
 				fmMain.getDefaultProperty(FreeMind.RESOURCES_NODE_TEXT_COLOR), this);
+		//#endif
 		controls.add(mNodeColor);
 		//#if defined(BACKGROUND_COLOR)
 		//@#$LPS-BACKGROUND_COLOR:GranularityType:Statement
@@ -522,8 +525,11 @@ public class StylePatternFrame extends JPanel implements TextTranslator,
 
 	public void setPattern(Pattern pattern) {
 		FreeMind fmMain = (FreeMind)mMindMapController.getFrame();
+		//#if defined(COLOR)
+		//@#$LPS-COLOR:GranularityType:Statement
 		setPatternControls(pattern.getPatternNodeColor(), mSetNodeColor,
 				mNodeColor, fmMain.getDefaultProperty(FreeMind.RESOURCES_NODE_TEXT_COLOR));
+		//#endif
 		//#if defined(BACKGROUND_COLOR)
 		//@#$LPS-BACKGROUND_COLOR:GranularityType:Attribute
 		setPatternControls(pattern.getPatternNodeBackgroundColor(),

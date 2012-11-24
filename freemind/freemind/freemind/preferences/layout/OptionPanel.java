@@ -560,9 +560,12 @@ public class OptionPanel implements TextTranslator {
 
 		controls.add(new NextLineProperty());
 		controls.add(new SeparatorProperty("default_colors"));
+		//#if defined(COLOR)
+		//@#$LPS-COLOR:GranularityType:Statement
 		controls.add(new ColorProperty("standardnodetextcolor.tooltip",
 
 		FreeMind.RESOURCES_NODE_TEXT_COLOR, fmMain.getDefaultProperty(FreeMind.RESOURCES_NODE_TEXT_COLOR), this)); //  #000000
+		//#endif
 
 		controls.add(new ColorProperty("standardedgecolor.tooltip",
 

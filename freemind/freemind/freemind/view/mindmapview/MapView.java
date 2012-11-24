@@ -326,20 +326,25 @@ public class MapView extends JPanel implements Printable, Autoscroll{
 		                
 		                public void propertyChanged(String propertyName,
 		                        String newValue, String oldValue) {
+		                	//#if defined(COLOR)
+		                	//@#$LPS-COLOR:GranularityType:Statement
 		                    if (propertyName
 		                            .equals(FreeMind.RESOURCES_NODE_TEXT_COLOR)) {
 		                        standardNodeTextColor = Tools.xmlToColor(newValue);
 		                        controller.getMapModule().getView().getRoot().updateAll();
 		                    }
-		                	//#if defined(BACKGROUND_COLOR)
-		                	//@#$LPS-BACKGROUND_COLOR:GranularityType:Attribute
-		                    else if (propertyName
+		                    else
+		                    //#endif
+	                    	//#if defined(BACKGROUND_COLOR)
+	                    	//@#$LPS-BACKGROUND_COLOR:GranularityType:Attribute
+	                    	if (propertyName
 		                            .equals(FreeMind.RESOURCES_BACKGROUND_COLOR)) {
 		                        standardMapBackgroundColor = Tools.xmlToColor(newValue);
 		                        controller.getMapModule().getView().setBackground(standardMapBackgroundColor);
 		                    }
-		                    //#endif
-		                    else if (propertyName
+		                    else 
+	                    	//#endif
+	                    	if (propertyName
 		                            .equals(FreeMind.RESOURCES_SELECTED_NODE_COLOR)) {
 		                        standardSelectColor = Tools.xmlToColor(newValue);
 		                        controller.getMapModule().getView().repaintSelecteds();

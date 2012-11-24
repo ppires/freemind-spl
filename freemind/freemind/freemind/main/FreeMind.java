@@ -98,7 +98,10 @@ public class FreeMind extends JFrame implements FreeMindMain {
 
 	public static final String RESOURCES_ROOT_NODE_STYLE = "standardrootnodestyle";
 
+	//#if defined(COLOR)
+	//@#$LPS-COLOR:GranularityType:Attribute
 	public static final String RESOURCES_NODE_TEXT_COLOR = "standardnodetextcolor";
+	//#endif
 
 	public static final String RESOURCES_SELECTED_NODE_COLOR = "standardselectednodecolor";
 

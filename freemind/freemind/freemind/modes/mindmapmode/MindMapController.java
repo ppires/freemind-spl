@@ -346,7 +346,10 @@ public class MindMapController extends ControllerAdapter implements MindMapActio
     public UnderlinedAction underlined = null;
     public FontSizeAction fontSize = null;
     public FontFamilyAction fontFamily = null;
+    //#if defined(COLOR)
+    //@#$LPS-COLOR:GranularityType:Attribute
     public NodeColorAction nodeColor = null;
+    //#endif
     public EditAction edit = null;
     public NewChildAction newChild = null;
     public DeleteChildAction deleteChild = null;
@@ -369,7 +372,10 @@ public class MindMapController extends ControllerAdapter implements MindMapActio
     public EdgeStyleAction EdgeStyle_sharp_linear = null;
     public EdgeStyleAction EdgeStyle_sharp_bezier = null;
     public EdgeStyleAction edgeStyles[] = null;
+	//#if defined(COLOR)
+	//@#$LPS-COLOR:GranularityType:Attribute
     public NodeColorBlendAction nodeColorBlend = null;
+    //#endif
     public NodeStyleAction fork = null;
     //#if defined(BUBBLED_STYLE)
     //@#$LPS-BUBBLED_STYLE:GranularityType:Attribute
@@ -538,8 +544,14 @@ public class MindMapController extends ControllerAdapter implements MindMapActio
         nodeUp = new NodeUpAction(this);
         nodeDown = new NodeDownAction(this);
         edgeColor = new EdgeColorAction(this);
+		//#if defined(COLOR)
+		//@#$LPS-COLOR:GranularityType:Statement
         nodeColor = new NodeColorAction(this);
+        //#endif
+    	//#if defined(COLOR)
+    	//@#$LPS-COLOR:GranularityType:Statement
         nodeColorBlend = new NodeColorBlendAction(this);
+        //#endif
         fork = new NodeStyleAction(this, MindMapNode.STYLE_FORK);
         //#if defined(BUBBLED_STYLE)
         //@#$LPS-BUBBLED_STYLE:GranularityType:Statement
@@ -1195,7 +1207,10 @@ freemind.main.Resources.getInstance().logException(					e1);
         addArrowLinkAction.setEnabled(enabled);
         //#endif
         addLocalLinkAction.setEnabled(enabled);
+    	//#if defined(COLOR)
+    	//@#$LPS-COLOR:GranularityType:Statement
         nodeColorBlend.setEnabled(enabled);
+        //#endif
         nodeUp.setEnabled(enabled);
     	//#if defined(BACKGROUND_COLOR)
     	//@#$LPS-BACKGROUND_COLOR:GranularityType:Statement
@@ -1215,7 +1230,10 @@ freemind.main.Resources.getInstance().logException(					e1);
         cloudColor.setEnabled(enabled);
         //#endif
 //        normalFont.setEnabled(enabled);
+        //#if defined(COLOR)
+        //@#$LPS-COLOR:GranularityType:Statement
         nodeColor.setEnabled(enabled);
+        //#endif
         edgeColor.setEnabled(enabled);
     	//#if defined(ICONS)
     	//@#$LPS-ICONS:GranularityType:Statement
@@ -1485,9 +1503,12 @@ freemind.main.Resources.getInstance().logException(					e1);
         fontFamily.setFontFamily(node, fontFamilyValue);
     }
 
+	//#if defined(COLOR)
+	//@#$LPS-COLOR:GranularityType:Method
     public void setNodeColor(MindMapNode node, Color color) {
         nodeColor.setNodeColor(node, color);
     }
+    //#endif
 
 	//#if defined(BACKGROUND_COLOR)
 	//@#$LPS-BACKGROUND_COLOR:GranularityType:Method
@@ -1495,6 +1516,8 @@ freemind.main.Resources.getInstance().logException(					e1);
         nodeBackgroundColor.setNodeBackgroundColor(node, color);
     }
     //#endif
+	//#if defined(COLOR)
+	//@#$LPS-COLOR:GranularityType:Method
     public void blendNodeColor(MindMapNode node) {
         Color mapColor = getView().getBackground();
         Color nodeColor = node.getColor();
@@ -1506,6 +1529,7 @@ freemind.main.Resources.getInstance().logException(					e1);
                         .getGreen() + nodeColor.getGreen()) / 4, (3 * mapColor
                         .getBlue() + nodeColor.getBlue()) / 4));
     }
+    //#endif
 
 
     public void setEdgeColor(MindMapNode node, Color color) {
