@@ -234,7 +234,7 @@ public class MapView extends JPanel implements Printable, Autoscroll{
         this.model = model;
     	this.controller= controller;
         // initialize the standard colors.
-        if (standardNodeTextColor == null) {
+        if (standardSelectColor == null) {
         	//#if defined(BACKGROUND_COLOR)
         	//@#$LPS-BACKGROUND_COLOR:GranularityType:Statement
             try{
