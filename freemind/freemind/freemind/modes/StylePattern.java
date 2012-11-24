@@ -113,14 +113,24 @@ public class StylePattern {
     }
 
     public String toString() {
-        return "node: "+nodeColor+", "+nodeBackgroundColor+", "+nodeStyle+", "+nodeFontFamily+", "+nodeFontSize+", "+nodeIcon+", "+text+", "+
+        return "node: "+nodeColor+", "
+        		//#if defined(BACKGROUND_COLOR)
+        		//@#$LPS-BACKGROUND_COLOR:GranularityType:Expression
+        		+nodeBackgroundColor+", "
+        		//#endif
+        		+nodeStyle+", "+nodeFontFamily+", "+nodeFontSize+", "+nodeIcon+", "+text+", "+
            "\nedge: "+edgeColor+", "+edgeStyle+", "+edgeWidth; }
 
     public boolean getAppliesToEdge() {
        return edgeColor != null || edgeStyle != null || edgeWidth != null; }
 
     public boolean getAppliesToNode() {
-       return nodeBackgroundColor != null|| nodeColor != null || nodeStyle !=null; }
+    	return
+    	//#if defined(BACKGROUND_COLOR)
+    	//@#$LPS-BACKGROUND_COLOR:GranularityType:Expression
+       nodeBackgroundColor != null|| 
+       //#endif
+       nodeColor != null || nodeStyle !=null; }
 
     public boolean getAppliesToNodeFont() {
        return nodeFontBold != null || nodeFontFamily != null || nodeFontItalic != null || nodeFontSize != null; }
@@ -190,13 +200,18 @@ public class StylePattern {
     public void setNodeColor(Color  v) {
        this.nodeColor = v; }
 
-
+	//#if defined(BACKGROUND_COLOR)
+	//@#$LPS-BACKGROUND_COLOR:GranularityType:Method
 	public Color getNodeBackgroundColor() {
 		return nodeBackgroundColor;
 	}
+	//#endif
+	//#if defined(BACKGROUND_COLOR)
+	//@#$LPS-BACKGROUND_COLOR:GranularityType:Method
 	public void setNodeBackgroundColor(Color nodeBackgroundColor) {
 		this.nodeBackgroundColor = nodeBackgroundColor;
 	}
+	//#endif
     /**
        * Get the value of nodeStyle.
        * @return Value of nodeStyle.
