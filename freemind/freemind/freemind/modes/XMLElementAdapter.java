@@ -134,7 +134,10 @@ public abstract class XMLElementAdapter extends XMLElement {
    	//@#$LPS-ARROW_LINK:GranularityType:InterfaceMethod
     abstract protected ArrowLinkAdapter createArrowLinkAdapter(NodeAdapter source, NodeAdapter target, FreeMindMain frame);
     //#endif
+	//#if defined(ENCRYPTED_NODE)
+	//@#$LPS-ENCRYPTED_NODE:GranularityType:InterfaceMethod
     abstract protected NodeAdapter createEncryptedNode(String additionalInfo);
+    //#endif
 
 
 
