@@ -1,8 +1,8 @@
+<?xml version="1.0"?>
 <!-- 
 //#if defined(BLINK)
 //@#$LPS-BLINK:GranularityType:XML
  -->
-<?xml version="1.0"?>
 <plugin label="accessories/plugins/BlinkingNodeHook">
 	<plugin_action documentation="%accessories/plugins/BlinkingNodeHook.properties_documentation" name="%accessories/plugins/BlinkingNodeHook.properties_name" base="freemind.extensions.NodeHookAdapter" icon_path="accessories/plugins/icons/xeyes.png" label="accessories/plugins/BlinkingNodeHook.properties" class_name="accessories.plugins.BlinkingNodeHook" instanciation="Once" isSelectable="true">
 		<plugin_mode class_name="freemind.modes.mindmapmode"/>

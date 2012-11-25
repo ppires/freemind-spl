@@ -1,8 +1,8 @@
+<?xml version="1.0"?>
 <!-- 
 //#if defined(ENCRYPTED_NODE)
 //@#$LPS-ENCRYPTED_NODE:GranularityType:XML
  -->
-<?xml version="1.0"?>
 <plugin label="accessories/plugins/EncryptNode">
 	<plugin_registration isPluginBase="true" class_name="accessories.plugins.EncryptNode$Registration"><plugin_mode class_name="freemind.modes.mindmapmode"/></plugin_registration>
 	<plugin_action documentation="%accessories/plugins/EncryptNode.properties_documentation" name="%accessories/plugins/EncryptNode.properties_name" base="freemind.extensions.NodeHookAdapter" icon_path="accessories/plugins/icons/lock.png" label="accessories/plugins/EncryptNode.properties" class_name="accessories.plugins.EncryptNode" instanciation="Other">
