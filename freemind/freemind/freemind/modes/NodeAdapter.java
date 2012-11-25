@@ -432,7 +432,7 @@ public abstract class NodeAdapter implements MindMapNode {
 	//#if defined(COLOR)
 	//@#$LPS-COLOR:GranularityType:Method
     public void setColor(Color color) {
-	this.color = null;
+	this.color = color;
     }
     //#endif
 
