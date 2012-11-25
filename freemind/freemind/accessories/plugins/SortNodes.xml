@@ -1,4 +1,8 @@
 <?xml version="1.0"?>
+<!-- 
+//#if defined(SORT)
+//@#$LPS-SORT:GranularityType:XML
+ -->
 <plugin label="accessories/plugins/SortNodes">
 	<plugin_action
 		documentation="%accessories/plugins/SortNodes.properties_documentation"
@@ -11,3 +15,6 @@
 		<plugin_menu location="menu_bar/extras/first/nodes/sorting/SortNodes"/>
 	</plugin_action>
 </plugin>
+<!-- 
+//#endif
+ -->
