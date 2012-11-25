@@ -54,7 +54,7 @@
 	<property name="BUBBLED_STYLE" value="Bubbled style for nodes" />
 	<property name="ICONS" value="Nodes can have icons"/>
 	<property name="BACKGROUND_COLOR" value="Nodes can have background color" />
-	<property name="COLORS" value="Nodes can have colors" />
+	<property name="COLOR" value="Nodes can have colors" />
 	<property name="BLINK" value="Nodes can blink with different colors" />
 	<property name="ENCRYPTED_NODE" value="Nodes can be encrypted" />
 	<property name="SORT" value="Nodes sorted alphabetically" />
