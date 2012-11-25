@@ -1,3 +1,5 @@
+//#if defined(ENCRYPTED_NODE)
+//@#$LPS-ENCRYPTED_NODE:GranularityType:Class
 /*FreeMind - A Program for creating and viewing Mindmaps
  *Copyright (C) 2000-2001  Joerg Mueller <joergmueller@bigfoot.com>
  *See COPYING for Details
@@ -248,3 +250,4 @@ public class EncryptNode extends MindMapNodeHookAdapter {
     }
 
 }
+//#endif

@@ -126,6 +126,8 @@ public class MindMapXMLElement extends XMLElementAdapter {
     }
     //#endif
 
+	//#if defined(ENCRYPTED_NODE)
+	//@#$LPS-ENCRYPTED_NODE:GranularityType:Method
 	protected NodeAdapter createEncryptedNode(String additionalInfo) {
 		NodeAdapter node = createNodeAdapter(frame, EncryptedMindMapNode.class.getName());
 		setUserObject(node);
@@ -133,6 +135,7 @@ public class MindMapXMLElement extends XMLElementAdapter {
 	    node.setAdditionalInfo(additionalInfo);
         return node;
 	}
+	//#endif
 
 }
 

@@ -55,7 +55,8 @@
 	<property name="ICONS" value="Nodes can have icons"/>
 	<property name="BACKGROUND_COLOR" value="Nodes can have background color" />
 	<property name="COLORS" value="Nodes can have colors" />
-	<!-- property name="BLINK" value="Nodes can blink with different colors" /-->
+	<property name="BLINK" value="Nodes can blink with different colors" />
+	<!--property name="ENCRYPTED_NODE" value="Nodes can be encrypted" /-->
 	
 	<!--property name="FOLLOWABLE_LINKS" value="Nodes can contain followable links" /-->
 	<!--property name="RICH_TEXT_NODES" value="Nodes can have rich text" /-->

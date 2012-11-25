@@ -42,7 +42,10 @@ import freemind.modes.XMLElementAdapter;
 
 public class BrowseXMLElement extends XMLElementAdapter {
 
+   //#if defined(ENCRYPTED_NODE)
+   //@#$LPS-ENCRYPTED_NODE:GranularityType:Attribute
    private static final String ENCRYPTED_BROWSE_NODE = EncryptedBrowseNode.class.getName();
+   //#endif
    private final ModeController mModeController;
 
    public BrowseXMLElement(ModeController pModeController) {
@@ -76,9 +79,12 @@ public class BrowseXMLElement extends XMLElementAdapter {
         		, mIDToTarget);
     }
     protected NodeAdapter createNodeAdapter(FreeMindMain     frame, String nodeClass){
+	    	//#if defined(ENCRYPTED_NODE)
+	    	//@#$LPS-ENCRYPTED_NODE:GranularityType:Statement
     		if(nodeClass == ENCRYPTED_BROWSE_NODE){
     			return new EncryptedBrowseNode(frame, mModeController);
     		}
+    		//#endif
         return new BrowseNodeModel(frame, getMap());
     }
     protected EdgeAdapter createEdgeAdapter(NodeAdapter node, FreeMindMain frame){
@@ -97,6 +103,8 @@ public class BrowseXMLElement extends XMLElementAdapter {
     }
     //#endif
 
+	//#if defined(ENCRYPTED_NODE)
+	//@#$LPS-ENCRYPTED_NODE:GranularityType:Method
     protected NodeAdapter createEncryptedNode(String additionalInfo) {
 		NodeAdapter node = createNodeAdapter(frame, ENCRYPTED_BROWSE_NODE);
 		setUserObject(node);
@@ -104,5 +112,6 @@ public class BrowseXMLElement extends XMLElementAdapter {
 	    node.setAdditionalInfo(additionalInfo);
         return node;
 	}
+    //#endif
 }
 

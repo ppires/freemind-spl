@@ -72,7 +72,10 @@ public abstract class XMLElementAdapter extends XMLElement {
     //public static final String XML_NODE_CLASS_PREFIX = XML_NODE+"_";
     public static final String XML_NODE_CLASS = "AA_NODE_CLASS";
     public static final String XML_NODE_ADDITIONAL_INFO = "ADDITIONAL_INFO";
+	//#if defined(ENCRYPTED_NODE)
+	//@#$LPS-ENCRYPTED_NODE:GranularityType:Attribute
     public static final String XML_NODE_ENCRYPTED_CONTENT = "ENCRYPTED_CONTENT";
+    //#endif
     public static final String XML_NODE_HISTORY_CREATED_AT = "CREATED";
     public static final String XML_NODE_HISTORY_LAST_MODIFIED_AT = "MODIFIED";
 
@@ -432,10 +435,14 @@ public abstract class XMLElementAdapter extends XMLElement {
      if (name.equals(XML_NODE_TEXT)) {
 			logger.finest("Setting node text content to:" + sValue);
 	    node.setUserObject(sValue); }
+	 //#if defined(ENCRYPTED_NODE)
+	 //@#$LPS-ENCRYPTED_NODE:GranularityType:Import
 	 else if (name.equals(XML_NODE_ENCRYPTED_CONTENT)) {
 	     // we change the node implementation to EncryptedMindMapNode.
 	     node = createEncryptedNode(sValue);
-	 } else if (name.equals(XML_NODE_HISTORY_CREATED_AT)) {
+	 } 
+	 //#endif
+	 else if (name.equals(XML_NODE_HISTORY_CREATED_AT)) {
 	     if(node.getHistoryInformation()==null) {
 	     	node.setHistoryInformation(new HistoryInformation());
 	     }

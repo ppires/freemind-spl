@@ -601,6 +601,8 @@ public class Tools {
     }
 
     /** from: http://javaalmanac.com/egs/javax.crypto/PassKey.html */
+	//#if defined(ENCRYPTED_NODE)
+	//@#$LPS-ENCRYPTED_NODE:GranularityType:Class
 	public static class DesEncrypter {
 	    private static final String SALT_PRESENT_INDICATOR = " ";
 	    private static final int SALT_LENGTH=8;
@@ -713,7 +715,10 @@ public class Tools {
 	        return null;
 	    }
 	}
+	//#endif
 
+	//#if defined(ENCRYPTED_NODE)
+	//@#$LPS-ENCRYPTED_NODE:GranularityType:Class
 	public static class SingleDesEncrypter extends DesEncrypter {
 
 		public SingleDesEncrypter(StringBuffer pPassPhrase) {
@@ -721,6 +726,9 @@ public class Tools {
 		}
 		
 	}
+	//#endif
+	//#if defined(ENCRYPTED_NODE)
+	//@#$LPS-ENCRYPTED_NODE:GranularityType:Class
 	public static class TripleDesEncrypter extends DesEncrypter {
 		
 		public TripleDesEncrypter(StringBuffer pPassPhrase) {
@@ -728,6 +736,7 @@ public class Tools {
 		}
 		
 	}
+	//#endif
 	
 	/**
      */

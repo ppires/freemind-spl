@@ -1039,10 +1039,13 @@ freemind.main.Resources.getInstance().logException(			e);
         	
         }
     	// save additional info:
+		//#if defined(ENCRYPTED_NODE)
+		//@#$LPS-ENCRYPTED_NODE:GranularityType:Statement
     	if (getAdditionalInfo() != null) {
             node.setAttribute(XMLElementAdapter.XML_NODE_ENCRYPTED_CONTENT,
                     getAdditionalInfo());
         }
+    	//#endif
     	//	((MindMapEdgeModel)getEdge()).save(doc,node);
 
     	XMLElement edge = (getEdge()).save();
