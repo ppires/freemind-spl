@@ -57,7 +57,7 @@
 	<property name="COLORS" value="Nodes can have colors" />
 	<property name="BLINK" value="Nodes can blink with different colors" />
 	<property name="ENCRYPTED_NODE" value="Nodes can be encrypted" />
-	<!--property name="SORT" value="Nodes sorted alphabetically" /-->
+	<property name="SORT" value="Nodes sorted alphabetically" />
 	
 	<!-- preprocess task -->
 	<taskdef resource="javapp-defs.xml" />
