@@ -213,11 +213,13 @@
 
 	<target name="dist" depends="jar, browser">
 
+
 		<!-- freemind-spl: moving source back to original state -->
 		<copy todir="${src}" overwrite="true">
 			<fileset dir="${preprocess-tmp}/src" includes="**/*" />
 		</copy>
 		<!--delete dir="${preprocess-tmp}" /-->
+		
 		
 		<copy todir="${dist}">
 			<fileset dir="${src}"
