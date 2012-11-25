@@ -89,11 +89,14 @@ public class StylePatternFactory {
 	public static Pattern createPatternFromNode(MindMapNode node) {
 		Pattern pattern = new Pattern();
 
+    	//#if defined(COLOR)
+    	//@#$LPS-COLOR:GranularityType:Statement
 		if (node.getColor() != null) {
 			PatternNodeColor subPattern = new PatternNodeColor();
 			subPattern.setValue(Tools.colorToXml(node.getColor()));
 			pattern.setPatternNodeColor(subPattern);
 		}
+		//#endif
 		//#if defined(BACKGROUND_COLOR)
 		//@#$LPS-BACKGROUND_COLOR:GranularityType:Statement
 		if (node.getBackgroundColor() != null) {

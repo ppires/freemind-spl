@@ -207,21 +207,33 @@ public class MindMapMapModel extends MapAdapter  {
         try {
 
            // First collect all used colors
+    	   //#if defined(COLOR)
+    	   //@#$LPS-COLOR:GranularityType:Statement
            HashSet colors = new HashSet();
+           //#endif
+		   //#if defined(COLOR)
+		   //@#$LPS-COLOR:GranularityType:Statement
            for(ListIterator it=mindMapNodes.listIterator();it.hasNext();) {
               ((MindMapNodeModel)it.next()).collectColors(colors); }
+           //#endif
 
            // Prepare table of colors containing indices to color table
            String colorTableString="{\\colortbl;\\red0\\green0\\blue255;";
            // 0 - Automatic, 1 - blue for links
 
            HashMap colorTable = new HashMap();
+    	   //#if defined(COLOR)
+    	   //@#$LPS-COLOR:GranularityType:Statement
            int colorPosition = 2;
+           //#endif
+    	   //#if defined(COLOR)
+    	   //@#$LPS-COLOR:GranularityType:Statement
            for(Iterator it=colors.iterator();it.hasNext();++colorPosition) {
               Color color = (Color)it.next();
               colorTableString += "\\red"+color.getRed()+"\\green"+color.getGreen()+
                  "\\blue"+color.getBlue()+";";
               colorTable.put(color,new Integer(colorPosition)); }
+           //#endif
            colorTableString += "}";
 
             fileout.write

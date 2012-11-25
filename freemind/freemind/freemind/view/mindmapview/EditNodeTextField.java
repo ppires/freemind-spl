@@ -125,11 +125,20 @@ public class EditNodeTextField extends EditNodeBase {
         }
         textfield.setFont(font);
 
+		//#if defined(COLOR)
+		//@#$LPS-COLOR:GranularityType:Statement
         final Color nodeTextColor = nodeView.getTextColor();
+        //#endif
+		//#if defined(COLOR)
+		//@#$LPS-COLOR:GranularityType:Statement
 		textfield.setForeground(nodeTextColor);
+		//#endif
         final Color nodeTextBackground = nodeView.getTextBackground();
 		textfield.setBackground(nodeTextBackground);
+		//#if defined(COLOR)
+		//@#$LPS-COLOR:GranularityType:Statement
 		textfield.setCaretColor(nodeTextColor);
+		//#endif
         
         // textField.selectAll(); // no selection on edit (PN)
 

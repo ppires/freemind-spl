@@ -55,7 +55,10 @@ public class StylePattern {
 
     private String text;
 
+	//#if defined(COLOR)
+	//@#$LPS-COLOR:GranularityType:Statement
     private Color  nodeColor;
+    //#endif
 	//#if defined(BACKGROUND_COLOR)
 	//@#$LPS-BACKGROUND_COLOR:GranularityType:Attribute
     private Color  nodeBackgroundColor;
@@ -90,7 +93,10 @@ public class StylePattern {
     /** Constructs a style pattern from a node:
      */
     public StylePattern(MindMapNode node) {
+    	//#if defined(COLOR)
+    	//@#$LPS-COLOR:GranularityType:Attribute
         nodeColor = node.getColor();
+        //#endif
     	//#if defined(BACKGROUND_COLOR)
     	//@#$LPS-BACKGROUND_COLOR:GranularityType:Attribute
         nodeBackgroundColor = node.getBackgroundColor();
@@ -113,7 +119,11 @@ public class StylePattern {
     }
 
     public String toString() {
-        return "node: "+nodeColor+", "
+        return "node: "
+        		//#if defined(COLOR)
+        		//@#$LPS-COLOR:GranularityType:Expression
+        		+nodeColor+", "
+        		//#endif
         		//#if defined(BACKGROUND_COLOR)
         		//@#$LPS-BACKGROUND_COLOR:GranularityType:Expression
         		+nodeBackgroundColor+", "
@@ -130,7 +140,11 @@ public class StylePattern {
     	//@#$LPS-BACKGROUND_COLOR:GranularityType:Expression
        nodeBackgroundColor != null|| 
        //#endif
-       nodeColor != null || nodeStyle !=null; }
+       //#if defined(COLOR)
+       //@#$LPS-COLOR:GranularityType:Expression
+       nodeColor != null ||
+       //#endif
+       nodeStyle !=null; }
 
     public boolean getAppliesToNodeFont() {
        return nodeFontBold != null || nodeFontFamily != null || nodeFontItalic != null || nodeFontSize != null; }
@@ -190,15 +204,21 @@ public class StylePattern {
        * Get the value of nodeColor.
        * @return Value of nodeColor.
        */
+    //#if defined(COLOR)
+    //@#$LPS-COLOR:GranularityType:Method
     public Color getNodeColor() {
        return nodeColor; }
+    //#endif
 
     /**
        * Set the value of nodeColor.
        * @param v  Value to assign to nodeColor.
        */
+    //#if defined(COLOR)
+    //@#$LPS-COLOR:GranularityType:Method
     public void setNodeColor(Color  v) {
        this.nodeColor = v; }
+    //#endif
 
 	//#if defined(BACKGROUND_COLOR)
 	//@#$LPS-BACKGROUND_COLOR:GranularityType:Method
@@ -347,9 +367,12 @@ public class StylePattern {
             //NODE
            XMLElement child = (XMLElement)i.next();
            if (child.getName().equals("node")) {
+			  //#if defined(COLOR)
+			  //@#$LPS-COLOR:GranularityType:Import
               if (child.getStringAttribute("color")!=null &&
                   child.getStringAttribute("color").length() == 7) {
                  setNodeColor(Tools.xmlToColor(child.getStringAttribute("color") ) ); }
+              //#endif
 			  //#if defined(BACKGROUND_COLOR)
 			  //@#$LPS-BACKGROUND_COLOR:GranularityType:Attribute
               if (child.getStringAttribute("background_color")!=null &&

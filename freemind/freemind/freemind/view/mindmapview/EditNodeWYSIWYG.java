@@ -204,17 +204,29 @@ public class EditNodeWYSIWYG extends EditNodeBase {
                 rule+="font-style: italic; "; }
             if (node.getModel().isBold()) {
                 rule+="font-weight: bold; "; }
+			//#if defined(COLOR)
+			//@#$LPS-COLOR:GranularityType:Statement
             final Color nodeTextColor = node.getTextColor();
-			rule+="color: "+Tools.colorToXml(nodeTextColor)+";"; 
+            //#endif
+			//#if defined(COLOR)
+			//@#$LPS-COLOR:GranularityType:Statement
+			rule+="color: "+Tools.colorToXml(nodeTextColor)+";";
+			//#endif
             rule += "}\n";
             rule += "p {";
             rule += "margin-top:0;";            
             rule += "}\n";
             final HTMLDocument document = htmlEditorPanel.getDocument();
             final JEditorPane editorPane = htmlEditorPanel.getEditorPane();
+			//#if defined(COLOR)
+			//@#$LPS-COLOR:GranularityType:Statement
             editorPane.setForeground(nodeTextColor);
+            //#endif
             editorPane.setBackground(nodeTextBackground);
+			//#if defined(COLOR)
+			//@#$LPS-COLOR:GranularityType:Statement
             editorPane.setCaretColor(nodeTextColor);
+            //#endif
 			document.getStyleSheet().addRule(rule);
 			try {
 				document.setBase(node.getMap().getModel().getURL());

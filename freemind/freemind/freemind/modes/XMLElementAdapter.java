@@ -453,9 +453,12 @@ public abstract class XMLElementAdapter extends XMLElement {
 	 else if (name.equals("POSITION")) {
 	     // fc, 17.12.2003: Remove the left/right bug.
 	     node.setLeft(sValue.equals("left")); }
+	//#if defined(COLOR)
+	//@#$LPS-COLOR:GranularityType:Statement
 	 else if (name.equals("COLOR")) {
 	    if (sValue.length() == 7) {
 	       node.setColor(Tools.xmlToColor(sValue)); }}
+    //#endif
  	//#if defined(BACKGROUND_COLOR)
  	//@#$LPS-BACKGROUND_COLOR:GranularityType:Statement
 	 else if (name.equals("BACKGROUND_COLOR")) {

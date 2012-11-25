@@ -113,6 +113,8 @@ public class MindMapNodeModel extends NodeAdapter {
         }
     }
 
+	//#if defined(COLOR)
+	//@#$LPS-COLOR:GranularityType:Method
     public void collectColors(HashSet colors) {
         if (color != null) {
             colors.add(getColor());
@@ -121,6 +123,7 @@ public class MindMapNodeModel extends NodeAdapter {
             ((MindMapNodeModel) e.next()).collectColors(colors);
         }
     }
+    //#endif
 
     private String saveRFT_escapeUnicodeAndSpecialCharacters(String text) {
         int len = text.length();
@@ -166,9 +169,12 @@ public class MindMapNodeModel extends NodeAdapter {
             level = "";
         }
         String fontsize = "";
+    	//#if defined(COLOR)
+    	//@#$LPS-COLOR:GranularityType:Statement
         if (color != null) {
             pre += "\\cf" + ((Integer) colorTable.get(getColor())).intValue();
         }
+        //#endif
 
         if (isItalic()) {
             pre += "\\i ";

@@ -226,11 +226,20 @@ public class EditNodeDialog extends EditNodeBase {
             font = Tools.updateFontSize(font, getView().getZoom(), font.getSize()); 
 			textArea.setFont(font);
             
+			//#if defined(COLOR)
+			//@#$LPS-COLOR:GranularityType:Statement
             final Color nodeTextColor = getNode().getTextColor();
+            //#endif
+			//#if defined(COLOR)
+			//@#$LPS-COLOR:GranularityType:Statement
 			textArea.setForeground(nodeTextColor);
+			//#endif
             final Color nodeTextBackground = getNode().getTextBackground();
             textArea.setBackground(nodeTextBackground);
+			//#if defined(COLOR)
+			//@#$LPS-COLOR:GranularityType:Statement
             textArea.setCaretColor(nodeTextColor);
+            //#endif
             
             //panel.setPreferredSize(new Dimension(500, 160));
             //editorScrollPane.setPreferredSize(new Dimension(500, 160));

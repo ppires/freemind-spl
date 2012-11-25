@@ -139,7 +139,10 @@ public interface MindMapNode extends MutableTreeNode {
 
     MindMapEdge getEdge();
 
+	//#if defined(COLOR)
+	//@#$LPS-COLOR:GranularityType:InterfaceMethod
     Color getColor();
+    //#endif
 
     String getStyle();
     /** currently the style may be one of MindMapNode.STYLE_BUBBLE or MindMapNode.STYLE_FORK.*/
@@ -198,7 +201,10 @@ public interface MindMapNode extends MutableTreeNode {
 
     void setFontSize(int fontSize);
 
+	//#if defined(COLOR)
+	//@#$LPS-COLOR:GranularityType:InterfaceMethod
     void setColor(Color color);
+    //#endif
 
     // fc, 06.10.2003:
 	//#if defined(ICONS)

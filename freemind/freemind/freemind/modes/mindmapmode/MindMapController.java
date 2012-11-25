@@ -2006,7 +2006,10 @@ freemind.main.Resources.getInstance().logException(					e1);
         MindMapNode parent = node.getParentNode();
         MindMapNode lowerNode = addNewNode(parent, parent
                 .getChildPosition(node) + 1, node.isLeft());
+    	//#if defined(COLOR)
+    	//@#$LPS-COLOR:GranularityType:Statement
         lowerNode.setColor(node.getColor());
+        //#endif
         lowerNode.setFont(node.getFont());
         setNodeText(lowerNode, newLowerContent);
 

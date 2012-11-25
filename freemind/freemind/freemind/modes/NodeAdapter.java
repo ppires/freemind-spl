@@ -90,9 +90,9 @@ public abstract class NodeAdapter implements MindMapNode {
     //(if the default is used, it is not stored) Look at mindmapmode for an example.
     protected String style;
     
+    /**stores the icons associated with this node.*/
     //#if defined(ICONS)
     //@#$LPS-ICONS:GranularityType:Attribute
-    /**stores the icons associated with this node.*/
     protected Vector/*<MindIcon>*/ icons = null; // lazy, fc, 30.6.2005
     //#endif
 
@@ -100,13 +100,16 @@ public abstract class NodeAdapter implements MindMapNode {
 //     /**stores the label associated with this node:*/
 //     protected String mLabel;
     
+    /** parameters of an eventually associated cloud*/
     //#if defined(CLOUD)
     //@#$LPS-CLOUD:GranularityType:Attribute
-    /** parameters of an eventually associated cloud*/
     protected MindMapCloud cloud;
     //#endif
 
+	//#if defined(COLOR)
+	//@#$LPS-COLOR:GranularityType:Attribute
     protected Color color;
+    //#endif
 	//#if defined(BACKGROUND_COLOR)
 	//@#$LPS-BACKGROUND_COLOR:GranularityType:Attribute
     protected Color backgroundColor;
@@ -411,8 +414,11 @@ public abstract class NodeAdapter implements MindMapNode {
 	    }
 
     /**The Foreground/Font Color*/
+	//#if defined(COLOR)
+	//@#$LPS-COLOR:GranularityType:Method
     public Color getColor() {
        return color; }
+    //#endif
 
 
     //////
@@ -423,9 +429,12 @@ public abstract class NodeAdapter implements MindMapNode {
 	this.style = style;
 	}
 
+	//#if defined(COLOR)
+	//@#$LPS-COLOR:GranularityType:Method
     public void setColor(Color color) {
-	this.color = color;
+	this.color = null;
     }
+    //#endif
 
     //fc, 24.2.2004: background color:
 	//#if defined(BACKGROUND_COLOR)
@@ -1078,8 +1087,11 @@ freemind.main.Resources.getInstance().logException(			e);
 				node.setAttribute("ID", label);
 			}
 		}
+    	//#if defined(COLOR)
+    	//@#$LPS-COLOR:GranularityType:Statement
 		if (color != null) {
                node.setAttribute("COLOR", Tools.colorToXml(getColor())); }
+		//#endif
 
     	// new background color.
 		//#if defined(BACKGROUND_COLOR)

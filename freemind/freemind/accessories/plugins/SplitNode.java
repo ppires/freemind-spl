@@ -92,7 +92,10 @@ public class SplitNode extends MindMapNodeHookAdapter {
             if (part == null){
                 continue;
             }
+        	//#if defined(COLOR)
+        	//@#$LPS-COLOR:GranularityType:Statement
             lowerNode.setColor(node.getColor());
+            //#endif
             lowerNode.setFont(node.getFont());
             c.setNodeText(lowerNode, part);
             EventQueue.invokeLater(new Runnable(){

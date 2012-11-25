@@ -602,9 +602,12 @@ class MindMapHTMLWriter {
 	private String fontStyle(MindMapNodeModel model) throws IOException {
 		String fontStyle = "";
 
+    	//#if defined(COLOR)
+    	//@#$LPS-COLOR:GranularityType:Statement
 		if (model.getColor() != null) {
 			fontStyle += "color: " + Tools.colorToXml(model.getColor()) + ";";
 		}
+		//#endif
 
 		if (model.getFont() != null && model.getFont().getSize() != 0) {
 			int defaultFontSize = Integer
