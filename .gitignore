@@ -1,5 +1,9 @@
-freemind/freemind/lib/bindings.jar
-freemind/bin/*
-freemind/freemind/bin/*
-freemind/javapp-tmp/*
-freemind/.project
+javapp/freemind/freemind/lib/bindings.jar
+javapp/freemind/bin/*
+javapp/freemind/freemind/bin/*
+javapp/freemind/javapp-tmp/*
+javapp/freemind/.project
+cide+/freemind/freemind/lib/bindings.jar
+cide+/freemind/bin/*
+cide+/freemind/freemind/bin/*
+
